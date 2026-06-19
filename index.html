@@ -1,0 +1,2121 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>01 Aanvraaganalyse opdrachtgever</title>
+  <style>
+    :root {
+      --bg: #f3f0ea;
+      --paper: #fffdf8;
+      --ink: #1d1d1b;
+      --muted: #6d665e;
+      --line: #d8cfc3;
+      --green: #176b49;
+      --green-dark: #0f4f37;
+      --orange: #c75b23;
+      --orange-soft: #f7e7db;
+      --header: #1b1b19;
+      --shadow: 0 1px 0 rgba(29, 29, 27, .05);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.45;
+    }
+
+    header {
+      background: var(--header);
+      color: #fff;
+      padding: 12px 28px 10px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px 18px;
+      align-items: center;
+      border-bottom: 3px solid var(--orange);
+    }
+
+    .brand {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr);
+      gap: 12px;
+      align-items: center;
+    }
+
+    .mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      background: var(--orange);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 900;
+      letter-spacing: -.03em;
+      box-shadow: inset 0 0 0 3px rgba(255, 255, 255, .18);
+    }
+
+    .brand small {
+      display: block;
+      color: #e7b49d;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      margin-bottom: 2px;
+      font-size: 22px;
+      line-height: 1.1;
+    }
+
+    header p {
+      margin: 0;
+      color: #d7d0c7;
+      font-size: 12px;
+    }
+
+    .header-meta {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 8px;
+      align-items: center;
+      min-height: 28px;
+      margin-top: 2px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255, 255, 255, .14);
+    }
+
+    .meta-chip {
+      border: 0;
+      border-radius: 6px;
+      background: transparent;
+      padding: 7px 9px;
+      min-height: 0;
+      display: inline-flex;
+      gap: 5px;
+      align-items: baseline;
+      border: 1px solid rgba(255, 255, 255, .12);
+      background: rgba(255, 255, 255, .035);
+    }
+
+    .meta-chip:first-child {
+      border-left: 0;
+      padding-left: 0;
+    }
+
+    .meta-chip span {
+      display: inline;
+      color: #e7b49d;
+      font-size: 10px;
+      font-weight: 900;
+      margin-bottom: 0;
+      text-transform: uppercase;
+    }
+
+    .meta-chip strong {
+      display: inline;
+      color: #fff;
+      font-size: 11px;
+      line-height: 1.25;
+      overflow-wrap: anywhere;
+    }
+
+    .meta-chip.meta-status {
+      margin-left: 0;
+      padding: 7px 9px;
+      border-radius: 6px;
+      background: rgba(23, 107, 73, .35);
+    }
+
+    main {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 22px 18px 64px;
+    }
+
+    .hero {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .topline {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .title {
+      background: transparent;
+      display: grid;
+      grid-template-columns: 42px minmax(0, 720px);
+      gap: 14px;
+      align-items: start;
+      margin-bottom: 16px;
+    }
+
+    .step {
+      width: 42px;
+      height: 42px;
+      border-radius: 9px;
+      background: var(--green);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .title h2 {
+      margin-bottom: 5px;
+      font-size: 26px;
+      line-height: 1.15;
+    }
+
+    .title p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 620px;
+      font-size: 16px;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    button {
+      min-height: 40px;
+      border: 1px solid #bfa997;
+      border-radius: 6px;
+      background: var(--paper);
+      color: var(--ink);
+      padding: 9px 14px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    button.primary {
+      background: var(--green);
+      border-color: var(--green);
+      color: #fff;
+    }
+
+    button.ghost {
+      background: transparent;
+      color: #f2d0be;
+      border-color: #72503e;
+    }
+
+    header button.ghost {
+      min-height: 32px;
+      padding: 5px 11px;
+      font-size: 12px;
+      justify-self: end;
+      align-self: center;
+    }
+
+    form {
+      display: grid;
+      gap: 9px;
+    }
+
+    .progress-card {
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--line);
+      border-radius: 0;
+      padding: 14px 0 0;
+      box-shadow: none;
+    }
+
+    .progress-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .progress-card h3 {
+      margin-bottom: 8px;
+      color: var(--green-dark);
+      font-size: 15px;
+      letter-spacing: 0;
+    }
+
+    .progress-count {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .progress-track {
+      height: 12px;
+      border-radius: 999px;
+      background: #eee6dc;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      background: var(--green);
+      transition: width .2s ease;
+    }
+
+    .progress-text {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .summary-panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--green);
+      border-radius: 8px;
+      padding: 20px 22px;
+      margin-top: 12px;
+      box-shadow: var(--shadow);
+    }
+
+    .summary-panel h2 {
+      margin-bottom: 6px;
+      color: var(--green-dark);
+      font-size: 24px;
+    }
+
+    .summary-panel p {
+      color: #6f675d;
+      margin-bottom: 18px;
+    }
+
+    .summary-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .summary-group {
+      margin-top: 18px;
+    }
+
+    .summary-group h3 {
+      margin-bottom: 9px;
+      color: var(--ink);
+      font-size: 18px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 6px;
+    }
+
+    .summary-empty {
+      border-top: 1px solid var(--line);
+      padding-top: 8px;
+      color: var(--muted);
+    }
+
+    .overview-list {
+      display: grid;
+      gap: 7px;
+    }
+
+    .control-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      overflow: hidden;
+      background: #fffef9;
+    }
+
+    .control-table th,
+    .control-table td {
+      border-bottom: 1px solid var(--line);
+      padding: 9px 10px;
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+    }
+
+    .control-table th {
+      background: #f7f2ea;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .control-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .control-table td:first-child {
+      font-weight: 900;
+      color: var(--ink);
+    }
+
+    .table-link {
+      display: inline-block;
+      max-width: 280px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      vertical-align: bottom;
+    }
+
+    .overview-row {
+      position: relative;
+      display: grid;
+      grid-template-columns: 8px minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fffef9;
+      padding: 12px 130px 12px 12px;
+    }
+
+    .overview-title {
+      display: block;
+      color: #1d1d1b;
+      font-weight: 900;
+      margin-bottom: 9px;
+      font-size: 17px;
+    }
+
+    .qa-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 7px;
+    }
+
+    .qa {
+      border-top: 1px solid #eee5da;
+      padding-top: 7px;
+    }
+
+    .qa b {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 2px;
+    }
+
+    .qa span {
+      display: block;
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    .overview-dot {
+      width: 6px;
+      height: 32px;
+      border-radius: 999px;
+      background: var(--green);
+    }
+
+    .status-chip {
+      position: absolute;
+      top: 12px;
+      right: 10px;
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 12px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .status-ok { background: #dfeee4; color: #176b49; }
+    .status-warn { background: #fff0c2; color: #7a5700; }
+    .status-info { background: #e6edf7; color: #26496f; }
+    .status-out { background: #eeeeea; color: #5f584f; }
+
+    details {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    details[open] {
+      border-color: #c7b9aa;
+    }
+
+    summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 10px 14px;
+      display: grid;
+      grid-template-columns: 32px minmax(0, 1fr) auto auto;
+      gap: 10px;
+      align-items: center;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    .letter {
+      width: 30px;
+      height: 30px;
+      border-radius: 7px;
+      background: var(--green);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+    }
+
+    .summary-title strong {
+      display: block;
+      font-size: 17px;
+      line-height: 1.2;
+    }
+
+    .summary-title span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 2px;
+    }
+
+    .chevron {
+      color: var(--orange);
+      font-weight: 900;
+    }
+
+    details[open] .chevron {
+      transform: rotate(90deg);
+    }
+
+    .inner-details {
+      background: #fffef9;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      box-shadow: none;
+    }
+
+    .inner-details summary {
+      min-height: 50px;
+      padding: 12px 14px;
+      grid-template-columns: minmax(0, 1fr) auto auto;
+      gap: 10px;
+    }
+
+    .inner-details summary strong {
+      font-size: 16px;
+    }
+
+    .inner-details .content {
+      padding: 12px 14px 14px;
+    }
+
+    .inner-details[open] {
+      border-left: 4px solid var(--green);
+    }
+
+    .work-group {
+      background: #fffdf8;
+      border-color: #cfc4b6;
+    }
+
+    .work-group > summary {
+      min-height: 56px;
+      background: #fffaf1;
+    }
+
+    .work-group > summary strong {
+      font-size: 18px;
+    }
+
+    .work-item {
+      background: #ffffff;
+      border-color: #ded5ca;
+    }
+
+    .work-item > summary {
+      min-height: 46px;
+      padding: 10px 12px;
+    }
+
+    .work-item > summary strong {
+      font-size: 15px;
+    }
+
+    .doc-item > summary strong {
+      font-size: 15px;
+    }
+
+    .content {
+      border-top: 1px solid var(--line);
+      padding: 12px 14px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 9px 12px;
+    }
+
+    .grid.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .full { grid-column: 1 / -1; }
+
+    label.caption {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      min-height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fffef9;
+      color: var(--ink);
+      padding: 7px 9px;
+      font: inherit;
+    }
+
+    textarea {
+      min-height: 68px;
+      resize: vertical;
+    }
+
+    .hint {
+      margin-bottom: 9px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .compact-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .line-item {
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: #fffef9;
+      padding: 11px;
+    }
+
+    .mini-note {
+      grid-column: 1 / -1;
+    }
+
+    .work-detail-grid {
+      display: grid;
+      grid-template-columns: minmax(160px, .9fr) minmax(170px, 1fr) minmax(110px, .6fr) minmax(150px, .8fr);
+      gap: 8px;
+    }
+
+    .field-block label {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .doc-grid {
+      display: grid;
+      grid-template-columns: 150px minmax(170px, 1fr) minmax(220px, 1.4fr) auto;
+      gap: 8px;
+      align-items: start;
+    }
+
+    .doc-name {
+      padding-top: 10px;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .open-link {
+      min-height: 38px;
+      white-space: nowrap;
+    }
+
+    .link-tools {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 7px;
+      grid-column: 1 / -1;
+      padding: 9px;
+      border: 1px solid #c7b28f;
+      border-radius: 7px;
+      background: #fff7e8;
+    }
+
+    .link-tools label,
+    .file-tools label {
+      grid-column: 1 / -1;
+      color: var(--green-dark);
+      font-size: 12px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .option-number {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      background: var(--orange);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .file-tools {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto auto;
+      gap: 7px;
+      grid-column: 1 / -1;
+      padding: 9px;
+      border: 1px solid #b9d3c7;
+      border-radius: 7px;
+      background: #f1faf5;
+    }
+
+    .file-picker {
+      display: none;
+    }
+
+    .file-name {
+      display: flex;
+      align-items: center;
+      min-height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fffef9;
+      padding: 8px 10px;
+      color: var(--muted);
+    }
+
+    .need-row {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fffef9;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+
+    .need-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .need-head strong {
+      font-size: 15px;
+    }
+
+    .need-ok {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: var(--green);
+      color: #fff;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .need-row.is-filled .need-ok {
+      display: inline-flex;
+    }
+
+    .filled-ok {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: var(--green);
+      color: #fff;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .inner-details.is-filled .filled-ok {
+      display: inline-flex;
+    }
+
+    details.section-filled > summary > .section-ok {
+      display: inline-flex;
+    }
+
+    .need-fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr 160px;
+      gap: 8px;
+    }
+
+    .saved {
+      color: var(--green-dark);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    /* Visual refresh: meer websitegevoel, betere scanbaarheid en duidelijke bediening */
+    :root {
+      --bg: #f6f7f4;
+      --paper: #ffffff;
+      --paper-soft: #fbfaf6;
+      --ink: #1b1c19;
+      --muted: #625f58;
+      --line: #d9d4ca;
+      --green: #176b49;
+      --green-dark: #0d4b35;
+      --orange: #be5420;
+      --orange-soft: #f5e8de;
+      --header: #171916;
+      --shadow: 0 10px 28px rgba(31, 29, 24, .08);
+      --shadow-soft: 0 4px 14px rgba(31, 29, 24, .06);
+      --focus: 0 0 0 3px rgba(23, 107, 73, .18);
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,0) 310px),
+        linear-gradient(90deg, rgba(23,107,73,.045) 0 1px, transparent 1px 100%),
+        linear-gradient(180deg, rgba(190,84,32,.035) 0 1px, transparent 1px 100%),
+        var(--bg);
+      background-size: auto, 44px 44px, 44px 44px, auto;
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      padding: 15px 30px 12px;
+      background:
+        linear-gradient(135deg, #171916 0%, #242119 54%, #123a2a 100%);
+      border-bottom: 0;
+      box-shadow: 0 12px 34px rgba(27, 28, 25, .18);
+    }
+
+    .mark {
+      background: linear-gradient(135deg, var(--orange), #d9783a);
+      border-radius: 7px;
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,.22), 0 7px 18px rgba(0,0,0,.22);
+    }
+
+    .brand small {
+      color: #f0b38f;
+    }
+
+    h1 {
+      font-size: 23px;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    header p {
+      color: #d9d2c8;
+    }
+
+    .header-meta {
+      gap: 8px 10px;
+      padding-top: 10px;
+      border-top-color: rgba(255,255,255,.16);
+    }
+
+    .meta-chip {
+      gap: 6px;
+      padding: 5px 10px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 999px;
+      background: rgba(255,255,255,.055);
+    }
+
+    .meta-chip strong {
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .meta-chip.meta-status {
+      padding: 5px 11px;
+      border-color: rgba(119, 210, 161, .26);
+      background: rgba(23, 107, 73, .42);
+    }
+
+    main {
+      max-width: 1120px;
+      padding: 28px 18px 74px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 24px 26px;
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(255,255,255,.94) 54%, rgba(235,244,239,.95) 100%);
+      box-shadow: var(--shadow);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--orange), var(--green));
+    }
+
+    .title {
+      grid-template-columns: 52px minmax(0, 760px);
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .step {
+      width: 52px;
+      height: 52px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--green), #2f7f58);
+      box-shadow: 0 8px 18px rgba(23, 107, 73, .22);
+    }
+
+    .title h2 {
+      margin-bottom: 6px;
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .title p {
+      max-width: 680px;
+      color: #56524a;
+      font-size: 16px;
+    }
+
+    form {
+      gap: 14px;
+    }
+
+    .progress-card {
+      border-top-color: #e2ddd4;
+    }
+
+    .progress-card h3 {
+      color: var(--green-dark);
+      font-size: 15.5px;
+      font-weight: 900;
+    }
+
+    .progress-count {
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: #eef5f0;
+      color: var(--green-dark);
+      font-size: 12.5px;
+    }
+
+    .progress-track {
+      height: 11px;
+      background: #e9e5dc;
+    }
+
+    .progress-fill {
+      background: linear-gradient(90deg, var(--orange), var(--green));
+    }
+
+    details {
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: var(--shadow-soft);
+      transition: border-color .16s ease, box-shadow .16s ease, transform .16s ease;
+    }
+
+    details[open] {
+      border-color: #c9beb0;
+      box-shadow: var(--shadow);
+    }
+
+    summary {
+      min-height: 74px;
+      padding: 18px 20px;
+      background: var(--paper);
+    }
+
+    details[open] > summary {
+      background: linear-gradient(90deg, #ffffff 0%, #fbfaf6 100%);
+    }
+
+    .letter {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: #eef5f0;
+      color: var(--green-dark);
+      border: 1px solid #cfe0d5;
+    }
+
+    details[open] > summary .letter {
+      background: var(--green);
+      color: #fff;
+      border-color: var(--green);
+    }
+
+    .summary-title strong {
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+    .summary-title span {
+      color: #666158;
+      font-size: 14px;
+    }
+
+    .chevron {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: var(--orange-soft);
+      color: var(--orange);
+      transition: transform .16s ease;
+    }
+
+    .content {
+      padding: 20px;
+      background: var(--paper-soft);
+    }
+
+    .inner-details,
+    .line-item,
+    .need-row,
+    .overview-row {
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 1px 0 rgba(29,29,27,.04);
+    }
+
+    .work-group > summary {
+      background: #fff8f1;
+    }
+
+    .work-group > summary strong,
+    .inner-details summary strong {
+      font-weight: 900;
+    }
+
+    label.caption,
+    .field-block label,
+    .link-tools label,
+    .file-tools label {
+      color: #5b574f;
+      font-size: 11.5px;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+
+    input,
+    select,
+    textarea,
+    .file-name {
+      border-radius: 7px;
+      background: #fff;
+      transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus,
+    button:focus-visible,
+    summary:focus-visible {
+      outline: 0;
+      border-color: var(--green);
+      box-shadow: var(--focus);
+    }
+
+    textarea {
+      min-height: 104px;
+    }
+
+    button {
+      border-radius: 7px;
+      background: #fff;
+      transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease, background .14s ease;
+    }
+
+    button:hover {
+      border-color: var(--green);
+      box-shadow: var(--shadow-soft);
+      transform: translateY(-1px);
+    }
+
+    button.primary {
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      border-color: var(--green-dark);
+    }
+
+    .summary-panel {
+      border-radius: 8px;
+      border-top: 0;
+      padding: 24px 26px;
+      background:
+        linear-gradient(135deg, #ffffff 0%, #ffffff 58%, #eef5f0 100%);
+      box-shadow: var(--shadow);
+    }
+
+    .summary-panel h2 {
+      font-size: 25px;
+      font-weight: 900;
+    }
+
+    .overview-row {
+      grid-template-columns: 7px minmax(0, 1fr);
+      border-color: #ddd7cc;
+      padding: 14px 138px 14px 14px;
+    }
+
+    .overview-dot {
+      background: linear-gradient(180deg, var(--orange), var(--green));
+    }
+
+    .status-chip {
+      top: 14px;
+      right: 14px;
+      border: 1px solid rgba(0,0,0,.04);
+    }
+
+    .topline {
+      position: sticky;
+      bottom: 0;
+      z-index: 10;
+      align-items: center;
+      margin: 8px 0 0;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,.94);
+      box-shadow: 0 -8px 24px rgba(31,29,24,.08);
+      backdrop-filter: blur(10px);
+    }
+
+    .saved {
+      color: var(--green-dark);
+    }
+
+    @media (max-width: 850px) {
+      header, .topline {
+        align-items: flex-start;
+      }
+
+      header {
+        grid-template-columns: 1fr;
+      }
+
+      .brand, .title {
+        grid-template-columns: 42px minmax(0, 1fr);
+      }
+
+      .grid, .grid.three, .doc-grid, .need-fields, .work-detail-grid, .link-tools, .file-tools, .summary-row {
+        grid-template-columns: 1fr;
+      }
+
+      .header-meta {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .pill-check {
+        width: 100%;
+        border-radius: 6px;
+      }
+
+      header {
+        position: relative;
+        padding: 14px 16px;
+      }
+
+      .header-meta {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      .meta-chip,
+      .meta-chip.meta-status {
+        margin-left: 0;
+        align-items: start;
+        border-radius: 7px;
+      }
+
+      main {
+        padding: 18px 12px 64px;
+      }
+
+      .hero,
+      .summary-panel {
+        padding: 20px 16px;
+      }
+
+      .title {
+        grid-template-columns: 44px minmax(0, 1fr);
+      }
+
+      .step {
+        width: 44px;
+        height: 44px;
+      }
+
+      .title h2 {
+        font-size: 24px;
+      }
+
+      summary {
+        grid-template-columns: 34px minmax(0, 1fr) auto;
+        padding: 15px 14px;
+      }
+
+      summary .filled-ok {
+        display: none !important;
+      }
+
+      .content {
+        padding: 15px 14px;
+      }
+
+      .toolbar,
+      .toolbar button {
+        width: 100%;
+      }
+
+      .topline {
+        position: static;
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+
+    @media print {
+      header button, .toolbar, .saved { display: none; }
+      body { background: #fff; }
+      main { max-width: none; padding: 12px; }
+      details { break-inside: avoid; }
+      details:not([open]) .content { display: block; }
+      summary { border-bottom: 1px solid var(--line); }
+      .chevron { display: none; }
+    }
+
+    @media (max-width: 760px) {
+      .overview-row {
+        grid-template-columns: 1fr;
+        padding-right: 10px;
+      }
+
+      .overview-dot {
+        width: 100%;
+        height: 4px;
+      }
+
+      .status-chip {
+        position: static;
+        justify-self: start;
+      }
+
+      .qa-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="mark">CdH</div>
+      <div>
+        <small>Caspar de Haan - Renovatie & Onderhoud</small>
+        <h1>Aanvraaganalyse opdrachtgever</h1>
+        <p>Renovatieproces - intake en eerste beoordeling</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <div class="meta-chip"><span>WO</span><strong id="metaWo">-</strong></div>
+      <div class="meta-chip"><span>Project</span><strong id="metaProject">-</strong></div>
+      <div class="meta-chip"><span>Projectleider</span><strong id="metaLeader">-</strong></div>
+      <div class="meta-chip"><span>Opdrachtgever</span><strong id="metaClient">-</strong></div>
+      <div class="meta-chip meta-status"><span>Status</span><strong id="metaStatus">Concept</strong></div>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="title">
+        <span class="step">01</span>
+        <div>
+          <h2>Wat is de vraag?</h2>
+          <p>Begin met de klantvraag. Kijk daarna welke stukken er zijn, wat we kunnen concluderen en wat nog ontbreekt.</p>
+        </div>
+      </div>
+      <div class="progress-card">
+        <div class="progress-head">
+          <h3>Voortgang aanvraaganalyse</h3>
+          <span class="progress-count" id="progressCount">0 van 6 blokken ingevuld</span>
+        </div>
+        <div class="progress-track" aria-hidden="true">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <p class="progress-text" id="progressText">Begin met basisgegevens en de vraag van de klant.</p>
+      </div>
+    </div>
+
+    <form id="aanvraagForm">
+      <details open>
+        <summary>
+          <span class="letter">A</span>
+          <span class="summary-title">
+            <strong>Basisgegevens</strong>
+            <span>Project, opdrachtgever en datum</span>
+          </span>
+          <span class="filled-ok section-ok" aria-label="ingevuld">✓</span>
+          <span class="chevron">›</span>
+        </summary>
+        <div class="content">
+          <div class="grid three">
+          <div>
+            <label class="caption" for="aanvraagnummer">Aanvraagnummer</label>
+            <input id="aanvraagnummer" name="aanvraagnummer" placeholder="bijv. AANVR-001">
+          </div>
+          <div>
+            <label class="caption" for="werkordernummer">Werkordernummer (WO)</label>
+            <input id="werkordernummer" name="werkordernummer" placeholder="bijv. WO 2601661">
+          </div>
+          <div>
+            <label class="caption" for="datum">Datum aanvraag</label>
+            <input id="datum" name="datum" type="date">
+          </div>
+          <div>
+            <label class="caption" for="offerteVoor">Offerte gewenst voor</label>
+            <input id="offerteVoor" name="offerteVoor" type="date">
+          </div>
+          <div>
+            <label class="caption" for="status">Status</label>
+            <select id="status" name="status">
+              <option>Concept</option>
+              <option>In behandeling</option>
+              <option>Wacht op informatie</option>
+              <option>Compleet voor projectopzet</option>
+            </select>
+          </div>
+          <div>
+            <label class="caption" for="projectleider">Projectleider</label>
+            <input id="projectleider" name="projectleider" placeholder="naam projectleider">
+          </div>
+          <div>
+            <label class="caption" for="opdrachtgever">Opdrachtgever / VvE</label>
+            <input id="opdrachtgever" name="opdrachtgever" placeholder="bijv. VvE Penatenhof">
+            </div>
+            <div>
+              <label class="caption" for="beheerder">Beheerder / contactpersoon</label>
+            <input id="beheerder" name="beheerder" placeholder="naam en organisatie">
+            </div>
+            <div>
+              <label class="caption" for="project">Project / complex</label>
+            <input id="project" name="project" placeholder="naam van het complex">
+            </div>
+            <div class="full">
+              <label class="caption" for="adres">Adres / locatie</label>
+            <input id="adres" name="adres" placeholder="straat en plaats">
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details open>
+        <summary>
+          <span class="letter">B</span>
+          <span class="summary-title">
+            <strong>Vraag van de klant</strong>
+            <span>Letterlijke vraag en achterliggende behoefte</span>
+          </span>
+          <span class="filled-ok section-ok" aria-label="ingevuld">✓</span>
+          <span class="chevron">›</span>
+        </summary>
+        <div class="content">
+          <div class="grid">
+            <div class="full">
+              <label class="caption" for="letterlijkeVraag">Wat vraagt de klant letterlijk?</label>
+              <textarea id="letterlijkeVraag" name="letterlijkeVraag" placeholder="Bijv. offerte voor gevelherstel, schilderwerk kozijnen of onderzoek naar lekkage."></textarea>
+            </div>
+            <div>
+              <label class="caption" for="aanleiding">Aanleiding</label>
+              <select id="aanleiding" name="aanleiding">
+                <option value="">Kies...</option>
+                <option>Klacht / schade</option>
+                <option>MJOP / onderhoudsplanning</option>
+                <option>Verduurzaming</option>
+                <option>Inspectie / adviesrapport</option>
+                <option>Budgetvraag</option>
+                <option>Anders</option>
+              </select>
+            </div>
+            <div>
+              <label class="caption" for="gewenstResultaat">Gewenst resultaat</label>
+              <select id="gewenstResultaat" name="gewenstResultaat">
+                <option value="">Kies...</option>
+                <option>Alleen advies</option>
+                <option>Opname op locatie</option>
+                <option>Begroting</option>
+                <option>Offerte</option>
+                <option>Uitvoering</option>
+              </select>
+            </div>
+            <div class="full">
+              <label class="caption" for="achterliggendeVraag">Wat lijkt de achterliggende vraag?</label>
+              <textarea id="achterliggendeVraag" name="achterliggendeVraag" placeholder="Wat heeft de klant waarschijnlijk echt nodig?"></textarea>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="letter">C</span>
+          <span class="summary-title">
+            <strong>Werkonderdelen</strong>
+            <span>Klantvraag, stukken of extra signaal</span>
+          </span>
+          <span class="filled-ok section-ok" aria-label="ingevuld">✓</span>
+          <span class="chevron">›</span>
+        </summary>
+        <div class="content">
+          <p class="hint">Vink alleen aan wat nu bekend is. Details komen later in projectopzet of opname.</p>
+          <div id="workRows" class="compact-list"></div>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="letter">D</span>
+          <span class="summary-title">
+            <strong>Aangeleverde stukken</strong>
+            <span>Wat is er, wat missen we en wat zegt het?</span>
+          </span>
+          <span class="filled-ok section-ok" aria-label="ingevuld">✓</span>
+          <span class="chevron">›</span>
+        </summary>
+        <div class="content">
+          <p class="hint">Per stuk alleen status en korte conclusie. Maak er geen dossieradministratie van.</p>
+          <div id="docRows" class="compact-list"></div>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="letter">E</span>
+          <span class="summary-title">
+            <strong>Eerste conclusie</strong>
+            <span>Duidelijk, onzeker, noodzakelijk en extra</span>
+          </span>
+          <span class="filled-ok section-ok" aria-label="ingevuld">✓</span>
+          <span class="chevron">›</span>
+        </summary>
+        <div class="content">
+          <div class="grid">
+            <div>
+              <label class="caption" for="duidelijk">Wat is duidelijk?</label>
+              <textarea id="duidelijk" name="duidelijk"></textarea>
+            </div>
+            <div>
+              <label class="caption" for="onzeker">Wat is nog onzeker?</label>
+              <textarea id="onzeker" name="onzeker"></textarea>
+            </div>
+            <div>
+              <label class="caption" for="noodzakelijk">Noodzakelijke werkzaamheden</label>
+              <textarea id="noodzakelijk" name="noodzakelijk"></textarea>
+            </div>
+            <div>
+              <label class="caption" for="optioneel">Extra / optioneel</label>
+              <textarea id="optioneel" name="optioneel"></textarea>
+            </div>
+            <div class="full">
+              <label class="caption" for="advies">Kunnen we verder of is aanvullend advies/opname nodig?</label>
+              <textarea id="advies" name="advies"></textarea>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="letter">F</span>
+          <span class="summary-title">
+            <strong>Aanvullend nodig</strong>
+            <span>Korte actielijst om verder te kunnen</span>
+          </span>
+          <span class="filled-ok section-ok" aria-label="ingevuld">✓</span>
+          <span class="chevron">›</span>
+        </summary>
+        <div class="content">
+          <div id="needRows"></div>
+          <button type="button" onclick="addNeedRow()">+ Actie toevoegen</button>
+        </div>
+      </details>
+
+      <section class="summary-panel">
+        <h2>Overzicht aanvraaganalyse</h2>
+        <p>Samenvatting van werkzaamheden, aangeleverde stukken en open acties.</p>
+        <div class="summary-list" id="filledSummary">
+          <div class="summary-empty">Er zijn nog geen werkzaamheden, stukken of acties ingevuld.</div>
+        </div>
+      </section>
+
+      <div class="topline">
+        <span class="saved" id="savedStatus">Nog niet opgeslagen</span>
+        <div class="toolbar">
+          <button type="button" onclick="saveForm()">Opslaan</button>
+          <button type="button" class="primary" onclick="window.print()">Printen</button>
+        </div>
+      </div>
+    </form>
+  </main>
+
+  <script>
+    const storageKey = 'cdh-aanvraaganalyse-v2';
+
+    const workGroups = [
+      {
+        title: 'Onderzoek & diagnose',
+        items: [
+          'Lekkage- / vochtonderzoek',
+          'Constructief onderzoek',
+          'Asbestinventarisatie',
+          'Thermografisch / energie-onderzoek'
+        ]
+      },
+      {
+        title: 'Gevel & metselwerk',
+        items: [
+          'Gevelreiniging',
+          'Voegwerk vervangen',
+          'Voegwerk rollaag / raamdorpels',
+          'Slecht metselwerk uithakken & vervangen',
+          'Scheurherstel metselwerk',
+          'Renovatiespouwankers bijboren',
+          'Hydrofoberen / impregneren'
+        ]
+      },
+      {
+        title: 'Kozijnen & glas',
+        items: [
+          'Kozijnen vervangen',
+          'Enkel naar dubbel / HR++ glas',
+          'Beglazingsafdichting herstellen',
+          'Hang- en sluitwerk'
+        ]
+      },
+      {
+        title: 'Schilderwerk',
+        items: [
+          'Buitenschilderwerk houtwerk',
+          'Schilderwerk kozijnen',
+          'Schilderwerk deuren / ramen',
+          'Herstel houtrot'
+        ]
+      },
+      {
+        title: 'Beton',
+        items: [
+          'Betonherstel balkonranden',
+          'Betonherstel galerijen',
+          'Coating / bescherming beton'
+        ]
+      },
+      {
+        title: 'Dak, balkon & toegang',
+        items: [
+          'Dakwerkzaamheden',
+          'Balkon / galerij',
+          'Steiger / rolsteiger',
+          'Bouwplaatsinrichting'
+        ]
+      },
+      {
+        title: 'Verduurzaming',
+        items: [
+          'Isolatie',
+          'Ventilatie',
+          'Glasverbetering',
+          'Energiebesparende maatregelen'
+        ]
+      },
+      {
+        title: 'Overig',
+        items: [
+          'Veiligheid / wetgeving',
+          'Bewonerszaken',
+          'Overige werkzaamheden'
+        ]
+      }
+    ];
+
+    const docItems = [
+      'Offerteaanvraag / uitvraag',
+      'MJOP',
+      'Constructierapport',
+      'Geveladvies',
+      'Schilderadvies',
+      'Asbestinventarisatie',
+      'Flora & fauna / ecologie',
+      'Tekeningen',
+      'Foto’s / klachten',
+      'VvE-besluit / notulen',
+      'Budget / mandaat'
+    ];
+
+    function fieldName(text) {
+      return text.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
+    }
+
+    function renderWorkRows() {
+      const holder = document.getElementById('workRows');
+      holder.innerHTML = workGroups.map((group) => {
+        const groupKey = fieldName(group.title);
+        return `
+          <details class="inner-details work-group">
+            <summary>
+              <strong>${group.title}</strong>
+              <span class="filled-ok" aria-label="ingevuld">✓</span>
+              <span class="chevron">›</span>
+            </summary>
+            <div class="content compact-list">
+              ${group.items.map((item) => {
+                const key = `${groupKey}_${fieldName(item)}`;
+                return `
+                  <details class="inner-details work-item">
+                    <summary>
+                      <strong>${item}</strong>
+                      <span class="filled-ok" aria-label="ingevuld">✓</span>
+                      <span class="chevron">›</span>
+                    </summary>
+                    <div class="content">
+                      <div class="work-detail-grid">
+                        <div class="field-block">
+                          <label>Waar komt dit vandaan?</label>
+                          <select name="work_${key}_bron">
+                            <option value="">Kies...</option>
+                            <option>Klantvraag</option>
+                            <option>MJOP</option>
+                            <option>Rapport / advies</option>
+                            <option>Tekening</option>
+                            <option>Extra signaal</option>
+                          </select>
+                        </div>
+                        <div class="field-block">
+                          <label>Welke gevel of locatie?</label>
+                          <input name="work_${key}_locatie" placeholder="bijv. alle gevels, voorgevel, blok A">
+                        </div>
+                        <div class="field-block">
+                          <label>Hoeveelheid bekend?</label>
+                          <input name="work_${key}_hoeveelheid" placeholder="bijv. 120 m² of onbekend">
+                        </div>
+                        <div class="field-block">
+                          <label>Wat besluiten we nu?</label>
+                          <select name="work_${key}_vervolg">
+                            <option value="">Kies...</option>
+                            <option>Onderdeel van klantvraag</option>
+                            <option>Aanvullend voorstellen</option>
+                            <option>Eerst controleren op locatie</option>
+                            <option>Eerst advies / rapport nodig</option>
+                            <option>Eerst hoeveelheid bepalen</option>
+                            <option>Buiten scope houden</option>
+                          </select>
+                        </div>
+                        <div class="field-block mini-note">
+                          <label>Korte toelichting</label>
+                          <input name="work_${key}_notitie" placeholder="alleen invullen als toelichting nodig is">
+                        </div>
+                      </div>
+                    </div>
+                  </details>
+                `;
+              }).join('')}
+            </div>
+          </details>
+        `;
+      }).join('');
+    }
+
+    function renderDocRows() {
+      const holder = document.getElementById('docRows');
+      holder.innerHTML = docItems.map((item) => {
+        const key = fieldName(item);
+        return `
+          <details class="inner-details doc-item">
+            <summary>
+              <strong>${item}</strong>
+              <span class="filled-ok" aria-label="ingevuld">✓</span>
+              <span class="chevron">›</span>
+            </summary>
+            <div class="content doc-grid">
+              <select name="doc_${key}_status">
+                <option value="">Status...</option>
+                <option>Aanwezig</option>
+                <option>Nog opvragen</option>
+                <option>N.v.t.</option>
+              </select>
+              <input name="doc_${key}_naam" placeholder="Naam of kenmerk">
+              <div class="link-tools">
+                <label><span class="option-number">1</span> Vindplaats via link of pad</label>
+                <input name="doc_${key}_link" placeholder="Plak hier een Drive-link, website-link of Windows-pad">
+                <button class="open-link" type="button" onclick="openDocLink('doc_${key}_link')">Open vindplaats</button>
+              </div>
+              <div class="file-tools">
+                <input class="file-picker" id="file_${key}" type="file" onchange="rememberPickedFile('file_${key}', 'file_name_${key}')">
+                <label><span class="option-number">2</span> Bestand aanwijzen op deze computer</label>
+                <span class="file-name" id="file_name_${key}">Geen bestand gekozen</span>
+                <button type="button" onclick="document.getElementById('file_${key}').click()">Bestand kiezen</button>
+                <button type="button" onclick="openPickedFile('file_${key}')">Bekijk bestand</button>
+              </div>
+              <input name="doc_${key}_conclusie" placeholder="Korte conclusie">
+            </div>
+          </details>
+        `;
+      }).join('');
+    }
+
+    function addNeedRow(values = {}) {
+      const holder = document.getElementById('needRows');
+      const index = holder.children.length + 1;
+      const row = document.createElement('div');
+      row.className = 'need-row';
+      row.innerHTML = `
+        <div class="need-head">
+          <strong>Actiepunt ${index}</strong>
+          <span class="need-ok" aria-label="ingevuld">✓</span>
+        </div>
+        <div class="need-fields">
+          <input name="need_${index}_wat" value="${values.wat || ''}" placeholder="Wat ontbreekt?">
+          <input name="need_${index}_wie" value="${values.wie || ''}" placeholder="Opvragen bij wie?">
+          <select name="need_${index}_voor">
+            <option value="">Nodig voor...</option>
+            <option ${values.voor === 'Projectopzet' ? 'selected' : ''}>Projectopzet</option>
+            <option ${values.voor === 'Opname' ? 'selected' : ''}>Opname</option>
+            <option ${values.voor === 'Begroting' ? 'selected' : ''}>Begroting</option>
+            <option ${values.voor === 'Offerte' ? 'selected' : ''}>Offerte</option>
+          </select>
+        </div>
+      `;
+      holder.appendChild(row);
+      refreshNeedChecks();
+    }
+
+    function collectData() {
+      const data = {};
+      document.querySelectorAll('input, select, textarea').forEach((field) => {
+        if (!field.name) return;
+        data[field.name] = field.type === 'checkbox' ? field.checked : field.value;
+      });
+      return data;
+    }
+
+    function applyData(data) {
+      document.querySelectorAll('input, select, textarea').forEach((field) => {
+        if (!field.name || !(field.name in data)) return;
+        if (field.type === 'checkbox') field.checked = Boolean(data[field.name]);
+        else field.value = data[field.name];
+      });
+    }
+
+    function saveForm() {
+      localStorage.setItem(storageKey, JSON.stringify(collectData()));
+      document.getElementById('savedStatus').textContent = 'Opgeslagen in deze browser';
+      refreshNeedChecks();
+      updateFilledSummary();
+      updateHeaderMeta();
+    }
+
+    function loadForm() {
+      const raw = localStorage.getItem(storageKey);
+      if (!raw) return;
+      try {
+        applyData(JSON.parse(raw));
+        document.getElementById('savedStatus').textContent = 'Bestaande gegevens geladen';
+        refreshNeedChecks();
+        updateFilledSummary();
+        updateHeaderMeta();
+      } catch {
+        document.getElementById('savedStatus').textContent = 'Kon opgeslagen gegevens niet laden';
+      }
+    }
+
+    function clearForm() {
+      if (!confirm('Weet je zeker dat je dit formulier wilt leegmaken?')) return;
+      localStorage.removeItem(storageKey);
+      document.getElementById('aanvraagForm').reset();
+      document.getElementById('savedStatus').textContent = 'Formulier leeggemaakt';
+      refreshNeedChecks();
+      updateFilledSummary();
+      updateHeaderMeta();
+    }
+
+    function openAll() {
+      document.querySelectorAll('details').forEach((item) => item.open = true);
+    }
+
+    function closeAll() {
+      document.querySelectorAll('details').forEach((item, index) => item.open = index < 2);
+    }
+
+    function openOnly(index) {
+      document.querySelectorAll('details').forEach((item, itemIndex) => {
+        item.open = itemIndex === index;
+      });
+      document.querySelectorAll('details')[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function openDocLink(fieldName) {
+      const field = document.querySelector(`[name="${fieldName}"]`);
+      if (!field || !field.value.trim()) {
+        alert('Vul eerst een link of pad naar het stuk in.');
+        return;
+      }
+      let target = field.value.trim();
+      if (/^[a-zA-Z]:\\/.test(target)) {
+        target = `file:///${target.replace(/\\/g, '/')}`;
+      }
+      window.open(target, '_blank');
+    }
+
+    function rememberPickedFile(inputId, labelId) {
+      const input = document.getElementById(inputId);
+      const label = document.getElementById(labelId);
+      if (!input.files || !input.files[0]) return;
+      label.textContent = input.files[0].name;
+    }
+
+    function openPickedFile(inputId) {
+      const input = document.getElementById(inputId);
+      if (!input.files || !input.files[0]) {
+        alert('Kies eerst een bestand.');
+        return;
+      }
+      const url = URL.createObjectURL(input.files[0]);
+      window.open(url, '_blank');
+    }
+
+    function refreshNeedChecks() {
+      document.querySelectorAll('.need-row').forEach((row) => {
+        const fields = row.querySelectorAll('input, select');
+        const filled = Array.from(fields).some((field) => field.value.trim() !== '');
+        row.classList.toggle('is-filled', filled);
+      });
+      document.querySelectorAll('.inner-details').forEach((row) => {
+        const fields = row.querySelectorAll('input, select, textarea');
+        const filled = Array.from(fields).some((field) => {
+          if (field.type === 'checkbox') return field.checked;
+          return field.value.trim() !== '';
+        });
+        row.classList.toggle('is-filled', filled);
+      });
+      document.querySelectorAll('#aanvraagForm > details').forEach((section) => {
+        const fields = section.querySelectorAll('input, select, textarea');
+        const filled = Array.from(fields).some((field) => {
+          if (field.type === 'checkbox') return field.checked;
+          return field.value.trim() !== '';
+        });
+        section.classList.toggle('section-filled', filled);
+      });
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const sections = Array.from(document.querySelectorAll('#aanvraagForm > details'));
+      const filled = sections.filter((section) => section.classList.contains('section-filled')).length;
+      const percent = Math.round((filled / sections.length) * 100);
+      document.getElementById('progressFill').style.width = `${percent}%`;
+      document.getElementById('progressCount').textContent = `${filled} van ${sections.length} blokken ingevuld`;
+      document.getElementById('progressText').textContent =
+        filled === sections.length
+          ? 'Alle hoofdblokken bevatten informatie.'
+          : 'Vul alleen aan wat nu bekend is. Lege blokken mogen blijven staan.';
+      updateHeaderMeta();
+    }
+
+    function valueOrDash(name) {
+      const field = document.querySelector(`[name="${name}"]`);
+      return field && field.value.trim() ? field.value.trim() : '-';
+    }
+
+    function updateHeaderMeta() {
+      document.getElementById('metaWo').textContent = valueOrDash('werkordernummer');
+      document.getElementById('metaProject').textContent = valueOrDash('project');
+      document.getElementById('metaStatus').textContent = valueOrDash('status') === '-' ? 'Concept' : valueOrDash('status');
+      document.getElementById('metaLeader').textContent = valueOrDash('projectleider');
+      document.getElementById('metaClient').textContent = valueOrDash('opdrachtgever');
+
+    }
+
+    function updateFilledSummary() {
+      const holder = document.getElementById('filledSummary');
+      const workRows = Array.from(document.querySelectorAll('.work-item')).map((item) => {
+        const title = item.querySelector('summary strong')?.textContent.trim() || '';
+        const get = (part) => item.querySelector(`[name*="_${part}"]`)?.value.trim() || '';
+        return {
+          title,
+          bron: get('bron'),
+          locatie: get('locatie'),
+          hoeveelheid: get('hoeveelheid'),
+          besluit: get('vervolg'),
+          notitie: get('notitie')
+        };
+      }).filter((row) => row.bron || row.locatie || row.hoeveelheid || row.besluit || row.notitie);
+
+      const docRows = Array.from(document.querySelectorAll('.doc-item')).map((item) => {
+        const title = item.querySelector('summary strong')?.textContent.trim() || '';
+        const get = (part) => item.querySelector(`[name*="_${part}"]`)?.value.trim() || '';
+        return {
+          title,
+          status: get('status'),
+          naam: get('naam'),
+          link: get('link'),
+          conclusie: get('conclusie')
+        };
+      }).filter((row) => row.status || row.naam || row.link || row.conclusie);
+
+      const actionRows = Array.from(document.querySelectorAll('.need-row')).map((item) => {
+        const get = (part) => item.querySelector(`[name*="_${part}"]`)?.value.trim() || '';
+        return {
+          wat: get('wat'),
+          wie: get('wie'),
+          voor: get('voor')
+        };
+      }).filter((row) => row.wat || row.wie || row.voor);
+
+      if (!workRows.length && !docRows.length && !actionRows.length) {
+        holder.innerHTML = '<div class="summary-empty">Er zijn nog geen werkzaamheden, stukken of acties ingevuld.</div>';
+        return;
+      }
+
+      const workHtml = workRows.length ? `
+        <div class="summary-group">
+          <h3>Werkzaamheden en besluit</h3>
+          <table class="summary-table">
+            <thead><tr><th>Werkzaamheid</th><th>Gevel / locatie</th><th>Hoeveelheid</th><th>Herkomst</th><th>Besluit / actie</th></tr></thead>
+            <tbody>
+              ${workRows.map((row) => `<tr><td>${row.title}${row.notitie ? `<br><small>${row.notitie}</small>` : ''}</td><td>${row.locatie || '-'}</td><td>${row.hoeveelheid || '-'}</td><td>${row.bron || '-'}</td><td>${row.besluit || '-'}</td></tr>`).join('')}
+            </tbody>
+          </table>
+        </div>
+      ` : '';
+
+      const docHtml = docRows.length ? `
+        <div class="summary-group">
+          <h3>Aangeleverde stukken</h3>
+          <table class="summary-table">
+            <thead><tr><th>Stuk</th><th>Status</th><th>Naam / link</th><th>Conclusie</th></tr></thead>
+            <tbody>
+              ${docRows.map((row) => `<tr><td>${row.title}</td><td>${row.status || '-'}</td><td>${row.naam || '-'}${row.link ? `<br><small>${row.link}</small>` : ''}</td><td>${row.conclusie || '-'}</td></tr>`).join('')}
+            </tbody>
+          </table>
+        </div>
+      ` : '';
+
+      const actionHtml = actionRows.length ? `
+        <div class="summary-group">
+          <h3>Open acties</h3>
+          <table class="summary-table">
+            <thead><tr><th>Wat ontbreekt?</th><th>Opvragen bij</th><th>Nodig voor</th></tr></thead>
+            <tbody>
+              ${actionRows.map((row) => `<tr><td>${row.wat || '-'}</td><td>${row.wie || '-'}</td><td>${row.voor || '-'}</td></tr>`).join('')}
+            </tbody>
+          </table>
+        </div>
+      ` : '';
+
+      holder.innerHTML = `${workHtml}${docHtml}${actionHtml}`;
+    }
+
+    function statusClass(text) {
+      if (!text) return 'status-info';
+      if (text.includes('Buiten scope') || text.includes('Niet')) return 'status-out';
+      if (text.includes('Eerst') || text.includes('Nog') || text.includes('Wacht')) return 'status-warn';
+      return 'status-ok';
+    }
+
+    function compactMeta(label, value) {
+      return value ? `<div class="qa"><b>${label}</b><span>${value}</span></div>` : '';
+    }
+
+    function updateFilledSummary() {
+      const holder = document.getElementById('filledSummary');
+
+      const workRows = Array.from(document.querySelectorAll('.work-item')).map((item) => {
+        const title = item.querySelector('summary strong')?.textContent.trim() || '';
+        const get = (part) => item.querySelector(`[name*="_${part}"]`)?.value.trim() || '';
+        return {
+          type: 'Werkzaamheid',
+          title,
+          bron: get('bron'),
+          locatie: get('locatie'),
+          hoeveelheid: get('hoeveelheid'),
+          besluit: get('vervolg'),
+          notitie: get('notitie')
+        };
+      }).filter((row) => row.bron || row.locatie || row.hoeveelheid || row.besluit || row.notitie);
+
+      const docRows = Array.from(document.querySelectorAll('.doc-item')).map((item) => {
+        const title = item.querySelector('summary strong')?.textContent.trim() || '';
+        const get = (part) => item.querySelector(`[name*="_${part}"]`)?.value.trim() || '';
+        return {
+          type: 'Stuk',
+          title,
+          status: get('status'),
+          naam: get('naam'),
+          link: get('link'),
+          conclusie: get('conclusie')
+        };
+      }).filter((row) => row.status || row.naam || row.link || row.conclusie);
+
+      const actionRows = Array.from(document.querySelectorAll('.need-row')).map((item, index) => {
+        const get = (part) => item.querySelector(`[name*="_${part}"]`)?.value.trim() || '';
+        return {
+          type: 'Actie',
+          title: `Actiepunt ${index + 1}`,
+          wat: get('wat'),
+          wie: get('wie'),
+          voor: get('voor')
+        };
+      }).filter((row) => row.wat || row.wie || row.voor);
+
+      if (!workRows.length && !docRows.length && !actionRows.length) {
+        holder.innerHTML = '<div class="summary-empty">Er zijn nog geen werkzaamheden, stukken of acties ingevuld.</div>';
+        return;
+      }
+
+      const workHtml = workRows.length ? `
+        <div class="summary-group">
+          <h3>Werkzaamheden</h3>
+          <table class="control-table">
+            <thead>
+              <tr>
+                <th>Onderdeel</th>
+                <th>Gevel / locatie</th>
+                <th>Hoeveelheid</th>
+                <th>Bron</th>
+                <th>Besluit / actie</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${workRows.map((row) => `
+                <tr>
+                  <td>${row.title}${row.notitie ? `<br><small>${row.notitie}</small>` : ''}</td>
+                  <td>${row.locatie || '-'}</td>
+                  <td>${row.hoeveelheid || '-'}</td>
+                  <td>${row.bron || '-'}</td>
+                  <td><span class="status-chip ${statusClass(row.besluit)}">${row.besluit || 'Nog geen besluit'}</span></td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+      ` : '';
+
+      const docHtml = docRows.length ? `
+        <div class="summary-group">
+          <h3>Aangeleverde stukken</h3>
+          <table class="control-table">
+            <thead>
+              <tr>
+                <th>Stuk</th>
+                <th>Status</th>
+                <th>Naam / vindplaats</th>
+                <th>Conclusie</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${docRows.map((row) => `
+                <tr>
+                  <td>${row.title}</td>
+                  <td><span class="status-chip ${statusClass(row.status)}">${row.status || 'Geen status'}</span></td>
+                  <td>${row.naam || '-'}${row.link ? `<br><small class="table-link">${row.link}</small>` : ''}</td>
+                  <td>${row.conclusie || '-'}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+      ` : '';
+
+      const actionHtml = actionRows.length ? `
+        <div class="summary-group">
+          <h3>Open acties</h3>
+          <table class="control-table">
+            <thead>
+              <tr>
+                <th>Wat ontbreekt?</th>
+                <th>Opvragen bij</th>
+                <th>Nodig voor</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${actionRows.map((row) => `
+                <tr>
+                  <td>${row.wat || '-'}</td>
+                  <td>${row.wie || '-'}</td>
+                  <td>${row.voor || '-'}</td>
+                  <td><span class="status-chip status-warn">Open</span></td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+      ` : '';
+
+      holder.innerHTML = `${workHtml}${docHtml}${actionHtml}`;
+    }
+
+    renderWorkRows();
+    renderDocRows();
+    addNeedRow();
+    closeAll();
+    updateFilledSummary();
+    updateHeaderMeta();
+    loadForm();
+    document.getElementById('aanvraagForm').addEventListener('input', saveForm);
+    document.getElementById('aanvraagForm').addEventListener('change', saveForm);
+  </script>
+</body>
+</html>
