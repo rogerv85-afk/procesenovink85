@@ -1,30 +1,687 @@
 <!doctype html>
 <html lang="nl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Concept proces-schermen</title>
-<style>
-:root{--bg:#f4f1eb;--paper:#fffdf8;--ink:#1d1d1b;--muted:#665f57;--line:#d7cec2;--green:#176b49;--orange:#c75b23;--orangeSoft:#f7e7db;--yellow:#fff6d8;--blue:#eaf0f5}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.45}.mast{background:#181916;color:#fff;border-bottom:3px solid var(--orange);padding:22px}.mast-in{max-width:1220px;margin:auto;display:grid;grid-template-columns:52px 1fr;gap:14px}.logo{width:52px;height:52px;border-radius:10px;background:var(--orange);display:grid;place-items:center;font-weight:900;font-size:20px}.eyebrow{color:#e7b49d;text-transform:uppercase;letter-spacing:.12em;font-size:11px;font-weight:900}h1{margin:3px 0 4px;font-size:30px;line-height:1.08}.mast p{margin:0;color:#d7d0c7;max-width:760px}main{max-width:1220px;margin:auto;padding:22px 16px 72px}.principles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}.card,.note,.screen{background:var(--paper);border:1px solid var(--line);border-radius:9px;box-shadow:0 2px 14px rgba(29,29,27,.08)}.card{padding:14px}.card b{display:block;color:#0f4f37;margin-bottom:4px}.card span,.note p{color:var(--muted)}.note{border-left:5px solid var(--green);padding:16px;margin-bottom:18px}.note h2{margin:0 0 6px;color:#0f4f37}.screens{display:grid;gap:16px}.screen{overflow:hidden}.head{background:#1d1d1b;color:#fff;border-bottom:3px solid var(--orange);padding:13px 16px;display:grid;grid-template-columns:44px 1fr auto;gap:12px;align-items:center}.num{width:44px;height:44px;border-radius:9px;background:var(--green);display:grid;place-items:center;font-weight:900;font-size:18px}.head h2{margin:0;font-size:21px;line-height:1.15}.head p{margin:2px 0 0;color:#d7d0c7;font-size:13px}.status{border-radius:999px;background:rgba(23,107,73,.35);padding:7px 11px;font-weight:900;font-size:12px;white-space:nowrap}.body{background:#f8f5ef;padding:16px;display:grid;grid-template-columns:1.05fr .95fr;gap:14px}.block{background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden}.bt{display:flex;justify-content:space-between;gap:12px;padding:10px 12px;border-bottom:1px solid var(--line);font-weight:900;color:#0f4f37}.bc{padding:12px}.output{background:var(--yellow);border:1px solid #e5c96b;border-radius:8px;padding:12px}.output h3{margin:0 0 8px;color:#6b5300;font-size:16px}.output ul{margin:0;padding-left:18px;color:#463b15;font-size:14px}.mini{display:grid;gap:8px}.row{display:flex;justify-content:space-between;gap:10px;align-items:center;border:1px solid var(--line);border-radius:7px;background:#fff;padding:8px 9px;font-size:14px}.pill{display:inline-block;border-radius:999px;padding:4px 8px;font-size:11px;font-weight:900;background:var(--blue);color:#23486c;white-space:nowrap}.green{background:#dceee5;color:#0f4f37}.orange{background:var(--orangeSoft);color:#8d3d12}.yellow{background:var(--yellow);color:#745400}table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:7px;overflow:hidden}th,td{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left;vertical-align:top;font-size:13px}th{color:var(--muted);background:#f4eee5;text-transform:uppercase;font-size:10px}tr:last-child td{border-bottom:0}.rule{margin-top:10px;padding-top:10px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}@media(max-width:900px){.principles,.body{grid-template-columns:1fr}.head{grid-template-columns:40px 1fr}.status{grid-column:2;justify-self:start}table{display:block;overflow-x:auto}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Concept proces-schermen</title>
+  <style>
+    :root {
+      --bg: #f4f1eb;
+      --paper: #fffdf8;
+      --ink: #1d1d1b;
+      --muted: #665f57;
+      --line: #d7cec2;
+      --green: #176b49;
+      --green-dark: #0f4f37;
+      --orange: #c75b23;
+      --orange-soft: #f7e7db;
+      --blue-soft: #eaf0f5;
+      --yellow: #fff6d8;
+      --shadow: 0 2px 16px rgba(29, 29, 27, .08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.45;
+    }
+
+    .mast {
+      background: #181916;
+      color: #fff;
+      border-bottom: 3px solid var(--orange);
+      padding: 22px 24px;
+    }
+
+    .mast-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 52px minmax(0, 1fr);
+      gap: 14px;
+      align-items: start;
+    }
+
+    .logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 10px;
+      background: var(--orange);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 20px;
+      box-shadow: inset 0 0 0 3px rgba(255,255,255,.18);
+    }
+
+    .eyebrow {
+      color: #e7b49d;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      margin: 3px 0 4px;
+      font-size: 30px;
+      line-height: 1.08;
+    }
+
+    .mast p {
+      margin: 0;
+      color: #d7d0c7;
+      max-width: 780px;
+    }
+
+    main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 24px 18px 80px;
+    }
+
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .principle,
+    .flow-note {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .principle strong {
+      display: block;
+      color: var(--green-dark);
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .principle span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .flow-note {
+      margin-bottom: 22px;
+      border-left: 5px solid var(--green);
+    }
+
+    .flow-note h2 {
+      margin-bottom: 6px;
+      color: var(--green-dark);
+      font-size: 22px;
+    }
+
+    .screens {
+      display: grid;
+      gap: 18px;
+    }
+
+    .screen {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .screen-head {
+      background: #1d1d1b;
+      color: #fff;
+      border-bottom: 3px solid var(--orange);
+      padding: 13px 16px;
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .num {
+      width: 44px;
+      height: 44px;
+      border-radius: 9px;
+      background: var(--green);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 18px;
+    }
+
+    .screen-head h2 {
+      margin: 0;
+      font-size: 21px;
+      line-height: 1.15;
+    }
+
+    .screen-head p {
+      margin: 2px 0 0;
+      color: #d7d0c7;
+      font-size: 13px;
+    }
+
+    .status {
+      border-radius: 999px;
+      background: rgba(23,107,73,.35);
+      padding: 7px 11px;
+      font-weight: 900;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .screen-body {
+      background: #f8f5ef;
+      padding: 16px;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 14px;
+    }
+
+    .block {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .block-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line);
+      font-weight: 900;
+      color: var(--green-dark);
+    }
+
+    .block-content {
+      padding: 12px;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .field {
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: #fff;
+      padding: 8px 9px;
+      min-height: 42px;
+    }
+
+    .field b {
+      display: block;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-size: 10px;
+      margin-bottom: 3px;
+    }
+
+    .field span {
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .wide { grid-column: 1 / -1; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      overflow: hidden;
+    }
+
+    th, td {
+      border-bottom: 1px solid var(--line);
+      padding: 7px 8px;
+      text-align: left;
+      vertical-align: top;
+      font-size: 13px;
+    }
+
+    th {
+      color: var(--muted);
+      background: #f4eee5;
+      text-transform: uppercase;
+      font-size: 10px;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    .pill {
+      display: inline-block;
+      border-radius: 999px;
+      padding: 4px 8px;
+      font-size: 11px;
+      font-weight: 900;
+      background: var(--blue-soft);
+      color: #23486c;
+      white-space: nowrap;
+    }
+
+    .pill.green { background: #dceee5; color: var(--green-dark); }
+    .pill.orange { background: var(--orange-soft); color: #8d3d12; }
+    .pill.yellow { background: var(--yellow); color: #745400; }
+
+    .output {
+      background: #fff8dc;
+      border: 1px solid #e5c96b;
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .output h3 {
+      margin-bottom: 8px;
+      color: #6b5300;
+      font-size: 16px;
+    }
+
+    .output ul {
+      margin: 0;
+      padding-left: 18px;
+      color: #463b15;
+      font-size: 14px;
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .mini-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: #fff;
+      padding: 8px 9px;
+      font-size: 14px;
+    }
+
+    .rule {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .principles,
+      .screen-body {
+        grid-template-columns: 1fr;
+      }
+      .screen-head {
+        grid-template-columns: 40px minmax(0, 1fr);
+      }
+      .status {
+        grid-column: 2;
+        justify-self: start;
+      }
+      .field-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-<header class="mast"><div class="mast-in"><div class="logo">CdH</div><div><div class="eyebrow">Procesconcept - eerst denken, dan bouwen</div><h1>Renovatieproces als losse schermen</h1><p>Conceptplaat voor alle pagina's. Pagina 1 blijft de bron. De volgende schermen sluiten daarop aan en geven per stap een duidelijke output door.</p></div></div></header>
-<main>
-<section class="principles"><div class="card"><b>Losse formulieren</b><span>Elke pagina werkt zelfstandig.</span></div><div class="card"><b>Pagina 1 is leidend</b><span>Klantvraag, stukken en eerste conclusie voeden de rest.</span></div><div class="card"><b>Scope voor opname</b><span>Stap 2 bepaalt wat we echt doen, hoeveelheid en eenheid.</span></div><div class="card"><b>Overzicht per stap</b><span>Elke pagina eindigt met een controleblad.</span></div></section>
-<section class="note"><h2>Hoofdlogica</h2><p>Vraag opdrachtgever -> scope/werkzaamheden -> opname -> uitvraag onderaannemer -> begroting -> offerte -> opdracht -> uitvoering -> meer-/minderwerk -> oplevering.</p></section>
-<div class="screens">
-<section class="screen"><div class="head"><div class="num">01</div><div><h2>Aanvraaganalyse opdrachtgever</h2><p>Wat vraagt de klant, welke stukken zijn er, wat ontbreekt?</p></div><div class="status">Basis is goed</div></div><div class="body"><div class="block"><div class="bt">Hoofdblokken <span class="pill green">open/dicht</span></div><div class="bc mini"><div class="row"><b>A. Basisgegevens</b><span class="pill green">ingevuld</span></div><div class="row"><b>B. Vraag van de klant</b><span class="pill orange">kernvraag</span></div><div class="row"><b>C. Werkonderdelen</b><span class="pill">signaal</span></div><div class="row"><b>D. Aangeleverde stukken</b><span class="pill">status</span></div><div class="row"><b>E. Eerste conclusie</b><span class="pill yellow">besluit</span></div><div class="row"><b>F. Aanvullend nodig</b><span class="pill yellow">actie</span></div></div></div><div class="output"><h3>Output naar stap 2</h3><ul><li>projectgegevens</li><li>concrete klantvraag</li><li>mogelijke werkzaamheden</li><li>stukkenstatus en conclusies</li><li>open acties voor scope/opname</li></ul></div></div></section>
-<section class="screen"><div class="head"><div class="num">02</div><div><h2>Projectopzet: werkzaamheden & hoeveelheden</h2><p>Wat moeten we echt doen, met welke hoeveelheid en eenheid?</p></div><div class="status">Belangrijkste vervolg</div></div><div class="body"><div class="block"><div class="bt">Scope-tabel <span class="pill orange">kern van pagina</span></div><div class="bc"><table><thead><tr><th>Werkzaamheid</th><th>Bron</th><th>Hoeveelheid</th><th>Eenheid</th><th>Besluit</th></tr></thead><tbody><tr><td>Gevelreiniging</td><td>Klantvraag</td><td>200</td><td>m2</td><td><span class="pill green">in scope</span></td></tr><tr><td>Voegwerk vervangen</td><td>MJOP</td><td>opname</td><td>m2</td><td><span class="pill yellow">meten</span></td></tr><tr><td>Schilderwerk kozijnen</td><td>extra</td><td>n.t.b.</td><td>post</td><td><span class="pill">optie</span></td></tr></tbody></table><p class="rule">Geen lange teksten. Per regel: werkzaamheid, hoeveelheid/eheid, gevel/locatie, bron, besluit, onderaannemer ja/nee.</p></div></div><div class="output"><h3>Output naar stap 3</h3><ul><li>opnamelijst per werkzaamheid</li><li>regels waar hoeveelheid nog moet worden gemeten</li><li>gevel/locatie per regel</li><li>markering voor onderaannemer-uitvraag</li></ul></div></div></section>
-<section class="screen"><div class="head"><div class="num">03</div><div><h2>Opname op locatie</h2><p>Meten, controleren en bevindingen vastleggen per scope-regel.</p></div><div class="status">Buiten opnemen</div></div><div class="body"><div class="block"><div class="bt">Opnameregels uit stap 2</div><div class="bc"><table><thead><tr><th>Werkzaamheid</th><th>Gevel</th><th>Gemeten</th><th>Staat</th><th>Actie</th></tr></thead><tbody><tr><td>Voegwerk vervangen</td><td>A, B</td><td>205 m2</td><td><span class="pill yellow">matig</span></td><td>begroten</td></tr><tr><td>Scheurherstel</td><td>A</td><td>12 m1</td><td><span class="pill orange">slecht</span></td><td>OA</td></tr></tbody></table></div></div><div class="output"><h3>Output naar uitvraag/begroting</h3><ul><li>definitieve hoeveelheden</li><li>bevindingen en foto's</li><li>wel/niet onderaannemer</li><li>risico's en onzekerheden</li></ul></div></div></section>
-<section class="screen"><div class="head"><div class="num">04</div><div><h2>Offerteaanvraag onderaannemer</h2><p>Alleen de geselecteerde OA-regels uit scope/opname.</p></div><div class="status">Inkopen</div></div><div class="body"><div class="block"><div class="bt">Per onderaannemer</div><div class="bc"><table><thead><tr><th>Werkzaamheid</th><th>Hoeveelheid</th><th>Eenheid</th><th>Specificatie</th></tr></thead><tbody><tr><td>Scheurherstel metselwerk</td><td>12</td><td>m1</td><td>RVS-wapening</td></tr><tr><td>Schilderwerk kozijnen</td><td>opname</td><td>post</td><td>controle op locatie</td></tr></tbody></table></div></div><div class="output"><h3>Output naar begroting</h3><ul><li>prijzen onderaannemer</li><li>uitgangspunten</li><li>uitsluitingen</li><li>geldigheidsdatum</li></ul></div></div></section>
-<section class="screen"><div class="head"><div class="num">05</div><div><h2>Doelstellingsbegroting</h2><p>Van scope en opname naar calculatie-onderlegger.</p></div><div class="status">Calculatie</div></div><div class="body"><div class="block"><div class="bt">Begrotingsregels</div><div class="bc"><table><thead><tr><th>Regel</th><th>Hvh</th><th>Eh</th><th>Prijs</th><th>Totaal</th></tr></thead><tbody><tr><td>Voegwerk vervangen</td><td>205</td><td>m2</td><td>EUR 42</td><td>EUR 8.610</td></tr><tr><td>Steiger</td><td>1</td><td>post</td><td>EUR 5.000</td><td>EUR 5.000</td></tr></tbody></table></div></div><div class="output"><h3>Output naar offerte</h3><ul><li>aanneemsom excl./incl. btw</li><li>stelposten</li><li>meer/minder risico's</li><li>offertebasis</li></ul></div></div></section>
-<section class="screen"><div class="head"><div class="num">06</div><div><h2>Offerte opdrachtgever</h2><p>Klantgerichte aanbieding op basis van de begroting.</p></div><div class="status">Aanbieden</div></div><div class="body"><div class="block"><div class="bt">Offerte-inhoud</div><div class="bc mini"><div class="row"><b>Scope</b><span>samenvatting</span></div><div class="row"><b>Aanneemsom</b><span>EUR ... excl. btw</span></div><div class="row"><b>Planning</b><span>start / doorlooptijd</span></div><div class="row"><b>Voorwaarden</b><span>geldigheid, betaling</span></div></div></div><div class="output"><h3>Output naar opdracht</h3><ul><li>offertenummer en versie</li><li>aangeboden bedrag</li><li>scope en uitsluitingen</li><li>besluit klant afwachten</li></ul></div></div></section>
-<section class="screen"><div class="head"><div class="num">07</div><div><h2>Opdrachtbevestiging</h2><p>Akkoord, aanneemsom, voorwaarden en overdracht.</p></div><div class="status">Akkoord</div></div><div class="body"><div class="block"><div class="bt">Controle voor opdracht</div><div class="bc mini"><div class="row"><b>Offerte akkoord</b><span class="pill green">ja</span></div><div class="row"><b>Verplichte stukken</b><span class="pill yellow">controle</span></div><div class="row"><b>Aanneemsom</b><span>EUR ...</span></div></div></div><div class="output"><h3>Output naar uitvoering</h3><ul><li>definitieve opdracht</li><li>basis aanneemsom</li><li>scope voor weekrapport</li><li>contractuele afspraken</li></ul></div></div></section>
-<section class="screen"><div class="head"><div class="num">08</div><div><h2>Weekrapport uitvoering</h2><p>Voortgang, productie, foto's en bijzonderheden.</p></div><div class="status">Uitvoering</div></div><div class="body"><div class="block"><div class="bt">Weekstatus</div><div class="bc"><table><thead><tr><th>Onderdeel</th><th>Voortgang</th><th>Probleem</th><th>Actie</th></tr></thead><tbody><tr><td>Steiger</td><td>100%</td><td>-</td><td>gereed</td></tr><tr><td>Voegwerk</td><td>45%</td><td>extra slecht metselwerk</td><td>MMW beoordelen</td></tr></tbody></table></div></div><div class="output"><h3>Output naar meer/minder en oplevering</h3><ul><li>voortgang per onderdeel</li><li>afwijkingen</li><li>foto's / bewijs</li><li>open punten uitvoering</li></ul></div></div></section>
-<section class="screen"><div class="head"><div class="num">09</div><div><h2>Meer- en minderwerk</h2><p>Wijzigingen op de aanneemsom vastleggen.</p></div><div class="status">Mutaties</div></div><div class="body"><div class="block"><div class="bt">Mutatietabel</div><div class="bc"><table><thead><tr><th>Omschrijving</th><th>Type</th><th>Bedrag</th><th>Status</th></tr></thead><tbody><tr><td>Extra metselwerk vervangen</td><td>meerwerk</td><td>EUR 2.610</td><td><span class="pill yellow">voor akkoord</span></td></tr><tr><td>Vervallen onderdeel</td><td>minderwerk</td><td>- EUR 464</td><td><span class="pill green">akkoord</span></td></tr></tbody></table></div></div><div class="output"><h3>Output naar opdracht/afrekening</h3><ul><li>saldo mutatie</li><li>nieuwe aanneemsom</li><li>akkoordstatus</li><li>factuurverwerking</li></ul></div></div></section>
-<section class="screen"><div class="head"><div class="num">10</div><div><h2>Oplevering & opleverpunten</h2><p>Laatste controle, restpunten, akkoord en dossier afsluiten.</p></div><div class="status">Afsluiten</div></div><div class="body"><div class="block"><div class="bt">Opleverpunten</div><div class="bc"><table><thead><tr><th>Punt</th><th>Locatie</th><th>Verantwoordelijk</th><th>Status</th></tr></thead><tbody><tr><td>Kitwerk nalopen</td><td>gevel A</td><td>uitvoerder</td><td><span class="pill yellow">open</span></td></tr><tr><td>Steigerplek herstellen</td><td>voorzijde</td><td>CdH</td><td><span class="pill green">gereed</span></td></tr></tbody></table></div></div><div class="output"><h3>Output einde proces</h3><ul><li>opleverrapport</li><li>open/restpunten</li><li>akkoord opdrachtgever</li><li>lessons learned</li></ul></div></div></section>
-</div>
-</main>
+  <header class="mast">
+    <div class="mast-inner">
+      <div class="logo">CdH</div>
+      <div>
+        <div class="eyebrow">Procesconcept - eerst denken, dan bouwen</div>
+        <h1>Renovatieproces als losse schermen</h1>
+        <p>Conceptplaat voor alle pagina's. Pagina 1 blijft de bron. De volgende schermen sluiten daarop aan en geven per stap een duidelijke output door.</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="principles">
+      <div class="principle"><strong>Losse formulieren</strong><span>Elke pagina werkt zelfstandig en kan niets anders kapotmaken.</span></div>
+      <div class="principle"><strong>Pagina 1 is leidend</strong><span>Klantvraag, stukken en eerste conclusie voeden de rest.</span></div>
+      <div class="principle"><strong>Scope voor opname</strong><span>Stap 2 bepaalt wat we echt doen, hoeveelheid en eenheid.</span></div>
+      <div class="principle"><strong>Overzicht per stap</strong><span>Elke pagina eindigt met een geel controleblad.</span></div>
+    </section>
+
+    <section class="flow-note">
+      <h2>Hoofdlogica</h2>
+      <p>Vraag opdrachtgever -> scope/werkzaamheden -> opname -> uitvraag onderaannemer -> offerte -> akkoord/opdracht -> doelstellingsbegroting -> uitvoering -> meer-/minderwerk -> oplevering.</p>
+    </section>
+
+    <div class="screens">
+      <section class="screen">
+        <div class="screen-head">
+          <div class="num">01</div>
+          <div><h2>Aanvraaganalyse opdrachtgever</h2><p>Wat vraagt de klant, welke stukken zijn er, wat ontbreekt?</p></div>
+          <div class="status">Basis is goed</div>
+        </div>
+        <div class="screen-body">
+          <div class="block">
+            <div class="block-title">Hoofdblokken <span class="pill green">open/dicht</span></div>
+            <div class="block-content mini-list">
+              <div class="mini-row"><strong>A. Basisgegevens</strong><span class="pill green">ingevuld</span></div>
+              <div class="mini-row"><strong>B. Vraag van de klant</strong><span class="pill orange">kernvraag</span></div>
+              <div class="mini-row"><strong>C. Werkonderdelen</strong><span class="pill">signaal</span></div>
+              <div class="mini-row"><strong>D. Aangeleverde stukken</strong><span class="pill">status</span></div>
+              <div class="mini-row"><strong>E. Eerste conclusie</strong><span class="pill yellow">besluit</span></div>
+              <div class="mini-row"><strong>F. Aanvullend nodig</strong><span class="pill yellow">actie</span></div>
+            </div>
+          </div>
+          <div class="output">
+            <h3>Output naar stap 2</h3>
+            <ul>
+              <li>projectgegevens;</li>
+              <li>concrete klantvraag;</li>
+              <li>mogelijke werkzaamheden;</li>
+              <li>stukkenstatus en conclusies;</li>
+              <li>open acties voor scope/opname.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen">
+        <div class="screen-head">
+          <div class="num">02</div>
+          <div><h2>Projectopzet: werkzaamheden & hoeveelheden</h2><p>Wat moeten we echt doen, met welke hoeveelheid en eenheid?</p></div>
+          <div class="status">Belangrijkste vervolg</div>
+        </div>
+        <div class="screen-body">
+          <div class="block">
+            <div class="block-title">Scope-tabel <span class="pill orange">kern van pagina</span></div>
+            <div class="block-content">
+              <table>
+                <thead><tr><th>Werkzaamheid</th><th>Bron</th><th>Hoeveelheid</th><th>Eenheid</th><th>Besluit</th></tr></thead>
+                <tbody>
+                  <tr><td>Gevelreiniging</td><td>Klantvraag</td><td>200</td><td>m2</td><td><span class="pill green">in scope</span></td></tr>
+                  <tr><td>Voegwerk vervangen</td><td>MJOP</td><td>opname</td><td>m2</td><td><span class="pill yellow">meten</span></td></tr>
+                  <tr><td>Schilderwerk kozijnen</td><td>extra</td><td>n.t.b.</td><td>post</td><td><span class="pill">optie</span></td></tr>
+                </tbody>
+              </table>
+              <p class="rule">Hier geen lange teksten. Per regel: werkzaamheid, hoeveelheid/eheid, gevel/locatie, bron, besluit, onderaannemer ja/nee.</p>
+            </div>
+          </div>
+          <div class="output">
+            <h3>Output naar stap 3</h3>
+            <ul>
+              <li>opnamelijst per werkzaamheid;</li>
+              <li>regels waar hoeveelheid nog moet worden gemeten;</li>
+              <li>gevel/locatie per regel;</li>
+              <li>markering voor onderaannemer-uitvraag.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen">
+        <div class="screen-head">
+          <div class="num">03</div>
+          <div><h2>Opname op locatie</h2><p>Meten, controleren en bevindingen vastleggen per scope-regel.</p></div>
+          <div class="status">Buiten opnemen</div>
+        </div>
+        <div class="screen-body">
+          <div class="block">
+            <div class="block-title">Opnameregels uit stap 2</div>
+            <div class="block-content">
+              <table>
+                <thead><tr><th>Werkzaamheid</th><th>Gevel</th><th>Gemeten</th><th>Staat</th><th>Actie</th></tr></thead>
+                <tbody>
+                  <tr><td>Voegwerk vervangen</td><td>A, B</td><td>205 m2</td><td><span class="pill yellow">matig</span></td><td>begroten</td></tr>
+                  <tr><td>Scheurherstel</td><td>A</td><td>12 m1</td><td><span class="pill orange">slecht</span></td><td>OA</td></tr>
+                  <tr><td>Gevelreiniging</td><td>alle</td><td>200 m2</td><td><span class="pill green">goed</span></td><td>begroten</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="output">
+            <h3>Output naar uitvraag/begroting</h3>
+            <ul>
+              <li>definitieve hoeveelheden;</li>
+              <li>bevindingen en foto's;</li>
+              <li>wel/niet onderaannemer;</li>
+              <li>risico's en onzekerheden.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen">
+        <div class="screen-head">
+          <div class="num">04</div>
+          <div><h2>Offerteaanvraag onderaannemer</h2><p>Alleen de geselecteerde OA-regels uit scope/opname.</p></div>
+          <div class="status">Inkopen</div>
+        </div>
+        <div class="screen-body">
+          <div class="block">
+            <div class="block-title">Per onderaannemer</div>
+            <div class="block-content">
+              <table>
+                <thead><tr><th>Werkzaamheid</th><th>Hoeveelheid</th><th>Eenheid</th><th>Specificatie</th></tr></thead>
+                <tbody>
+                  <tr><td>Scheurherstel metselwerk</td><td>12</td><td>m1</td><td>RVS-wapening</td></tr>
+                  <tr><td>Schilderwerk kozijnen</td><td>opname</td><td>post</td><td>controle op locatie</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="output">
+            <h3>Output naar offerte</h3>
+            <ul>
+              <li>prijzen onderaannemer;</li>
+              <li>uitgangspunten;</li>
+              <li>uitsluitingen;</li>
+              <li>geldigheidsdatum.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen">
+        <div class="screen-head">
+          <div class="num">05</div>
+          <div><h2>Offerte opdrachtgever</h2><p>Nette klantgerichte aanbieding op basis van scope, opname en prijzen.</p></div>
+          <div class="status">Aanbieden</div>
+        </div>
+        <div class="screen-body">
+          <div class="block">
+            <div class="block-title">Offerte-inhoud</div>
+            <div class="block-content field-grid">
+              <div class="field"><b>Scope</b><span>werkzaamheden samengevat</span></div>
+              <div class="field"><b>Aanneemsom</b><span>bedrag excl. btw</span></div>
+              <div class="field"><b>Planning</b><span>start / doorlooptijd</span></div>
+              <div class="field"><b>Voorwaarden</b><span>geldigheid, betaling</span></div>
+              <div class="field wide"><b>Bijlagen</b><span>opname, uitgangspunten, tekeningen en onderbouwing</span></div>
+            </div>
+          </div>
+          <div class="output">
+            <h3>Output naar akkoord</h3>
+            <ul>
+              <li>offertenummer en versie;</li>
+              <li>aangeboden bedrag;</li>
+              <li>scope en uitsluitingen;</li>
+              <li>besluit klant afwachten.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen">
+        <div class="screen-head">
+          <div class="num">06</div>
+          <div><h2>Opdrachtbevestiging</h2><p>Akkoord, aanneemsom, voorwaarden en overdracht naar uitvoering.</p></div>
+          <div class="status">Akkoord</div>
+        </div>
+        <div class="screen-body">
+          <div class="block">
+            <div class="block-title">Controle voor opdracht</div>
+            <div class="block-content mini-list">
+              <div class="mini-row"><strong>Offerte akkoord</strong><span class="pill green">ja</span></div>
+              <div class="mini-row"><strong>Verplichte stukken</strong><span class="pill yellow">controle</span></div>
+              <div class="mini-row"><strong>Aanneemsom</strong><span>bedrag</span></div>
+              <div class="mini-row"><strong>Start uitvoering</strong><span>datum</span></div>
+            </div>
+          </div>
+          <div class="output">
+            <h3>Output naar doelstelling</h3>
+            <ul>
+              <li>definitieve opdracht;</li>
+              <li>definitieve aanneemsom;</li>
+              <li>scope voor budgetbewaking;</li>
+              <li>contractuele afspraken.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen">
+        <div class="screen-head">
+          <div class="num">07</div>
+          <div><h2>Doelstellingsbegroting</h2><p>Intern streefbudget na akkoord op de opdracht.</p></div>
+          <div class="status">Budget</div>
+        </div>
+        <div class="screen-body">
+          <div class="block">
+            <div class="block-title">Budgetregels</div>
+            <div class="block-content">
+              <table>
+                <thead><tr><th>Regel</th><th>Hvh</th><th>Eh</th><th>Budget</th><th>Doel</th></tr></thead>
+                <tbody>
+                  <tr><td>Voegwerk vervangen</td><td>205</td><td>m2</td><td>inkoop + uren</td><td>bewaken</td></tr>
+                  <tr><td>Steiger</td><td>1</td><td>post</td><td>onderaannemer</td><td>vastleggen</td></tr>
+                  <tr><td>Algemene kosten / W&R</td><td colspan="3"><span class="pill">uit opdracht</span></td><td>sturen</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="output">
+            <h3>Output naar uitvoering</h3>
+            <ul>
+              <li>streefbudget per onderdeel;</li>
+              <li>inkoopbudget;</li>
+              <li>bewaking meer/minderwerk;</li>
+              <li>basis voor weekrapportage.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen">
+        <div class="screen-head">
+          <div class="num">08</div>
+          <div><h2>Weekrapport uitvoering</h2><p>Voortgang, productie, foto's en bijzonderheden per week.</p></div>
+          <div class="status">Uitvoering</div>
+        </div>
+        <div class="screen-body">
+          <div class="block">
+            <div class="block-title">Weekstatus</div>
+            <div class="block-content">
+              <table>
+                <thead><tr><th>Onderdeel</th><th>Voortgang</th><th>Probleem</th><th>Actie</th></tr></thead>
+                <tbody>
+                  <tr><td>Steiger</td><td>100%</td><td>-</td><td>gereed</td></tr>
+                  <tr><td>Voegwerk</td><td>45%</td><td>extra slecht metselwerk</td><td>MMW beoordelen</td></tr>
+                  <tr><td>Schilderwerk</td><td>0%</td><td>planning</td><td>volgende week</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="output">
+            <h3>Output naar meer/minder en oplevering</h3>
+            <ul>
+              <li>voortgang per onderdeel;</li>
+              <li>afwijkingen;</li>
+              <li>foto's / bewijs;</li>
+              <li>open punten uitvoering.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen">
+        <div class="screen-head">
+          <div class="num">09</div>
+          <div><h2>Meer- en minderwerk</h2><p>Wijzigingen op de aanneemsom helder vastleggen.</p></div>
+          <div class="status">Mutaties</div>
+        </div>
+        <div class="screen-body">
+          <div class="block">
+            <div class="block-title">Mutatietabel</div>
+            <div class="block-content">
+              <table>
+                <thead><tr><th>Omschrijving</th><th>Type</th><th>Bedrag</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td>Extra metselwerk vervangen</td><td>meerwerk</td><td>EUR 2.610</td><td><span class="pill yellow">voor akkoord</span></td></tr>
+                  <tr><td>Vervallen onderdeel</td><td>minderwerk</td><td>- EUR 464</td><td><span class="pill green">akkoord</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="output">
+            <h3>Output naar opdracht/afrekening</h3>
+            <ul>
+              <li>saldo mutatie;</li>
+              <li>nieuwe aanneemsom;</li>
+              <li>akkoordstatus;</li>
+              <li>termijn/factuurverwerking.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen">
+        <div class="screen-head">
+          <div class="num">10</div>
+          <div><h2>Oplevering & opleverpunten</h2><p>Laatste controle, restpunten, akkoord en dossier afsluiten.</p></div>
+          <div class="status">Afsluiten</div>
+        </div>
+        <div class="screen-body">
+          <div class="block">
+            <div class="block-title">Opleverpunten</div>
+            <div class="block-content">
+              <table>
+                <thead><tr><th>Punt</th><th>Locatie</th><th>Verantwoordelijk</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td>Kitwerk nalopen</td><td>gevel A</td><td>uitvoerder</td><td><span class="pill yellow">open</span></td></tr>
+                  <tr><td>Steigerplek herstellen</td><td>voorzijde</td><td>CdH</td><td><span class="pill green">gereed</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="output">
+            <h3>Output einde proces</h3>
+            <ul>
+              <li>opleverrapport;</li>
+              <li>open/restpunten;</li>
+              <li>akkoord opdrachtgever;</li>
+              <li>lessons learned.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
 </body>
 </html>
