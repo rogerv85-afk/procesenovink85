@@ -1258,6 +1258,534 @@
         grid-template-columns: 1fr;
       }
     }
+    /* Final typography and readability pass.
+       Basis: visible labels, compact cards, strong contrast, quiet software feel. */
+    :root {
+      --bg: #f4f2ed;
+      --paper: #fffefa;
+      --paper-soft: #faf8f3;
+      --ink: #20211e;
+      --muted: #625d55;
+      --line: #d8d0c4;
+      --line-strong: #c3b8aa;
+      --green: #15734d;
+      --green-dark: #0c5037;
+      --orange: #c75b22;
+      --orange-soft: #f3e5dc;
+      --focus: 0 0 0 3px rgba(21, 115, 77, .18);
+      --shadow: 0 3px 12px rgba(35, 31, 26, .07);
+      --shadow-soft: 0 1px 4px rgba(35, 31, 26, .06);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    header {
+      position: static;
+      padding: 18px 28px 16px;
+      background: #181916;
+      border-bottom: 3px solid var(--orange);
+      box-shadow: none;
+    }
+
+    .brand {
+      grid-template-columns: 46px minmax(0, 1fr);
+      gap: 14px;
+    }
+
+    .mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 8px;
+      background: var(--orange);
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,.22);
+    }
+
+    .brand small {
+      color: #e9b49c;
+      font-size: 11px;
+      letter-spacing: .14em;
+    }
+
+    h1 {
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.05;
+      font-weight: 850;
+      letter-spacing: 0;
+    }
+
+    header p {
+      color: #d7d1c8;
+      font-size: 15px;
+    }
+
+    .header-meta {
+      grid-template-columns: repeat(5, minmax(120px, 1fr));
+      gap: 6px;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,.16);
+    }
+
+    .meta-chip,
+    .meta-chip:first-child,
+    .meta-chip.meta-status {
+      min-height: 34px;
+      padding: 7px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.045);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .meta-chip span {
+      color: #efb79b;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .03em;
+    }
+
+    .meta-chip strong {
+      color: #fff;
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .meta-chip.meta-status {
+      background: rgba(21, 115, 77, .36);
+      border-color: rgba(137, 206, 167, .28);
+    }
+
+    main {
+      max-width: 1080px;
+      padding: 22px 18px 54px;
+    }
+
+    .hero {
+      padding: 18px 20px;
+      margin-bottom: 14px;
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--green);
+      background: var(--paper);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero::before {
+      display: none;
+    }
+
+    .title {
+      grid-template-columns: 46px minmax(0, 1fr);
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .step,
+    .letter {
+      background: var(--green);
+      color: #fff;
+      box-shadow: none;
+    }
+
+    .step {
+      width: 46px;
+      height: 46px;
+      border-radius: 8px;
+      font-size: 20px;
+    }
+
+    .title h2 {
+      margin-bottom: 3px;
+      font-size: clamp(26px, 3vw, 34px);
+      line-height: 1.12;
+      font-weight: 850;
+    }
+
+    .title p,
+    .progress-text,
+    .summary-title span,
+    .summary-panel p,
+    .hint {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    form {
+      gap: 10px;
+    }
+
+    .progress-card {
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+    }
+
+    .progress-head {
+      margin-bottom: 8px;
+    }
+
+    .progress-card h3,
+    .summary-panel h2 {
+      color: var(--green-dark);
+      font-weight: 850;
+      letter-spacing: 0;
+    }
+
+    .progress-card h3 {
+      font-size: 16px;
+      margin: 0;
+    }
+
+    .progress-count {
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: #edf4ef;
+      color: var(--green-dark);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .progress-track {
+      height: 8px;
+      background: #e8e2d8;
+    }
+
+    .progress-fill {
+      background: var(--green);
+    }
+
+    details {
+      border-radius: 8px;
+      border-color: var(--line);
+      background: var(--paper);
+      box-shadow: var(--shadow-soft);
+    }
+
+    details[open] {
+      border-color: var(--line-strong);
+      box-shadow: var(--shadow-soft);
+    }
+
+    summary {
+      min-height: 58px;
+      padding: 12px 16px;
+      gap: 12px;
+      background: var(--paper);
+    }
+
+    .letter {
+      width: 32px;
+      height: 32px;
+      border-radius: 7px;
+      border: 0;
+      font-size: 16px;
+      font-weight: 850;
+    }
+
+    .summary-title strong {
+      font-size: 20px;
+      line-height: 1.12;
+      font-weight: 850;
+    }
+
+    .summary-title span {
+      margin-top: 1px;
+    }
+
+    .chevron {
+      width: 30px;
+      height: 30px;
+      background: #f5e8df;
+      color: var(--orange);
+      font-size: 18px;
+    }
+
+    .content {
+      padding: 14px 20px 18px;
+      background: var(--paper-soft);
+      border-top: 1px solid var(--line);
+    }
+
+    .grid,
+    .grid.three {
+      gap: 12px;
+    }
+
+    label.caption,
+    .field-block label,
+    .link-tools label,
+    .file-tools label {
+      display: block;
+      margin: 0 0 5px;
+      color: #5c574f;
+      font-size: 12px;
+      line-height: 1.2;
+      font-weight: 800;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+
+    input,
+    select,
+    textarea,
+    .file-name {
+      min-height: 42px;
+      border: 1px solid var(--line-strong);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--ink);
+      padding: 9px 11px;
+      font: inherit;
+      font-size: 15px;
+    }
+
+    textarea {
+      min-height: 92px;
+      resize: vertical;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #827b72;
+      opacity: 1;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus,
+    button:focus-visible,
+    summary:focus-visible {
+      border-color: var(--green);
+      box-shadow: var(--focus);
+      outline: 0;
+    }
+
+    .work-group > summary {
+      background: #fff7ef;
+      min-height: 52px;
+    }
+
+    .work-group > summary strong {
+      font-size: 18px;
+    }
+
+    .inner-details {
+      margin-bottom: 8px;
+    }
+
+    .inner-details summary {
+      min-height: 50px;
+      padding: 10px 12px;
+    }
+
+    .inner-details summary strong {
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+    .work-detail-grid {
+      grid-template-columns: 150px 1fr 150px 190px;
+      gap: 10px;
+    }
+
+    .mini-note {
+      grid-column: 1 / -1;
+    }
+
+    .doc-grid {
+      display: grid;
+      grid-template-columns: minmax(150px, .7fr) minmax(170px, 1fr) minmax(270px, 1.35fr);
+      gap: 10px;
+      align-items: start;
+    }
+
+    .doc-grid > input[name$="_conclusie"] {
+      grid-column: 1 / -1;
+    }
+
+    .link-tools,
+    .file-tools {
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: #fff;
+      padding: 10px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .link-tools {
+      border-left: 4px solid var(--green);
+    }
+
+    .file-tools {
+      border-left: 4px solid var(--orange);
+    }
+
+    .option-number {
+      display: inline-grid;
+      place-items: center;
+      width: 19px;
+      height: 19px;
+      border-radius: 50%;
+      margin-right: 5px;
+      background: #eef4ef;
+      color: var(--green-dark);
+      font-size: 11px;
+      font-weight: 850;
+    }
+
+    button {
+      min-height: 40px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 750;
+      box-shadow: none;
+    }
+
+    button:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
+    .summary-panel {
+      margin-top: 14px;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--green);
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .summary-panel h2 {
+      margin-bottom: 3px;
+      font-size: 24px;
+    }
+
+    .summary-panel p {
+      margin-bottom: 14px;
+    }
+
+    .summary-group {
+      margin-top: 14px;
+    }
+
+    .summary-group h3 {
+      margin-bottom: 7px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid var(--line);
+      font-size: 18px;
+      font-weight: 850;
+    }
+
+    .control-table {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      border-collapse: separate;
+      border-spacing: 0;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .control-table th,
+    .control-table td {
+      padding: 8px 9px;
+      border-bottom: 1px solid #ece6de;
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    .control-table th {
+      background: #f4efe7;
+      color: #554f47;
+      font-size: 11.5px;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+    }
+
+    .status-chip {
+      position: static;
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .topline {
+      position: static;
+      margin-top: 10px;
+      padding: 10px 0 0;
+      border: 0;
+      border-top: 1px solid var(--line);
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      backdrop-filter: none;
+    }
+
+    .saved {
+      color: var(--green-dark);
+      font-size: 14px;
+      font-weight: 750;
+    }
+
+    @media (max-width: 850px) {
+      header {
+        padding: 16px 18px 14px;
+      }
+
+      .header-meta,
+      .doc-grid,
+      .work-detail-grid,
+      .grid,
+      .grid.three,
+      .need-fields {
+        grid-template-columns: 1fr;
+      }
+
+      .title {
+        grid-template-columns: 44px minmax(0, 1fr);
+      }
+
+      .step {
+        width: 44px;
+        height: 44px;
+      }
+
+      .title h2 {
+        font-size: 28px;
+      }
+
+      summary {
+        min-height: 56px;
+        padding: 11px 12px;
+      }
+
+      .content,
+      .summary-panel,
+      .hero {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      .control-table {
+        display: block;
+        overflow-x: auto;
+      }
+    }
   </style>
 </head>
 <body>
@@ -2039,3 +2567,4 @@
   </script>
 </body>
 </html>
+
