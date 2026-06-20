@@ -1786,6 +1786,138 @@
         overflow-x: auto;
       }
     }
+    /* A1 - compactere, rustigere header */
+    header {
+      padding: 12px 24px 11px;
+      background: #181916;
+      border-bottom: 3px solid var(--orange);
+    }
+
+    .brand {
+      grid-template-columns: 38px minmax(0, 1fr);
+      gap: 12px;
+      align-items: center;
+    }
+
+    .mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 7px;
+      font-size: 18px;
+    }
+
+    .brand small {
+      margin-bottom: 1px;
+      font-size: 10px;
+      line-height: 1.1;
+      letter-spacing: .13em;
+    }
+
+    h1 {
+      margin-bottom: 1px;
+      font-size: clamp(21px, 2.4vw, 28px);
+      line-height: 1.08;
+    }
+
+    header p {
+      font-size: 13px;
+      line-height: 1.25;
+    }
+
+    .header-meta {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0;
+      margin-top: 10px;
+      padding: 9px 10px;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 7px;
+      background: rgba(255,255,255,.045);
+    }
+
+    .meta-chip,
+    .meta-chip:first-child,
+    .meta-chip.meta-status {
+      min-height: 24px;
+      padding: 0 10px;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      border-right: 1px solid rgba(255,255,255,.13);
+    }
+
+    .meta-chip:last-child,
+    .meta-chip.meta-status {
+      border-right: 0;
+    }
+
+    .meta-chip span {
+      font-size: 10px;
+      letter-spacing: .04em;
+    }
+
+    .meta-chip strong {
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .meta-chip.meta-status {
+      justify-content: flex-end;
+      padding-right: 0;
+    }
+
+    .meta-chip.meta-status strong {
+      display: inline-flex;
+      align-items: center;
+      min-height: 22px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(21, 115, 77, .45);
+    }
+
+    @media (max-width: 850px) {
+      header {
+        padding: 11px 14px 10px;
+      }
+
+      .brand {
+        grid-template-columns: 34px minmax(0, 1fr);
+        gap: 10px;
+      }
+
+      .mark {
+        width: 34px;
+        height: 34px;
+        font-size: 16px;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+
+      header p {
+        font-size: 12px;
+      }
+
+      .header-meta {
+        grid-template-columns: 1fr 1fr;
+        gap: 6px 0;
+        padding: 8px;
+      }
+
+      .meta-chip,
+      .meta-chip:first-child,
+      .meta-chip.meta-status {
+        padding: 0 8px;
+      }
+
+      .meta-chip:nth-child(2n) {
+        border-right: 0;
+      }
+
+      .meta-chip.meta-status {
+        justify-content: flex-start;
+      }
+    }
   </style>
 </head>
 <body>
@@ -2567,4 +2699,5 @@
   </script>
 </body>
 </html>
+
 
