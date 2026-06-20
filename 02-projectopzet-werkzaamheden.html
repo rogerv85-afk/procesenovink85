@@ -1,0 +1,880 @@
+﻿<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projectopzet werkzaamheden | Caspar de Haan</title>
+  <style>
+    :root {
+      --bg: #f3f1eb;
+      --paper: #fffefa;
+      --soft: #faf8f3;
+      --ink: #20211e;
+      --muted: #625d55;
+      --line: #d8d0c4;
+      --line-strong: #c3b8aa;
+      --green: #15734d;
+      --green-dark: #0c5037;
+      --orange: #c75b22;
+      --orange-soft: #f3e5dc;
+      --head: #181916;
+      --shadow: 0 1px 4px rgba(35,31,26,.06);
+      --focus: 0 0 0 3px rgba(21,115,77,.18);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      background-image: linear-gradient(rgba(23,107,73,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(23,107,73,.035) 1px, transparent 1px);
+      background-size: 44px 44px;
+      color: var(--ink);
+      font-family: "Aptos", "Segoe UI", Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      line-height: 1.38;
+    }
+
+    header {
+      color: #fff;
+      background: linear-gradient(100deg, #171915 0%, #17261c 100%);
+      border-bottom: 3px solid var(--orange);
+      padding: 14px 24px 12px;
+    }
+
+    .head-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 36px minmax(0, 1fr);
+      gap: 11px;
+      align-items: center;
+    }
+
+    .logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 7px;
+      background: var(--orange);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 900;
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,.22);
+    }
+
+    .eyebrow {
+      color: #e9b49c;
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      margin: 1px 0 1px;
+      font-size: clamp(22px, 2.5vw, 30px);
+      line-height: 1.06;
+    }
+
+    header p {
+      margin: 0;
+      color: #d7d1c8;
+      font-size: 12px;
+    }
+
+    .meta {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 7px;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255,255,255,.14);
+    }
+
+    .chip {
+      min-height: 28px;
+      padding: 5px 8px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 6px;
+      background: rgba(255,255,255,.04);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      min-width: 0;
+    }
+
+    .chip b {
+      color: #efb79b;
+      font-size: 10px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .chip span {
+      color: #fff;
+      font-size: 12px;
+      font-weight: 750;
+      overflow-wrap: anywhere;
+    }
+
+    .chip.status { background: rgba(23,107,73,.34); }
+
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 18px 18px 48px;
+    }
+
+    .hero,
+    .panel,
+    details {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 40px minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+      padding: 16px 18px;
+      margin-bottom: 12px;
+      border-top: 4px solid var(--green);
+    }
+
+    .step,
+    .letter {
+      background: var(--green);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 850;
+    }
+
+    .step {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      font-size: 18px;
+    }
+
+    .hero h2 {
+      margin-bottom: 2px;
+      font-size: clamp(24px, 2.8vw, 32px);
+      line-height: 1.12;
+    }
+
+    .hero p,
+    .hint,
+    .summary-title span,
+    .progress-note {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.38;
+    }
+
+    .panel {
+      padding: 14px 16px;
+      margin-bottom: 10px;
+    }
+
+    .progress-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .progress-head h3 {
+      margin: 0;
+      color: var(--green-dark);
+      font-size: 16px;
+    }
+
+    .progress-count {
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #edf4ef;
+      color: var(--green-dark);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .progress-track {
+      height: 8px;
+      border-radius: 999px;
+      background: #e8e2d8;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      display: block;
+      width: 0;
+      height: 100%;
+      background: linear-gradient(90deg, var(--orange), var(--green));
+    }
+
+    form { display: grid; gap: 9px; }
+
+    summary {
+      list-style: none;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: 30px minmax(0, 1fr) auto auto;
+      gap: 10px;
+      align-items: center;
+      min-height: 48px;
+      padding: 9px 14px;
+      background: var(--paper);
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    .letter {
+      width: 30px;
+      height: 30px;
+      border-radius: 7px;
+      font-size: 15px;
+    }
+
+    .summary-title strong {
+      display: block;
+      font-size: 18px;
+      line-height: 1.12;
+    }
+
+    .summary-title span { display: block; margin-top: 1px; }
+
+    .ok {
+      display: none;
+      min-width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: var(--green);
+      color: #fff;
+      place-items: center;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    details.filled > summary > .ok,
+    .item.filled .ok { display: grid; }
+
+    .chev {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: var(--orange-soft);
+      color: var(--orange);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+    }
+
+    details[open] > summary .chev { transform: rotate(90deg); }
+
+    .content {
+      border-top: 1px solid var(--line);
+      background: var(--soft);
+      padding: 11px 14px 13px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 9px 12px;
+    }
+
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .full { grid-column: 1 / -1; }
+
+    label {
+      display: block;
+      margin: 0 0 3px;
+      color: #5c574f;
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: .035em;
+      text-transform: uppercase;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      min-height: 36px;
+      border: 1px solid var(--line-strong);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--ink);
+      padding: 7px 9px;
+      font: inherit;
+      font-size: 14px;
+      line-height: 1.25;
+    }
+
+    textarea { min-height: 74px; resize: vertical; }
+
+    input:focus, select:focus, textarea:focus, button:focus-visible, summary:focus-visible {
+      border-color: var(--green);
+      box-shadow: var(--focus);
+      outline: 0;
+    }
+
+    .item-list { display: grid; gap: 7px; }
+
+    .item {
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .item.open { border-left: 5px solid var(--green); }
+
+    .item-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto auto;
+      gap: 8px;
+      align-items: center;
+      min-height: 42px;
+      padding: 8px 10px;
+      cursor: pointer;
+    }
+
+    .item-head strong { font-size: 15px; }
+
+    .item-meta {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 1px;
+    }
+
+    .item-body {
+      display: none;
+      padding: 10px;
+      border-top: 1px solid var(--line);
+      background: #fffdf8;
+    }
+
+    .item.open .item-body { display: block; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 22px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 800;
+      background: #e8edf5;
+      color: #244769;
+      white-space: nowrap;
+    }
+
+    .badge.okb { background: #dceee5; color: var(--green-dark); }
+    .badge.warn { background: #fff0c6; color: #725000; }
+    .badge.out { background: #eee; color: #5a554f; }
+
+    .summary-table {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      border-collapse: separate;
+      border-spacing: 0;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .summary-table th,
+    .summary-table td {
+      padding: 7px 8px;
+      border-bottom: 1px solid #ece6de;
+      text-align: left;
+      vertical-align: top;
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .summary-table th {
+      background: #f4efe7;
+      color: #554f47;
+      font-size: 10.5px;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+    }
+
+    .summary-table tr:last-child td { border-bottom: 0; }
+
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+      flex-wrap: wrap;
+    }
+
+    button,
+    .button-link {
+      min-height: 36px;
+      border: 1px solid #bfa997;
+      border-radius: 6px;
+      background: #fffdf8;
+      color: var(--ink);
+      padding: 7px 12px;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 750;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    button.primary { background: var(--green); border-color: var(--green); color: #fff; }
+    .saved { margin-right: auto; color: var(--green-dark); font-size: 13px; font-weight: 750; }
+
+    @media (max-width: 850px) {
+      header { padding: 12px 14px 11px; }
+      .meta, .grid, .grid.three { grid-template-columns: 1fr; }
+      main { padding: 14px 10px 40px; }
+      .hero, .panel, .content { padding-left: 12px; padding-right: 12px; }
+      summary { min-height: 46px; padding: 9px 10px; }
+      .summary-title strong { font-size: 17px; }
+      .summary-table { display: block; overflow-x: auto; }
+      .actions { align-items: stretch; }
+      .actions button, .actions .button-link { flex: 1 1 auto; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="head-inner">
+      <div class="logo">CdH</div>
+      <div>
+        <div class="eyebrow">Caspar de Haan - renovatie & onderhoud</div>
+        <h1>Projectopzet & werkzaamheden</h1>
+        <p>Stap 2 - scope vastleggen op basis van de aanvraaganalyse</p>
+      </div>
+      <div class="meta">
+        <div class="chip"><b>WO</b><span id="metaWo">-</span></div>
+        <div class="chip"><b>Project</b><span id="metaProject">-</span></div>
+        <div class="chip"><b>Projectleider</b><span id="metaLeader">-</span></div>
+        <div class="chip"><b>Opdrachtgever</b><span id="metaClient">-</span></div>
+        <div class="chip status"><b>Status</b><span id="metaStatus">Concept</span></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="step">02</div>
+      <div>
+        <h2>Wat gaan we opnemen en begroten?</h2>
+        <p>Maak van de aanvraaganalyse een concrete scope: werkzaamheden, gevels, hoeveelheden, eenheden en vervolgacties.</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="progress-head">
+        <h3>Voortgang projectopzet</h3>
+        <span class="progress-count" id="progressCount">0 van 5 blokken ingevuld</span>
+      </div>
+      <div class="progress-track"><span class="progress-fill" id="progressFill"></span></div>
+      <p class="progress-note" id="progressText">Lees eerst de aanvraag in of vul de scope handmatig aan.</p>
+    </section>
+
+    <form id="projectForm">
+      <details open>
+        <summary>
+          <span class="letter">A</span>
+          <span class="summary-title"><strong>Projectgegevens</strong><span>Overgenomen uit aanvraaganalyse en aan te vullen</span></span>
+          <span class="ok">OK</span>
+          <span class="chev">&gt;</span>
+        </summary>
+        <div class="content grid">
+          <div><label>Project</label><input name="project" placeholder="naam project"></div>
+          <div><label>Werkordernummer (WO)</label><input name="werkordernummer" placeholder="WO ..."></div>
+          <div><label>Opdrachtgever</label><input name="opdrachtgever" placeholder="naam opdrachtgever"></div>
+          <div><label>Projectleider</label><input name="projectleider" placeholder="naam projectleider"></div>
+          <div><label>Projecttype</label><select name="projecttype"><option value="">Kies...</option><option>Onderhoud / renovatie</option><option>Verduurzaming</option><option>Onderhoud + verduurzaming</option><option>Schade / klacht</option></select></div>
+          <div><label>Status</label><select name="status"><option>Concept</option><option>Scope in opbouw</option><option>Klaar voor opname</option><option>Klaar voor uitvraag onderaannemer</option></select></div>
+          <div class="full"><label>Adres / locatie</label><input name="adres" placeholder="straat en plaats"></div>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="letter">B</span>
+          <span class="summary-title"><strong>Gevels / vlakken</strong><span>Benoem de delen waarop werkzaamheden worden vastgelegd</span></span>
+          <span class="ok">OK</span>
+          <span class="chev">&gt;</span>
+        </summary>
+        <div class="content">
+          <p class="hint">Gebruik korte codes. Bijvoorbeeld A = voorgevel, B = achtergevel, C = kopgevel links.</p>
+          <div id="facadeRows" class="item-list"></div>
+          <button type="button" onclick="addFacade()">+ Gevel toevoegen</button>
+        </div>
+      </details>
+
+      <details open>
+        <summary>
+          <span class="letter">C</span>
+          <span class="summary-title"><strong>Werkzaamheden scope</strong><span>Van aanvraag naar echte werkzaamheden, hoeveelheden en vervolgactie</span></span>
+          <span class="ok">OK</span>
+          <span class="chev">&gt;</span>
+        </summary>
+        <div class="content">
+          <p class="hint">Controleer per regel: hoort dit in scope, moet het worden opgenomen, of moet het naar een onderaannemer?</p>
+          <div id="workRows" class="item-list"></div>
+          <button type="button" onclick="addWork()">+ Werkzaamheid toevoegen</button>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="letter">D</span>
+          <span class="summary-title"><strong>Opname voorbereiden</strong><span>Wat moet buiten worden gecontroleerd of gemeten?</span></span>
+          <span class="ok">OK</span>
+          <span class="chev">&gt;</span>
+        </summary>
+        <div class="content grid">
+          <div class="full"><label>Meetpunten / aandachtspunten opname</label><textarea name="opnamepunten" placeholder="Bijv. voegwerk per gevel meten, scheuren controleren, lekkageplek bekijken."></textarea></div>
+          <div><label>Opnemer</label><input name="opnemer" placeholder="naam"></div>
+          <div><label>Geplande opnamedatum</label><input name="opnamedatum" type="date"></div>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="letter">E</span>
+          <span class="summary-title"><strong>Besluit vervolg</strong><span>Klaar voor opname of eerst extra informatie nodig?</span></span>
+          <span class="ok">OK</span>
+          <span class="chev">&gt;</span>
+        </summary>
+        <div class="content grid">
+          <div><label>Vervolgstap</label><select name="vervolgstap"><option value="">Kies...</option><option>Naar opname</option><option>Eerst stukken opvragen</option><option>Eerst uitvraag onderaannemer</option><option>Klaar voor opdrachtvoorbereiding</option></select></div>
+          <div><label>Besluitdatum</label><input name="besluitdatum" type="date"></div>
+          <div class="full"><label>Korte projectopzet</label><textarea name="projectopzet" placeholder="Samenvatting van scope, onzekerheden en vervolgstap."></textarea></div>
+        </div>
+      </details>
+
+      <section class="panel">
+        <h3>Controleblad projectopzet</h3>
+        <div id="overview"><p class="hint">Nog geen werkzaamheden in de projectopzet.</p></div>
+      </section>
+
+      <div class="actions">
+        <span class="saved" id="saveState">Nog niet opgeslagen</span>
+        <a class="button-link" href="index.html">Terug naar aanvraag</a>
+        <button type="button" onclick="importAanvraag(true)">Aanvraag inlezen</button>
+        <button type="button" onclick="exportProject()">Exporteren</button>
+        <button class="primary" type="button" onclick="window.print()">Printen</button>
+      </div>
+    </form>
+  </main>
+
+  <script>
+    const aanvraagKey = 'cdh-aanvraaganalyse-v2';
+    const projectKey = 'cdh-projectopzet-v1';
+    let workIndex = 0;
+    let facadeIndex = 0;
+
+    const workNameMap = {
+      lekkage_vochtonderzoek: 'Lekkage- / vochtonderzoek',
+      constructief_onderzoek: 'Constructief onderzoek',
+      asbestinventarisatie: 'Asbestinventarisatie',
+      thermografisch_energie_onderzoek: 'Thermografisch / energie-onderzoek',
+      gevelreiniging: 'Gevelreiniging',
+      voegwerk_vervangen: 'Voegwerk vervangen',
+      voegwerk_rollaag_raamdorpels: 'Voegwerk rollaag / raamdorpels',
+      slecht_metselwerk_uithakken_vervangen: 'Slecht metselwerk uithakken & vervangen',
+      scheurherstel_metselwerk: 'Scheurherstel metselwerk',
+      renovatiespouwankers_bijboren: 'Renovatiespouwankers bijboren',
+      hydrofoberen_impregneren: 'Hydrofoberen / impregneren',
+      kozijnen_vervangen: 'Kozijnen vervangen',
+      enkel_naar_dubbel_hr_glas: 'Enkel naar dubbel / HR++ glas',
+      beglazingsafdichting_herstellen: 'Beglazingsafdichting herstellen',
+      hang_sluitwerk: 'Hang- en sluitwerk',
+      buitenschilderwerk_houtwerk: 'Buitenschilderwerk houtwerk',
+      schilderwerk_kozijnen: 'Schilderwerk kozijnen',
+      schilderwerk_deuren_ramen: 'Schilderwerk deuren / ramen',
+      herstel_houtrot: 'Herstel houtrot',
+      betonherstel_balkonranden: 'Betonherstel balkonranden',
+      betonherstel_galerijen: 'Betonherstel galerijen',
+      coating_bescherming_beton: 'Coating / bescherming beton',
+      dakwerkzaamheden: 'Dakwerkzaamheden',
+      balkon_galerij: 'Balkon / galerij',
+      steiger_rolsteiger: 'Steiger / rolsteiger',
+      bouwplaatsinrichting: 'Bouwplaatsinrichting',
+      isolatie: 'Isolatie',
+      ventilatie: 'Ventilatie',
+      glasverbetering: 'Glasverbetering',
+      energiebesparende_maatregelen: 'Energiebesparende maatregelen',
+      veiligheid_wetgeving: 'Veiligheid / wetgeving',
+      bewonerszaken: 'Bewonerszaken',
+      overige_werkzaamheden: 'Overige werkzaamheden'
+    };
+
+    function value(name) {
+      const field = document.querySelector(`[name="${name}"]`);
+      return field && field.value.trim() ? field.value.trim() : '';
+    }
+
+    function setValue(name, val) {
+      const field = document.querySelector(`[name="${name}"]`);
+      if (field && val) field.value = val;
+    }
+
+    function escapeHtml(text) {
+      return String(text || '').replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
+    }
+
+    function option(text, selected) {
+      return `<option ${text === selected ? 'selected' : ''}>${escapeHtml(text)}</option>`;
+    }
+
+    function addFacade(data = {}) {
+      facadeIndex += 1;
+      const row = document.createElement('div');
+      row.className = 'item facade-row';
+      row.innerHTML = `
+        <div class="item-head" onclick="toggleItem(this.parentElement)">
+          <div>
+            <strong>Gevel ${facadeIndex}</strong>
+            <div class="item-meta">${escapeHtml(data.code || 'nieuwe gevel / vlak')}</div>
+          </div>
+          <span class="ok">OK</span>
+          <span class="chev">&gt;</span>
+        </div>
+        <div class="item-body grid three">
+          <div><label>Code</label><input name="facade_${facadeIndex}_code" value="${escapeHtml(data.code)}" placeholder="A"></div>
+          <div><label>Naam</label><input name="facade_${facadeIndex}_naam" value="${escapeHtml(data.naam)}" placeholder="Voorgevel"></div>
+          <div><label>Indicatie hoeveelheid</label><input name="facade_${facadeIndex}_hoeveelheid" value="${escapeHtml(data.hoeveelheid)}" placeholder="bijv. 120 m2"></div>
+          <div class="full"><label>Notitie</label><input name="facade_${facadeIndex}_notitie" value="${escapeHtml(data.notitie)}" placeholder="bijzonderheden of afbakening"></div>
+        </div>
+      `;
+      facadeRows.appendChild(row);
+      refresh();
+    }
+
+    function addWork(data = {}) {
+      workIndex += 1;
+      const row = document.createElement('div');
+      row.className = 'item work-row';
+      row.innerHTML = `
+        <div class="item-head" onclick="toggleItem(this.parentElement)">
+          <div>
+            <strong>${escapeHtml(data.naam || 'Nieuwe werkzaamheid')}</strong>
+            <div class="item-meta">${escapeHtml(data.locatie || '-')} ${data.hoeveelheid ? ' / ' + escapeHtml(data.hoeveelheid) : ''}</div>
+          </div>
+          <span class="ok">OK</span>
+          <span class="chev">&gt;</span>
+        </div>
+        <div class="item-body grid">
+          <div class="full"><label>Werkzaamheid</label><input name="work_${workIndex}_naam" value="${escapeHtml(data.naam)}" placeholder="bijv. Gevelreiniging"></div>
+          <div><label>Gevel / locatie</label><input name="work_${workIndex}_locatie" value="${escapeHtml(data.locatie)}" placeholder="A, B of alle gevels"></div>
+          <div><label>Hoeveelheid</label><input name="work_${workIndex}_hoeveelheid" value="${escapeHtml(data.hoeveelheid)}" placeholder="m2, stuks of onbekend"></div>
+          <div><label>Eenheid</label><select name="work_${workIndex}_eenheid"><option value="">Kies...</option>${option('m2', data.eenheid)}${option('m1', data.eenheid)}${option('st', data.eenheid)}${option('post', data.eenheid)}</select></div>
+          <div><label>Herkomst</label><input name="work_${workIndex}_bron" value="${escapeHtml(data.bron)}" placeholder="Klantvraag, MJOP, rapport"></div>
+          <div><label>Scopebesluit</label><select name="work_${workIndex}_besluit"><option value="">Kies...</option>${option('In scope', data.besluit)}${option('Eerst opnemen / meten', data.besluit)}${option('Uitvragen onderaannemer', data.besluit)}${option('Meenemen als optie', data.besluit)}${option('Buiten scope', data.besluit)}</select></div>
+          <div><label>Onderaannemer?</label><select name="work_${workIndex}_oa"><option value="">Kies...</option>${option('Nee', data.oa)}${option('Ja, uitvragen', data.oa)}${option('Nog bepalen', data.oa)}</select></div>
+          <div class="full"><label>Notitie / uitgangspunt</label><input name="work_${workIndex}_notitie" value="${escapeHtml(data.notitie)}" placeholder="korte toelichting, norm of onzekerheid"></div>
+        </div>
+      `;
+      workRows.appendChild(row);
+      refresh();
+    }
+
+    function toggleItem(item) {
+      item.classList.toggle('open');
+    }
+
+    function collect() {
+      const data = {};
+      document.querySelectorAll('input, select, textarea').forEach((field) => {
+        if (field.name) data[field.name] = field.value;
+      });
+      return data;
+    }
+
+    function apply(data) {
+      document.querySelectorAll('input, select, textarea').forEach((field) => {
+        if (field.name && data[field.name] != null) field.value = data[field.name];
+      });
+    }
+
+    function save() {
+      localStorage.setItem(projectKey, JSON.stringify(collect()));
+      saveState.textContent = 'Opgeslagen in deze browser';
+      refresh();
+    }
+
+    function load() {
+      const raw = localStorage.getItem(projectKey);
+      if (!raw) return false;
+      try {
+        apply(JSON.parse(raw));
+        saveState.textContent = 'Bestaande projectopzet geladen';
+        refresh();
+        return true;
+      } catch {
+        saveState.textContent = 'Kon projectopzet niet laden';
+        return false;
+      }
+    }
+
+    function importAanvraag(showAlert = false) {
+      const raw = localStorage.getItem(aanvraagKey);
+      if (!raw) {
+        if (showAlert) alert('Geen aanvraaganalyse gevonden in deze browser. Vul eerst pagina 1 in of open de demo.');
+        return false;
+      }
+
+      let data;
+      try { data = JSON.parse(raw); } catch { return false; }
+
+      ['project', 'werkordernummer', 'opdrachtgever', 'projectleider', 'adres', 'status'].forEach((key) => setValue(key, data[key]));
+
+      const existing = Array.from(document.querySelectorAll('.work-row input[name$="_naam"]')).map((field) => field.value);
+      Object.keys(data).filter((key) => key.startsWith('work_') && key.endsWith('_bron')).forEach((bronKey) => {
+        const base = bronKey.replace(/_bron$/, '');
+        const bron = data[`${base}_bron`] || '';
+        const locatie = data[`${base}_locatie`] || '';
+        const hoeveelheid = data[`${base}_hoeveelheid`] || '';
+        const besluitAanvraag = data[`${base}_vervolg`] || '';
+        const notitie = data[`${base}_notitie`] || '';
+        if (!bron && !locatie && !hoeveelheid && !besluitAanvraag && !notitie) return;
+
+        const naam = nameFromBase(base);
+        if (existing.includes(naam)) return;
+        addWork({
+          naam,
+          bron,
+          locatie,
+          hoeveelheid,
+          eenheid: guessUnit(hoeveelheid),
+          besluit: mapAanvraagBesluit(besluitAanvraag),
+          oa: besluitAanvraag.includes('onderaannemer') ? 'Ja, uitvragen' : '',
+          notitie
+        });
+      });
+
+      saveState.textContent = 'Aanvraaganalyse ingelezen';
+      save();
+      return true;
+    }
+
+    function nameFromBase(base) {
+      const parts = base.replace(/^work_/, '').split('_');
+      for (let start = 0; start < parts.length; start += 1) {
+        const candidate = parts.slice(start).join('_');
+        if (workNameMap[candidate]) return workNameMap[candidate];
+      }
+      return parts.join(' ').replace(/\b\w/g, (letter) => letter.toUpperCase());
+    }
+
+    function guessUnit(text) {
+      const value = String(text || '').toLowerCase();
+      if (value.includes('m2')) return 'm2';
+      if (value.includes('m1')) return 'm1';
+      if (value.includes('st')) return 'st';
+      if (value) return 'post';
+      return '';
+    }
+
+    function mapAanvraagBesluit(text) {
+      const value = String(text || '').toLowerCase();
+      if (!value) return '';
+      if (value.includes('buiten')) return 'Buiten scope';
+      if (value.includes('opnemen') || value.includes('hoeveelheid') || value.includes('controleren')) return 'Eerst opnemen / meten';
+      if (value.includes('advies') || value.includes('stuk')) return 'Eerst opnemen / meten';
+      if (value.includes('optie') || value.includes('extra')) return 'Meenemen als optie';
+      return 'In scope';
+    }
+
+    function refresh() {
+      document.querySelectorAll('#projectForm > details').forEach((section) => {
+        const filled = Array.from(section.querySelectorAll('input, select, textarea')).some((field) => field.value.trim() !== '');
+        section.classList.toggle('filled', filled);
+      });
+      document.querySelectorAll('.item').forEach((row) => {
+        const filled = Array.from(row.querySelectorAll('input, select, textarea')).some((field) => field.value.trim() !== '');
+        row.classList.toggle('filled', filled);
+      });
+
+      metaWo.textContent = value('werkordernummer') || '-';
+      metaProject.textContent = value('project') || '-';
+      metaLeader.textContent = value('projectleider') || '-';
+      metaClient.textContent = value('opdrachtgever') || '-';
+      metaStatus.textContent = value('status') || 'Concept';
+
+      const sections = Array.from(document.querySelectorAll('#projectForm > details'));
+      const filled = sections.filter((section) => section.classList.contains('filled')).length;
+      progressCount.textContent = `${filled} van ${sections.length} blokken ingevuld`;
+      progressFill.style.width = `${Math.round((filled / sections.length) * 100)}%`;
+      progressText.textContent = filled === sections.length ? 'Projectopzet is volledig genoeg voor de volgende stap.' : 'Vul alleen aan wat nodig is voor opname en scope.';
+
+      updateOverview();
+    }
+
+    function badge(text) {
+      let cls = 'warn';
+      const value = String(text || 'Nog bepalen');
+      if (value.includes('In scope') || value === 'Nee') cls = 'okb';
+      if (value.includes('Buiten')) cls = 'out';
+      return `<span class="badge ${cls}">${escapeHtml(value)}</span>`;
+    }
+
+    function updateOverview() {
+      const rows = Array.from(document.querySelectorAll('.work-row')).map((row) => {
+        const get = (part) => row.querySelector(`[name*="_${part}"]`)?.value.trim() || '';
+        return { naam: get('naam'), locatie: get('locatie'), hoeveelheid: get('hoeveelheid'), eenheid: get('eenheid'), besluit: get('besluit'), oa: get('oa') };
+      }).filter((row) => row.naam || row.locatie || row.hoeveelheid || row.besluit || row.oa);
+
+      if (!rows.length) {
+        overview.innerHTML = '<p class="hint">Nog geen werkzaamheden in de projectopzet.</p>';
+        return;
+      }
+
+      overview.innerHTML = `
+        <table class="summary-table">
+          <thead><tr><th>Werkzaamheid</th><th>Gevel / locatie</th><th>Hoeveelheid</th><th>Scopebesluit</th><th>Onderaannemer</th></tr></thead>
+          <tbody>
+            ${rows.map((row) => `<tr><td><strong>${escapeHtml(row.naam || '-')}</strong></td><td>${escapeHtml(row.locatie || '-')}</td><td>${escapeHtml(row.hoeveelheid || '-')}${row.eenheid ? ' ' + escapeHtml(row.eenheid) : ''}</td><td>${badge(row.besluit)}</td><td>${badge(row.oa)}</td></tr>`).join('')}
+          </tbody>
+        </table>
+      `;
+    }
+
+    function exportProject() {
+      const blob = new Blob([JSON.stringify(collect(), null, 2)], { type: 'application/json' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'projectopzet.cdhproject.json';
+      link.click();
+    }
+
+    addFacade({ code: 'A', naam: 'Voorgevel' });
+    addFacade({ code: 'B', naam: 'Achtergevel' });
+    importAanvraag(false);
+    if (!document.querySelector('.work-row')) addWork();
+    load();
+    refresh();
+    projectForm.addEventListener('input', save);
+    projectForm.addEventListener('change', save);
+  </script>
+</body>
+</html>
