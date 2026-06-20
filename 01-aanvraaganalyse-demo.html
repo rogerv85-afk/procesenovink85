@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Aanvraaganalyse opdrachtgever | Caspar de Haan</title>
+  <title>Demo aanvraaganalyse opdrachtgever | Caspar de Haan</title>
   <style>
     :root {
       --bg: #f3f0ea;
@@ -2479,7 +2479,7 @@
       <div class="mark">CdH</div>
       <div>
         <small>Caspar de Haan - Renovatie & Onderhoud</small>
-        <h1>Aanvraaganalyse opdrachtgever</h1>
+        <h1>Aanvraaganalyse opdrachtgever - demo</h1>
         <p>Renovatieproces - intake en eerste beoordeling</p>
       </div>
     </div>
@@ -2725,7 +2725,7 @@
   </main>
 
   <script>
-    const storageKey = 'cdh-aanvraaganalyse-v2';
+    const storageKey = 'cdh-aanvraaganalyse-demo';
 
     const workGroups = [
       {
@@ -3240,6 +3240,52 @@
       holder.innerHTML = `${workHtml}${docHtml}${actionHtml}`;
     }
 
+
+    const demoData = {
+      aanvraagnummer: 'AANVR-2026-014',
+      werkordernummer: 'WO 2601661',
+      datum: '2026-06-20',
+      offerteVoor: '2026-07-05',
+      status: 'Concept',
+      projectleider: 'R. Verhoeven',
+      opdrachtgever: 'VvE Testflat 1-20',
+      beheerder: 'Vastgoedbeheer Zuid',
+      project: 'VvE Testflat 1-20',
+      adres: 'Voorbeeldstraat 12, Den Bosch',
+      letterlijkeVraag: 'De opdrachtgever vraagt een offerte voor gevelherstel, voegwerk en schilderwerk aan de kozijnen.',
+      aanleiding: 'MJOP / onderhoudsplanning',
+      gewenstResultaat: 'Opname op locatie',
+      achterliggendeVraag: 'Waarschijnlijk is eerst een opname nodig om hoeveelheden, schadebeeld en noodzakelijke aanvullende werkzaamheden vast te leggen.',
+      work_gevel_metselwerk_gevelreiniging_bron: 'Klant vraagt dit',
+      work_gevel_metselwerk_gevelreiniging_locatie: 'Voorgevel en kopgevel links',
+      work_gevel_metselwerk_gevelreiniging_hoeveelheid: 'ca. 420 m2',
+      work_gevel_metselwerk_gevelreiniging_vervolg: 'Opnemen op locatie',
+      work_gevel_metselwerk_gevelreiniging_notitie: 'Vervuiling en algvorming controleren.',
+      work_gevel_metselwerk_voegwerk_vervangen_bron: 'Komt uit aangeleverd stuk',
+      work_gevel_metselwerk_voegwerk_vervangen_locatie: 'Achtergevel en balkonzones',
+      work_gevel_metselwerk_voegwerk_vervangen_hoeveelheid: 'hoeveelheid onbekend',
+      work_gevel_metselwerk_voegwerk_vervangen_vervolg: 'Hoeveelheid bepalen',
+      work_schilderwerk_buitenschilderwerk_houtwerk_bron: 'Extra kans / advies',
+      work_schilderwerk_buitenschilderwerk_houtwerk_locatie: 'Kozijnen galerijzijde',
+      work_schilderwerk_buitenschilderwerk_houtwerk_hoeveelheid: '86 stuks',
+      work_schilderwerk_buitenschilderwerk_houtwerk_vervolg: 'Meenemen naar projectopzet',
+      doc_mjop_status: 'Aanwezig en bruikbaar',
+      doc_mjop_naam: 'MJOP VvE Testflat 2025-2035',
+      doc_mjop_link: 'https://drive.google.com/voorbeeld-mjop',
+      doc_mjop_conclusie: 'MJOP noemt gevelonderhoud en schilderwerk binnen 2 jaar.',
+      doc_geveladvies_status: 'Nog opvragen',
+      doc_geveladvies_naam: 'Geveladvies ontbreekt',
+      doc_geveladvies_conclusie: 'Nodig voor oorzaak scheurvorming en voegadvies.',
+      duidelijk: 'De klantvraag gaat over gevel, voegwerk en schilderwerk.',
+      onzeker: 'Exacte hoeveelheden, staat van spouwankers en omvang van slecht metselwerk zijn nog niet bekend.',
+      noodzakelijk: 'Opname op locatie, hoeveelheden bepalen, ontbrekend geveladvies opvragen.',
+      optioneel: 'Hydrofoberen en glasverbetering alleen meenemen als extra kans.',
+      advies: 'Eerst projectopzet en opname voorbereiden. Daarna pas begroten.',
+      need_1_wat: 'Geveladvies / constructieve beoordeling scheurvorming',
+      need_1_wie: 'Opdrachtgever / VvE-beheerder',
+      need_1_voor: 'Projectopzet'
+    };
+    localStorage.setItem(storageKey, JSON.stringify(demoData));
     renderWorkRows();
     renderDocRows();
     addNeedRow();
@@ -3252,6 +3298,7 @@
   </script>
 </body>
 </html>
+
 
 
 

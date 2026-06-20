@@ -1918,6 +1918,559 @@
         justify-content: flex-start;
       }
     }
+    /* A2 - rustigere typografie en compactere formuliermaat */
+    body {
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      line-height: 1.42;
+      letter-spacing: 0;
+    }
+
+    main {
+      gap: 14px;
+    }
+
+    .hero {
+      padding: 22px 24px 18px;
+    }
+
+    .hero h2,
+    .summary-panel h2 {
+      font-size: clamp(24px, 2.8vw, 34px);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .hero p,
+    .progress-card p,
+    .summary-panel p {
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    details {
+      border-radius: 8px;
+    }
+
+    summary {
+      min-height: 58px;
+      padding: 13px 18px;
+      gap: 12px;
+    }
+
+    .summary-title strong {
+      font-size: 18px;
+      line-height: 1.16;
+      letter-spacing: 0;
+    }
+
+    .summary-title span {
+      margin-top: 2px;
+      font-size: 13px;
+      line-height: 1.25;
+    }
+
+    .letter {
+      width: 36px;
+      height: 36px;
+      border-radius: 7px;
+      font-size: 17px;
+    }
+
+    .content {
+      padding: 14px 18px;
+    }
+
+    label.caption,
+    .field-block label,
+    .link-tools label,
+    .file-tools label {
+      margin-bottom: 4px;
+      font-size: 11px;
+      line-height: 1.2;
+      letter-spacing: .035em;
+      text-transform: uppercase;
+    }
+
+    input,
+    select,
+    textarea,
+    .file-name {
+      min-height: 40px;
+      padding: 8px 11px;
+      font-size: 15px;
+      line-height: 1.3;
+      border-radius: 6px;
+    }
+
+    textarea {
+      min-height: 84px;
+    }
+
+    .grid,
+    .doc-grid,
+    .need-fields,
+    .work-detail-grid {
+      gap: 10px;
+    }
+
+    .inner-details summary {
+      min-height: 46px;
+      padding: 10px 12px;
+    }
+
+    .inner-details summary strong,
+    .work-item > summary strong,
+    .doc-item > summary strong {
+      font-size: 15px;
+      line-height: 1.2;
+    }
+
+    .inner-details .content {
+      padding: 12px;
+    }
+
+    .work-group > summary {
+      min-height: 50px;
+    }
+
+    .work-group > summary strong {
+      font-size: 17px;
+    }
+
+    .progress-card,
+    .summary-panel {
+      padding: 18px 20px;
+      border-radius: 8px;
+    }
+
+    .control-table th,
+    .control-table td {
+      padding: 8px 10px;
+      font-size: 13px;
+      line-height: 1.3;
+    }
+
+    @media (max-width: 850px) {
+      .hero {
+        padding: 18px 16px 14px;
+      }
+
+      summary {
+        min-height: 54px;
+        padding: 12px 14px;
+      }
+
+      .summary-title strong {
+        font-size: 17px;
+      }
+
+      .content {
+        padding: 12px 14px;
+      }
+
+      textarea {
+        min-height: 76px;
+      }
+    }
+    /* A3 - alle openstaande punten: compacter, duidelijker, rustiger */
+    body {
+      background-color: #f3f1eb;
+      background-image: linear-gradient(rgba(23,107,73,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(23,107,73,.035) 1px, transparent 1px);
+      background-size: 44px 44px;
+      font-family: "Aptos", "Segoe UI", Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      line-height: 1.38;
+    }
+
+    header {
+      padding: 14px 24px 12px;
+      background: linear-gradient(100deg, #171915 0%, #17261c 100%);
+    }
+
+    .brand {
+      grid-template-columns: 36px minmax(0, 1fr);
+      gap: 11px;
+    }
+
+    .mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 7px;
+      font-size: 16px;
+    }
+
+    .brand small {
+      font-size: 10px;
+      letter-spacing: .12em;
+    }
+
+    h1 {
+      font-size: clamp(22px, 2.5vw, 30px);
+      line-height: 1.06;
+    }
+
+    header p {
+      font-size: 12px;
+    }
+
+    .header-meta {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 7px;
+      margin-top: 10px;
+      padding-top: 10px;
+      align-items: stretch;
+    }
+
+    .meta-chip,
+    .meta-chip:first-child,
+    .meta-chip.meta-status {
+      min-height: 28px;
+      padding: 5px 8px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 6px;
+      background: rgba(255,255,255,.04);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .meta-chip span {
+      font-size: 10px;
+      letter-spacing: .04em;
+      white-space: nowrap;
+    }
+
+    .meta-chip strong {
+      font-size: 12px;
+      line-height: 1.2;
+    }
+
+    .meta-chip.meta-status {
+      background: rgba(23,107,73,.34);
+    }
+
+    main {
+      max-width: 1080px;
+      padding: 18px 18px 46px;
+    }
+
+    form {
+      gap: 9px;
+    }
+
+    .hero {
+      padding: 16px 18px;
+      margin-bottom: 12px;
+      border-radius: 8px;
+    }
+
+    .title {
+      grid-template-columns: 40px minmax(0, 1fr);
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .step {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      font-size: 18px;
+    }
+
+    .title h2 {
+      font-size: clamp(24px, 2.8vw, 32px);
+      margin-bottom: 2px;
+    }
+
+    .title p,
+    .progress-text,
+    .summary-title span,
+    .summary-panel p,
+    .hint {
+      font-size: 14px;
+      line-height: 1.38;
+    }
+
+    .progress-card {
+      padding-top: 10px;
+    }
+
+    .progress-card h3 {
+      font-size: 15px;
+    }
+
+    .progress-count {
+      font-size: 12px;
+      padding: 2px 8px;
+    }
+
+    details {
+      border-radius: 7px;
+    }
+
+    summary {
+      min-height: 48px;
+      padding: 9px 14px;
+      gap: 10px;
+    }
+
+    .letter {
+      width: 30px;
+      height: 30px;
+      border-radius: 7px;
+      font-size: 15px;
+    }
+
+    .summary-title strong {
+      font-size: 18px;
+      line-height: 1.12;
+    }
+
+    .summary-title span {
+      margin-top: 1px;
+    }
+
+    .chevron {
+      width: 26px;
+      height: 26px;
+      font-size: 16px;
+      background: #f4e6dc;
+    }
+
+    .content {
+      padding: 11px 14px 13px;
+    }
+
+    .grid,
+    .grid.three,
+    .doc-grid,
+    .need-fields,
+    .work-detail-grid {
+      gap: 9px;
+    }
+
+    label.caption,
+    .field-block label,
+    .link-tools label,
+    .file-tools label {
+      margin-bottom: 3px;
+      font-size: 10.5px;
+      letter-spacing: .035em;
+    }
+
+    input,
+    select,
+    textarea,
+    .file-name {
+      min-height: 36px;
+      padding: 7px 9px;
+      border-radius: 6px;
+      font-size: 14px;
+      line-height: 1.25;
+    }
+
+    textarea {
+      min-height: 74px;
+    }
+
+    button {
+      min-height: 36px;
+      padding: 7px 12px;
+      font-size: 14px;
+      border-radius: 6px;
+    }
+
+    .inner-details {
+      margin-bottom: 7px;
+    }
+
+    .inner-details summary {
+      min-height: 42px;
+      padding: 8px 10px;
+    }
+
+    .inner-details summary strong,
+    .work-item > summary strong,
+    .doc-item > summary strong {
+      font-size: 15px;
+      line-height: 1.15;
+    }
+
+    .inner-details .content {
+      padding: 10px;
+    }
+
+    .work-group > summary {
+      min-height: 44px;
+      background: #fff8f1;
+    }
+
+    .work-group > summary strong {
+      font-size: 16px;
+    }
+
+    .work-detail-grid {
+      grid-template-columns: minmax(130px, .8fr) minmax(160px, 1fr) minmax(130px, .8fr) minmax(170px, 1fr);
+      align-items: end;
+    }
+
+    .field-block {
+      min-width: 0;
+    }
+
+    .mini-note {
+      grid-column: 1 / -1;
+    }
+
+    .doc-grid {
+      grid-template-columns: minmax(140px, .8fr) minmax(170px, 1fr);
+    }
+
+    .doc-grid > .link-tools,
+    .doc-grid > .file-tools,
+    .doc-grid > input[name$="_conclusie"] {
+      grid-column: 1 / -1;
+    }
+
+    .link-tools,
+    .file-tools {
+      padding: 8px;
+      gap: 7px;
+      border-radius: 7px;
+      background: #fffdf8;
+    }
+
+    .link-tools {
+      border-left: 5px solid var(--green);
+    }
+
+    .file-tools {
+      border-left: 5px solid var(--orange);
+    }
+
+    .option-number {
+      width: 18px;
+      height: 18px;
+      font-size: 10px;
+    }
+
+    .summary-panel {
+      padding: 14px 16px;
+      margin-top: 10px;
+    }
+
+    .summary-panel h2 {
+      font-size: 22px;
+      margin-bottom: 2px;
+    }
+
+    .summary-panel p {
+      margin-bottom: 10px;
+    }
+
+    .summary-group {
+      margin-top: 12px;
+    }
+
+    .summary-group h3 {
+      margin-bottom: 6px;
+      font-size: 16px;
+    }
+
+    .control-table th,
+    .control-table td {
+      padding: 7px 8px;
+      font-size: 13px;
+      vertical-align: top;
+    }
+
+    .control-table th {
+      font-size: 10.5px;
+    }
+
+    .control-table small,
+    .table-link {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.25;
+      overflow-wrap: anywhere;
+    }
+
+    .status-chip {
+      min-height: 22px;
+      padding: 2px 7px;
+      font-size: 11.5px;
+    }
+
+    .topline {
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      padding-top: 10px;
+    }
+
+    .toolbar {
+      gap: 8px;
+    }
+
+    .saved {
+      font-size: 13px;
+    }
+
+    @media (max-width: 850px) {
+      header {
+        padding: 12px 14px 11px;
+      }
+
+      .header-meta {
+        grid-template-columns: 1fr;
+        gap: 5px;
+      }
+
+      main {
+        padding: 14px 10px 40px;
+      }
+
+      .hero,
+      .summary-panel,
+      .content {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      summary {
+        min-height: 46px;
+        padding: 9px 10px;
+      }
+
+      .summary-title strong {
+        font-size: 17px;
+      }
+
+      textarea {
+        min-height: 68px;
+      }
+
+      .work-detail-grid,
+      .doc-grid,
+      .grid,
+      .grid.three,
+      .need-fields {
+        grid-template-columns: 1fr;
+      }
+
+      .topline {
+        align-items: stretch;
+      }
+
+      .toolbar button {
+        flex: 1 1 auto;
+      }
+    }
   </style>
 </head>
 <body>
@@ -2074,13 +2627,13 @@
           <span class="letter">C</span>
           <span class="summary-title">
             <strong>Werkonderdelen</strong>
-            <span>Klantvraag, stukken of extra signaal</span>
+            <span>Eerste scope per werkonderdeel</span>
           </span>
           <span class="filled-ok section-ok" aria-label="ingevuld">✓</span>
           <span class="chevron">›</span>
         </summary>
         <div class="content">
-          <p class="hint">Vink alleen aan wat nu bekend is. Details komen later in projectopzet of opname.</p>
+          <p class="hint">Leg per werkonderdeel alleen vast wat nu bekend is: bron, locatie, hoeveelheid en vervolgactie.</p>
           <div id="workRows" class="compact-list"></div>
         </div>
       </details>
@@ -2090,13 +2643,13 @@
           <span class="letter">D</span>
           <span class="summary-title">
             <strong>Aangeleverde stukken</strong>
-            <span>Wat is er, wat missen we en wat zegt het?</span>
+            <span>Status, vindplaats en korte conclusie</span>
           </span>
           <span class="filled-ok section-ok" aria-label="ingevuld">✓</span>
           <span class="chevron">›</span>
         </summary>
         <div class="content">
-          <p class="hint">Per stuk alleen status en korte conclusie. Maak er geen dossieradministratie van.</p>
+          <p class="hint">Kies per stuk de status. Voeg een link of lokaal bestand toe als vindplaats; het formulier bewaart alleen de verwijzing.</p>
           <div id="docRows" class="compact-list"></div>
         </div>
       </details>
@@ -2154,15 +2707,15 @@
       </details>
 
       <section class="summary-panel">
-        <h2>Overzicht aanvraaganalyse</h2>
-        <p>Samenvatting van werkzaamheden, aangeleverde stukken en open acties.</p>
+        <h2>Controle-overzicht</h2>
+        <p>Compacte samenvatting van wat ingevuld is en wat nog actie vraagt.</p>
         <div class="summary-list" id="filledSummary">
           <div class="summary-empty">Er zijn nog geen werkzaamheden, stukken of acties ingevuld.</div>
         </div>
       </section>
 
       <div class="topline">
-        <span class="saved" id="savedStatus">Automatisch opgeslagen in deze browser</span>
+        <span class="saved" id="savedStatus">Automatisch opgeslagen</span>
         <div class="toolbar">
           <button type="button" onclick="saveForm()">Opslaan</button>
           <button type="button" class="primary" onclick="window.print()">Printen</button>
@@ -2292,39 +2845,37 @@
                     <div class="content">
                       <div class="work-detail-grid">
                         <div class="field-block">
-                          <label>Waar komt dit vandaan?</label>
+                          <label>Vraag / bron</label>
                           <select name="work_${key}_bron">
-                            <option value="">Kies...</option>
-                            <option>Klantvraag</option>
-                            <option>MJOP</option>
-                            <option>Rapport / advies</option>
-                            <option>Tekening</option>
-                            <option>Extra signaal</option>
+                            <option value="">Bron kiezen</option>
+                            <option>Klant vraagt dit</option>
+                            <option>Komt uit aangeleverd stuk</option>
+                            <option>Extra kans / advies</option>
+                            <option>Alleen controleren</option>
                           </select>
                         </div>
                         <div class="field-block">
-                          <label>Welke gevel of locatie?</label>
-                          <input name="work_${key}_locatie" placeholder="bijv. alle gevels, voorgevel, blok A">
+                          <label>Gevel / locatie</label>
+                          <input name="work_${key}_locatie" placeholder="bijv. voorgevel, blok A, alle gevels">
                         </div>
                         <div class="field-block">
-                          <label>Hoeveelheid bekend?</label>
-                          <input name="work_${key}_hoeveelheid" placeholder="bijv. 120 m² of onbekend">
+                          <label>Hoeveelheid</label>
+                          <input name="work_${key}_hoeveelheid" placeholder="bijv. 120 m2, 14 stuks of onbekend">
                         </div>
                         <div class="field-block">
-                          <label>Wat besluiten we nu?</label>
+                          <label>Vervolgactie</label>
                           <select name="work_${key}_vervolg">
-                            <option value="">Kies...</option>
-                            <option>Onderdeel van klantvraag</option>
-                            <option>Aanvullend voorstellen</option>
-                            <option>Eerst controleren op locatie</option>
-                            <option>Eerst advies / rapport nodig</option>
-                            <option>Eerst hoeveelheid bepalen</option>
+                            <option value="">Actie kiezen</option>
+                            <option>Meenemen naar projectopzet</option>
+                            <option>Opnemen op locatie</option>
+                            <option>Hoeveelheid bepalen</option>
+                            <option>Stuk / advies opvragen</option>
                             <option>Buiten scope houden</option>
                           </select>
                         </div>
                         <div class="field-block mini-note">
-                          <label>Korte toelichting</label>
-                          <input name="work_${key}_notitie" placeholder="alleen invullen als toelichting nodig is">
+                          <label>Korte notitie</label>
+                          <input name="work_${key}_notitie" placeholder="alleen als toelichting nodig is">
                         </div>
                       </div>
                     </div>
@@ -2336,7 +2887,6 @@
         `;
       }).join('');
     }
-
     function renderDocRows() {
       const holder = document.getElementById('docRows');
       holder.innerHTML = docItems.map((item) => {
@@ -2350,25 +2900,26 @@
             </summary>
             <div class="content doc-grid">
               <select name="doc_${key}_status">
-                <option value="">Status...</option>
-                <option>Aanwezig</option>
+                <option value="">Status kiezen</option>
+                <option>Aanwezig en bruikbaar</option>
+                <option>Aanwezig, nog beoordelen</option>
                 <option>Nog opvragen</option>
-                <option>N.v.t.</option>
+                <option>Niet nodig</option>
               </select>
-              <input name="doc_${key}_naam" placeholder="Naam of kenmerk">
+              <input name="doc_${key}_naam" placeholder="Naam of kenmerk van het stuk">
               <div class="link-tools">
-                <label><span class="option-number">1</span> Vindplaats via link of pad</label>
-                <input name="doc_${key}_link" placeholder="Plak hier een Drive-link, website-link of Windows-pad">
-                <button class="open-link" type="button" onclick="openDocLink('doc_${key}_link')">Open vindplaats</button>
+                <label><span class="option-number">1</span> Link of pad plakken</label>
+                <input name="doc_${key}_link" placeholder="Drive-link, website-link of Windows-pad">
+                <button class="open-link" type="button" onclick="openDocLink('doc_${key}_link')">Open link/pad</button>
               </div>
               <div class="file-tools">
                 <input class="file-picker" id="file_${key}" type="file" onchange="rememberPickedFile('file_${key}', 'file_name_${key}')">
-                <label><span class="option-number">2</span> Bestand aanwijzen op deze computer</label>
+                <label><span class="option-number">2</span> Bestand kiezen op deze computer</label>
                 <span class="file-name" id="file_name_${key}">Geen bestand gekozen</span>
                 <button type="button" onclick="document.getElementById('file_${key}').click()">Bestand kiezen</button>
                 <button type="button" onclick="openPickedFile('file_${key}')">Bekijk bestand</button>
               </div>
-              <input name="doc_${key}_conclusie" placeholder="Korte conclusie">
+              <input name="doc_${key}_conclusie" placeholder="Korte conclusie: wat betekent dit voor de aanvraag?">
             </div>
           </details>
         `;
@@ -2392,8 +2943,8 @@
             <option value="">Nodig voor...</option>
             <option ${values.voor === 'Projectopzet' ? 'selected' : ''}>Projectopzet</option>
             <option ${values.voor === 'Opname' ? 'selected' : ''}>Opname</option>
-            <option ${values.voor === 'Begroting' ? 'selected' : ''}>Begroting</option>
-            <option ${values.voor === 'Offerte' ? 'selected' : ''}>Offerte</option>
+            <option ${values.voor === 'Aangeleverde stukken' ? 'selected' : ''}>Aangeleverde stukken</option>
+            <option ${values.voor === 'Besluit opdrachtgever' ? 'selected' : ''}>Besluit opdrachtgever</option>
           </select>
         </div>
       `;
@@ -2474,6 +3025,8 @@
       let target = field.value.trim();
       if (/^[a-zA-Z]:\\/.test(target)) {
         target = `file:///${target.replace(/\\/g, '/')}`;
+      } else if (!/^https?:\/\//i.test(target) && !/^file:\/\//i.test(target)) {
+        target = `https://${target}`;
       }
       window.open(target, '_blank');
     }
@@ -2699,5 +3252,11 @@
   </script>
 </body>
 </html>
+
+
+
+
+
+
 
 
