@@ -2471,6 +2471,326 @@
         flex: 1 1 auto;
       }
     }
+    /* Systeemstijl v1: compacte Caspar de Haan basis */
+    body {
+      background-color: #f3f1eb;
+      background-image: linear-gradient(rgba(23,107,73,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(23,107,73,.035) 1px, transparent 1px);
+      background-size: 44px 44px;
+      font-family: "Aptos", "Segoe UI", Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      line-height: 1.38;
+    }
+
+    header {
+      padding: 14px 32px 13px;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 12px;
+      background: linear-gradient(100deg, #171915 0%, #17261c 100%);
+      border-bottom-width: 3px;
+    }
+
+    .brand {
+      grid-template-columns: 38px minmax(0, 1fr);
+      gap: 12px;
+      max-width: 1080px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    .brand small {
+      font-size: 10px;
+      letter-spacing: .12em;
+      margin-bottom: 1px;
+    }
+
+    h1 {
+      font-size: clamp(23px, 2.6vw, 31px);
+      line-height: 1.05;
+      margin-bottom: 2px;
+    }
+
+    header p { font-size: 12px; }
+
+    .header-meta {
+      max-width: 1080px;
+      width: 100%;
+      margin: 0 auto;
+      padding-top: 10px;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 8px;
+      border-top: 1px solid rgba(255,255,255,.15);
+    }
+
+    .meta-chip,
+    .meta-chip:first-child,
+    .meta-chip.meta-status {
+      min-height: 30px;
+      padding: 6px 9px;
+      border-radius: 7px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.045);
+      align-items: center;
+    }
+
+    .meta-chip.meta-status { background: rgba(23,107,73,.38); }
+    .meta-chip span { font-size: 10px; white-space: nowrap; }
+    .meta-chip strong { font-size: 12px; font-weight: 800; }
+
+    main {
+      max-width: 1080px;
+      padding: 18px 18px 54px;
+    }
+
+    .hero {
+      padding: 16px 18px;
+      margin-bottom: 12px;
+      border-top: 4px solid var(--green);
+      background: linear-gradient(105deg, #fffefa 0%, #fbf8f1 64%, #f5fbf7 100%);
+    }
+
+    .title {
+      grid-template-columns: 40px minmax(0, 1fr);
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .step {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      font-size: 18px;
+    }
+
+    .title h2 {
+      font-size: clamp(24px, 2.7vw, 32px);
+      line-height: 1.12;
+      margin-bottom: 3px;
+    }
+
+    .title p {
+      max-width: 760px;
+      font-size: 15px;
+      line-height: 1.42;
+    }
+
+    .progress-card {
+      padding-top: 13px;
+    }
+
+    .progress-card h3 {
+      font-size: 16px;
+      margin: 0;
+    }
+
+    .progress-count {
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: #edf4ef;
+      color: var(--green-dark);
+      font-size: 12px;
+    }
+
+    .progress-track { height: 8px; }
+    .progress-fill { background: linear-gradient(90deg, var(--orange), var(--green)); }
+    .progress-text { font-size: 13px; }
+
+    form { gap: 9px; }
+
+    details {
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(35,31,26,.06);
+    }
+
+    summary {
+      min-height: 50px;
+      padding: 9px 14px;
+      grid-template-columns: 30px minmax(0, 1fr) auto auto;
+      gap: 10px;
+    }
+
+    .letter {
+      width: 30px;
+      height: 30px;
+      border-radius: 7px;
+      font-size: 15px;
+    }
+
+    .summary-title strong {
+      font-size: 18px;
+      line-height: 1.12;
+    }
+
+    .summary-title span {
+      margin-top: 1px;
+      font-size: 13px;
+      line-height: 1.25;
+    }
+
+    .content {
+      padding: 12px 14px 14px;
+      background: #fffdf8;
+    }
+
+    .grid { gap: 9px 12px; }
+
+    label.caption,
+    .field-block label,
+    .link-tools label,
+    .file-tools label {
+      margin-bottom: 4px;
+      color: #5f5a52;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .01em;
+      text-transform: uppercase;
+    }
+
+    input,
+    select,
+    textarea,
+    .file-name {
+      min-height: 38px;
+      border-color: #d2c7b9;
+      border-radius: 6px;
+      background: #fffef9;
+      padding: 7px 9px;
+      font-size: 14px;
+    }
+
+    textarea { min-height: 78px; }
+
+    .hint {
+      margin-bottom: 9px;
+      font-size: 13px;
+      line-height: 1.42;
+    }
+
+    .inner-details summary {
+      min-height: 44px;
+      padding: 9px 12px;
+    }
+
+    .inner-details summary strong,
+    .work-item > summary strong,
+    .doc-item > summary strong {
+      font-size: 15px;
+    }
+
+    .work-group > summary {
+      min-height: 48px;
+      background: #fffaf1;
+    }
+
+    .work-group > summary strong { font-size: 17px; }
+    .inner-details .content { padding: 10px 12px 12px; }
+
+    .work-detail-grid {
+      grid-template-columns: minmax(135px,.9fr) minmax(160px,1fr) minmax(110px,.65fr) minmax(155px,.9fr);
+      gap: 8px;
+      align-items: end;
+    }
+
+    .doc-grid {
+      grid-template-columns: minmax(145px,.8fr) minmax(180px,1fr);
+      gap: 8px;
+    }
+
+    .doc-grid > .link-tools,
+    .doc-grid > .file-tools,
+    .doc-grid > input[name$="_conclusie"] {
+      grid-column: 1 / -1;
+    }
+
+    .link-tools,
+    .file-tools {
+      padding: 9px;
+      border-radius: 7px;
+      background: #fffaf1;
+    }
+
+    .summary-panel {
+      padding: 16px 18px;
+      margin-top: 10px;
+      border-top: 4px solid var(--green);
+      background: #fffefa;
+    }
+
+    .summary-panel h2 {
+      font-size: 21px;
+      margin-bottom: 3px;
+    }
+
+    .summary-panel p {
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+
+    .summary-group { margin-top: 14px; }
+    .summary-group h3 { font-size: 16px; margin-bottom: 7px; }
+
+    .overview-row {
+      padding: 10px 118px 10px 10px;
+      gap: 10px;
+    }
+
+    .overview-title { font-size: 16px; margin-bottom: 7px; }
+    .qa-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+    .qa { padding-top: 5px; }
+    .qa b { font-size: 11px; }
+    .qa span { font-size: 13px; }
+    .status-chip { top: 10px; right: 9px; font-size: 11px; padding: 4px 9px; }
+
+    .topline {
+      position: sticky;
+      bottom: 0;
+      z-index: 5;
+      margin-top: 10px;
+      padding: 10px 0 0;
+      background: linear-gradient(to top, #f3f1eb 72%, rgba(243,241,235,0));
+    }
+
+    .toolbar { justify-content: flex-end; }
+
+    button,
+    .button-link {
+      min-height: 36px;
+      border-radius: 6px;
+      padding: 7px 12px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 850px) {
+      header { padding: 13px 18px 12px; }
+      .header-meta { grid-template-columns: 1fr 1fr; }
+      .meta-chip.meta-status { grid-column: 1 / -1; }
+      main { padding: 14px 12px 44px; }
+      .hero { padding: 14px; }
+      .title h2 { font-size: 24px; }
+      .title p { font-size: 14px; }
+      summary { min-height: 48px; padding: 9px 12px; }
+      .content { padding: 11px 12px 13px; }
+      textarea { min-height: 68px; }
+      .qa-grid,
+      .grid,
+      .grid.three,
+      .work-detail-grid,
+      .doc-grid,
+      .need-fields {
+        grid-template-columns: 1fr;
+      }
+      .overview-row { padding-right: 10px; }
+      .status-chip { position: static; display: inline-flex; width: fit-content; margin-top: 6px; }
+      .topline { position: static; }
+      .toolbar { width: 100%; }
+      .toolbar button { flex: 1 1 auto; }
+    }
   </style>
 </head>
 <body>
