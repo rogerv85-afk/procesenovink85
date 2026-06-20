@@ -580,6 +580,8 @@
         <span class="saved" id="saveState">Nog niet opgeslagen</span>
         <a class="button-link" href="index.html">Terug naar aanvraag</a>
         <button type="button" onclick="importAanvraag(true)">Aanvraag inlezen</button>
+        <button type="button" onclick="document.getElementById('aanvraagFile').click()">Projectbestand inlezen</button>
+        <input id="aanvraagFile" type="file" accept="application/json,.json" hidden onchange="importAanvraagBestand(event)">
         <button type="button" onclick="exportProject()">Exporteren</button>
         <button class="primary" type="button" onclick="window.print()">Printen</button>
       </div>
@@ -587,7 +589,7 @@
   </main>
 
   <script>
-    const aanvraagKey = 'cdh-aanvraaganalyse-v2';
+    const aanvraagKeys = ['cdh-aanvraaganalyse-demo', 'cdh-aanvraaganalyse-v2', 'cdh-aanvraaganalyse-v1'];
     const projectKey = 'cdh-projectopzet-demo';
     let workIndex = 0;
     let facadeIndex = 0;
@@ -736,16 +738,16 @@
       }
     }
 
-    function importAanvraag(showAlert = false) {
-      const raw = localStorage.getItem(aanvraagKey);
-      if (!raw) {
-        if (showAlert) alert('Geen aanvraaganalyse gevonden in deze browser. Vul eerst pagina 1 in of open de demo.');
-        return false;
+    function getAanvraagRaw() {
+      for (const key of aanvraagKeys) {
+        const raw = localStorage.getItem(key);
+        if (raw) return { raw, key };
       }
+      return null;
+    }
 
-      let data;
-      try { data = JSON.parse(raw); } catch { return false; }
-
+    function importAanvraagData(data, label = 'aanvraaganalyse') {
+      if (!data || typeof data !== 'object') return false;
       ['project', 'werkordernummer', 'opdrachtgever', 'projectleider', 'adres', 'status'].forEach((key) => setValue(key, data[key]));
 
       const existing = Array.from(document.querySelectorAll('.work-row input[name$="_naam"]')).map((field) => field.value);
@@ -757,26 +759,39 @@
         const besluitAanvraag = data[`${base}_vervolg`] || '';
         const notitie = data[`${base}_notitie`] || '';
         if (!bron && !locatie && !hoeveelheid && !besluitAanvraag && !notitie) return;
-
         const naam = nameFromBase(base);
         if (existing.includes(naam)) return;
-        addWork({
-          naam,
-          bron,
-          locatie,
-          hoeveelheid,
-          eenheid: guessUnit(hoeveelheid),
-          besluit: mapAanvraagBesluit(besluitAanvraag),
-          oa: besluitAanvraag.includes('onderaannemer') ? 'Ja, uitvragen' : '',
-          notitie
-        });
+        addWork({ naam, bron, locatie, hoeveelheid, eenheid: guessUnit(hoeveelheid), besluit: mapAanvraagBesluit(besluitAanvraag), oa: besluitAanvraag.includes('onderaannemer') ? 'Ja, uitvragen' : '', notitie });
       });
-
-      saveState.textContent = 'Aanvraaganalyse ingelezen';
+      saveState.textContent = `Aanvraaganalyse ingelezen (${label})`;
       save();
       return true;
     }
 
+    function importAanvraag(showAlert = false) {
+      const source = getAanvraagRaw();
+      if (!source) {
+        if (showAlert) alert('Geen aanvraaganalyse gevonden. Gebruik Projectbestand inlezen of open demo pagina 1, vul iets in en klik Opslaan.');
+        return false;
+      }
+      try { return importAanvraagData(JSON.parse(source.raw), source.key); } catch { return false; }
+    }
+
+    function importAanvraagBestand(event) {
+      const file = event.target.files && event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          const ok = importAanvraagData(JSON.parse(reader.result), file.name);
+          if (!ok) alert('Dit bestand kon niet als aanvraaganalyse worden gelezen.');
+        } catch {
+          alert('Dit is geen geldig projectbestand.');
+        }
+        event.target.value = '';
+      };
+      reader.readAsText(file);
+    }
     function nameFromBase(base) {
       const parts = base.replace(/^work_/, '').split('_');
       for (let start = 0; start < parts.length; start += 1) {
@@ -902,9 +917,9 @@
     localStorage.setItem(projectKey, JSON.stringify(demoProjectData));
     addFacade({ code: 'A', naam: 'Voorgevel' });
     addFacade({ code: 'B', naam: 'Achtergevel' });
-    importAanvraag(false);
+    const hasProject = load();
+    if (!hasProject) importAanvraag(false);
     if (!document.querySelector('.work-row')) addWork();
-    load();
     refresh();
     projectForm.addEventListener('input', save);
     projectForm.addEventListener('change', save);
