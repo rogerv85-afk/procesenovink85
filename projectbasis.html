@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projectbasis | Caspar de Haan</title>
+  <style>
+    :root{--bg:#f4f2ed;--paper:#fffefa;--soft:#faf8f3;--ink:#20211e;--muted:#625d55;--line:#d8d0c4;--line-strong:#c3b8aa;--green:#15734d;--green-dark:#0c5037;--orange:#c75b22;--focus:0 0 0 3px rgba(21,115,77,.18);--shadow:0 2px 10px rgba(35,31,26,.07)}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;font-size:15px;line-height:1.45}header{background:#181916;color:#fff;padding:18px 28px 16px;border-bottom:3px solid var(--orange)}.brand{display:grid;grid-template-columns:46px minmax(0,1fr);gap:14px;align-items:center;max-width:1080px;margin:0 auto}.mark{width:46px;height:46px;border-radius:8px;background:var(--orange);display:grid;place-items:center;font-weight:900}.brand small{display:block;color:#e9b49c;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.brand h1{margin:0 0 3px;font-size:clamp(24px,3vw,34px);line-height:1.05}.brand p{margin:0;color:#d7d1c8}.meta{max-width:1080px;margin:14px auto 0;padding-top:12px;border-top:1px solid rgba(255,255,255,.16);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}.meta div{border:1px solid rgba(255,255,255,.14);border-radius:6px;padding:7px 10px;background:rgba(255,255,255,.045)}.meta span{color:#efb79b;font-size:11px;font-weight:800}.meta strong{display:block;color:#fff;font-size:13px}main{max-width:1080px;margin:0 auto;padding:22px 18px 54px}.hero,details,.summary{background:var(--paper);border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow)}.hero{border-top:4px solid var(--green);padding:18px 20px;margin-bottom:12px}.hero-title{display:grid;grid-template-columns:46px minmax(0,1fr);gap:14px}.step,.letter{display:grid;place-items:center;border-radius:8px;background:var(--green);color:#fff;font-weight:850}.step{width:46px;height:46px;font-size:20px}.hero h2{margin:0 0 4px;font-size:clamp(26px,3vw,34px);color:var(--green-dark)}.hero p{margin:0;color:var(--muted)}form{display:grid;gap:10px}summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:12px;align-items:center;min-height:58px;padding:12px 16px}summary::-webkit-details-marker{display:none}.letter{width:32px;height:32px}.summary-title strong{display:block;font-size:20px}.summary-title span{display:block;color:var(--muted);font-size:15px}.content{border-top:1px solid var(--line);background:var(--soft);padding:14px 20px 18px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.full{grid-column:1/-1}label{display:block;margin:0 0 5px;color:#5c574f;font-size:12px;line-height:1.2;font-weight:800;letter-spacing:.02em;text-transform:uppercase}input,select,textarea{width:100%;min-height:42px;border:1px solid var(--line-strong);border-radius:6px;background:#fff;color:var(--ink);padding:9px 11px;font:inherit;font-size:15px}textarea{min-height:92px;resize:vertical}input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{outline:0;border-color:var(--green);box-shadow:var(--focus)}.toolbar{display:flex;justify-content:space-between;gap:12px;align-items:center;padding-top:10px;border-top:1px solid var(--line)}.buttons{display:flex;gap:10px;flex-wrap:wrap}button,a.button{min-height:40px;border:1px solid var(--line-strong);border-radius:6px;background:#fff;color:var(--ink);padding:9px 14px;font-weight:750;text-decoration:none;cursor:pointer}button.primary{background:var(--green);border-color:var(--green);color:#fff}.saved{color:var(--green-dark);font-weight:750}.summary{border-top:4px solid var(--green);padding:18px 20px}.summary h2{margin:0 0 5px;color:var(--green-dark)}.summary p{margin:0 0 14px;color:var(--muted)}.summary-list{display:grid;gap:8px}.row{display:grid;grid-template-columns:180px minmax(0,1fr);gap:10px;border-bottom:1px solid #ece6de;padding:8px 0}.row b{color:#554f47}@media(max-width:850px){header{padding:16px 18px 14px}.meta,.grid,.grid.three{grid-template-columns:1fr}.content,.hero,.summary{padding-left:14px;padding-right:14px}main{padding:18px 12px 46px}.toolbar{flex-direction:column;align-items:stretch}.buttons,button,a.button{width:100%}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="brand"><div class="mark">CdH</div><div><small>Caspar de Haan - Renovatie & Onderhoud</small><h1>Projectbasis</h1><p>Formulier 01 - vaste basisgegevens van het project</p></div></div>
+  <div class="meta"><div><span>WO</span><strong id="metaWo">-</strong></div><div><span>Project</span><strong id="metaProject">-</strong></div><div><span>Opdrachtgever</span><strong id="metaClient">-</strong></div><div><span>Status</span><strong id="metaStatus">Concept</strong></div></div>
+</header>
+<main>
+  <section class="hero"><div class="hero-title"><span class="step">01</span><div><h2>Projectbasis vastleggen</h2><p>Begin met de vaste projectinformatie. Dit blad is de basis voor de volgende losse formulieren.</p></div></div></section>
+  <form id="projectForm">
+    <details open><summary><span class="letter">A</span><span class="summary-title"><strong>Projectidentificatie</strong><span>Project, WO, adres en opdrachtgever</span></span><span>›</span></summary><div class="content"><div class="grid three">
+      <div><label for="werkordernummer">Werkordernummer</label><input id="werkordernummer" name="werkordernummer" placeholder="bijv. WO 2601661"></div>
+      <div><label for="projectnummer">Projectnummer</label><input id="projectnummer" name="projectnummer" placeholder="intern projectnummer"></div>
+      <div><label for="status">Status</label><select id="status" name="status"><option>Concept</option><option>In behandeling</option><option>Compleet voor vraagstelling</option><option>On hold</option></select></div>
+      <div><label for="project">Project / complex</label><input id="project" name="project" placeholder="naam complex"></div>
+      <div><label for="opdrachtgever">Opdrachtgever / VvE</label><input id="opdrachtgever" name="opdrachtgever" placeholder="bijv. VvE / corporatie"></div>
+      <div><label for="beheerder">Beheerder / contactpersoon</label><input id="beheerder" name="beheerder" placeholder="naam en organisatie"></div>
+      <div class="full"><label for="adres">Adres / locatie</label><input id="adres" name="adres" placeholder="straat, plaats, bouwdeel"></div>
+    </div></div></details>
+
+    <details open><summary><span class="letter">B</span><span class="summary-title"><strong>Projectteam</strong><span>Wie is betrokken vanuit CdH en opdrachtgever</span></span><span>›</span></summary><div class="content"><div class="grid three">
+      <div><label for="projectleider">Projectleider</label><input id="projectleider" name="projectleider" placeholder="naam projectleider"></div>
+      <div><label for="werkvoorbereider">Werkvoorbereider</label><input id="werkvoorbereider" name="werkvoorbereider" placeholder="naam werkvoorbereider"></div>
+      <div><label for="uitvoerder">Uitvoerder</label><input id="uitvoerder" name="uitvoerder" placeholder="naam uitvoerder"></div>
+      <div><label for="calculator">Calculator</label><input id="calculator" name="calculator" placeholder="naam calculator"></div>
+      <div><label for="contactOpdrachtgever">Contact opdrachtgever</label><input id="contactOpdrachtgever" name="contactOpdrachtgever" placeholder="naam / mail / telefoon"></div>
+      <div><label for="bewonerscontact">Bewonerscontact</label><input id="bewonerscontact" name="bewonerscontact" placeholder="wie communiceert met bewoners?"></div>
+    </div></div></details>
+
+    <details><summary><span class="letter">C</span><span class="summary-title"><strong>Projectkenmerken</strong><span>Gebouw, type opdrachtgever, planning en randvoorwaarden</span></span><span>›</span></summary><div class="content"><div class="grid three">
+      <div><label for="typeProject">Type project</label><select id="typeProject" name="typeProject"><option value="">Kies...</option><option>VvE</option><option>Woningcorporatie</option><option>Zorgvastgoed</option><option>Particulier / gemengd</option><option>Overig</option></select></div>
+      <div><label for="gebouwtype">Gebouwtype</label><input id="gebouwtype" name="gebouwtype" placeholder="appartementen, zorgkamers, galerijflat"></div>
+      <div><label for="bewoond">Bewoond tijdens werk?</label><select id="bewoond" name="bewoond"><option value="">Kies...</option><option>Ja</option><option>Nee</option><option>Deels</option><option>Nog onbekend</option></select></div>
+      <div><label for="aantalWoningen">Aantal woningen / kamers</label><input id="aantalWoningen" name="aantalWoningen" placeholder="bijv. 58 woningen"></div>
+      <div><label for="startGewenst">Gewenste start</label><input id="startGewenst" name="startGewenst" type="date"></div>
+      <div><label for="opleveringGewenst">Gewenste oplevering</label><input id="opleveringGewenst" name="opleveringGewenst" type="date"></div>
+      <div class="full"><label for="randvoorwaarden">Belangrijke randvoorwaarden</label><textarea id="randvoorwaarden" name="randvoorwaarden" placeholder="bijv. bewoners thuis, steiger nodig, ALV-besluit, flora/fauna, planning opdrachtgever"></textarea></div>
+    </div></div></details>
+
+    <details><summary><span class="letter">D</span><span class="summary-title"><strong>Vaste uitgangspunten</strong><span>Wat mag later niet ongemerkt wijzigen</span></span><span>›</span></summary><div class="content"><div class="grid">
+      <div><label for="scopeBasis">Scope op hoofdlijn</label><textarea id="scopeBasis" name="scopeBasis" placeholder="Hoofdscope zoals nu bekend"></textarea></div>
+      <div><label for="buitenScope">Buiten scope / nog niet meenemen</label><textarea id="buitenScope" name="buitenScope" placeholder="Wat hoort er nu bewust niet bij?"></textarea></div>
+      <div class="full"><label for="vastleggen">Vastleggen voor volgende formulieren</label><textarea id="vastleggen" name="vastleggen" placeholder="Belangrijke afspraken, uitgangspunten of aandachtspunten"></textarea></div>
+    </div></div></details>
+
+    <section class="summary"><h2>Overzicht projectbasis</h2><p>Automatische samenvatting van ingevulde hoofdgegevens.</p><div id="summaryList" class="summary-list"></div></section>
+    <div class="toolbar"><span class="saved" id="savedStatus">Automatisch opgeslagen in deze browser</span><div class="buttons"><a class="button" href="apps.html">Terug naar apps</a><button type="button" onclick="clearForm()">Leegmaken</button><button type="button" class="primary" onclick="window.print()">Printen</button></div></div>
+  </form>
+</main>
+<script>
+const storageKey='cdh-projectbasis-v1';
+const form=document.getElementById('projectForm');
+const fields=['werkordernummer','projectnummer','status','project','opdrachtgever','beheerder','adres','projectleider','werkvoorbereider','uitvoerder','calculator','contactOpdrachtgever','bewonerscontact','typeProject','gebouwtype','bewoond','aantalWoningen','startGewenst','opleveringGewenst','randvoorwaarden','scopeBasis','buitenScope','vastleggen'];
+function val(id){const el=document.getElementById(id);return el&&el.value.trim()?el.value.trim():'-'}
+function collect(){const data={};fields.forEach(id=>data[id]=document.getElementById(id).value);return data}
+function apply(data){fields.forEach(id=>{if(data[id]!==undefined)document.getElementById(id).value=data[id]})}
+function save(){localStorage.setItem(storageKey,JSON.stringify(collect()));document.getElementById('savedStatus').textContent='Opgeslagen in deze browser';update()}
+function load(){try{const raw=localStorage.getItem(storageKey);if(raw){apply(JSON.parse(raw));document.getElementById('savedStatus').textContent='Bestaande gegevens geladen'}}catch{document.getElementById('savedStatus').textContent='Kon opgeslagen gegevens niet laden'}update()}
+function clearForm(){if(!confirm('Projectbasis leegmaken?'))return;localStorage.removeItem(storageKey);form.reset();document.getElementById('savedStatus').textContent='Formulier leeggemaakt';update()}
+function update(){document.getElementById('metaWo').textContent=val('werkordernummer');document.getElementById('metaProject').textContent=val('project');document.getElementById('metaClient').textContent=val('opdrachtgever');document.getElementById('metaStatus').textContent=val('status')==='-'?'Concept':val('status');const rows=[['Project',val('project')],['WO',val('werkordernummer')],['Opdrachtgever',val('opdrachtgever')],['Beheerder',val('beheerder')],['Adres / locatie',val('adres')],['Projectleider',val('projectleider')],['Type project',val('typeProject')],['Bewoond tijdens werk',val('bewoond')],['Aantal woningen / kamers',val('aantalWoningen')],['Randvoorwaarden',val('randvoorwaarden')],['Scope op hoofdlijn',val('scopeBasis')],['Vastleggen',val('vastleggen')]].filter(r=>r[1]&&r[1]!=='-');document.getElementById('summaryList').innerHTML=rows.length?rows.map(r=>`<div class="row"><b>${r[0]}</b><span>${r[1]}</span></div>`).join(''):'<p>Nog geen gegevens ingevuld.</p>'}
+form.addEventListener('input',save);form.addEventListener('change',save);load();
+</script>
+</body>
+</html>
