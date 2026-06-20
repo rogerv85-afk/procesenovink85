@@ -587,7 +587,7 @@
   </main>
 
   <script>
-    const aanvraagKey = 'cdh-aanvraaganalyse-v2';
+    const aanvraagKeys = ['cdh-aanvraaganalyse-v2', 'cdh-aanvraaganalyse-demo', 'cdh-aanvraaganalyse-v1'];
     const projectKey = 'cdh-projectopzet-v1';
     let workIndex = 0;
     let facadeIndex = 0;
@@ -736,12 +736,21 @@
       }
     }
 
+    function getAanvraagRaw() {
+      for (const key of aanvraagKeys) {
+        const raw = localStorage.getItem(key);
+        if (raw) return { raw, key };
+      }
+      return null;
+    }
+
     function importAanvraag(showAlert = false) {
-      const raw = localStorage.getItem(aanvraagKey);
-      if (!raw) {
-        if (showAlert) alert('Geen aanvraaganalyse gevonden in deze browser. Vul eerst pagina 1 in of open de demo.');
+      const source = getAanvraagRaw();
+      if (!source) {
+        if (showAlert) alert('Geen aanvraaganalyse gevonden. Open pagina 1 via dezelfde GitHub-link, vul iets in en klik Opslaan. Daarna werkt Aanvraag inlezen.');
         return false;
       }
+      const raw = source.raw;
 
       let data;
       try { data = JSON.parse(raw); } catch { return false; }
@@ -772,7 +781,7 @@
         });
       });
 
-      saveState.textContent = 'Aanvraaganalyse ingelezen';
+      saveState.textContent = `Aanvraaganalyse ingelezen (${source.key})`;
       save();
       return true;
     }
@@ -869,12 +878,13 @@
 
     addFacade({ code: 'A', naam: 'Voorgevel' });
     addFacade({ code: 'B', naam: 'Achtergevel' });
-    importAanvraag(false);
+    const hasProject = load();
+    if (!hasProject) importAanvraag(false);
     if (!document.querySelector('.work-row')) addWork();
-    load();
     refresh();
     projectForm.addEventListener('input', save);
     projectForm.addEventListener('change', save);
   </script>
 </body>
 </html>
+
