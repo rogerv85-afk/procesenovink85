@@ -583,6 +583,7 @@
         <button type="button" onclick="document.getElementById('aanvraagFile').click()">Projectbestand inlezen</button>
         <input id="aanvraagFile" type="file" accept="application/json,.json" hidden onchange="importAanvraagBestand(event)">
         <button type="button" onclick="exportProject()">Exporteren</button>
+        <a class="button-link primary" href="03-opname-locatie-demo.html">Naar opname-demo</a>
         <button class="primary" type="button" onclick="window.print()">Printen</button>
       </div>
     </form>
@@ -689,11 +690,11 @@
           <div class="full"><label>Werkzaamheid</label><input name="work_${workIndex}_naam" value="${escapeHtml(data.naam)}" placeholder="bijv. Gevelreiniging"></div>
           <div><label>Gevel / locatie</label><input name="work_${workIndex}_locatie" value="${escapeHtml(data.locatie)}" placeholder="A, B of alle gevels"></div>
           <div><label>Hoeveelheid</label><input name="work_${workIndex}_hoeveelheid" value="${escapeHtml(data.hoeveelheid)}" placeholder="m2, stuks of onbekend"></div>
-          <div><label>Eenheid</label><select name="work_${workIndex}_eenheid"><option value="">Kies...</option>${option('m2', data.eenheid)}${option('m1', data.eenheid)}${option('st', data.eenheid)}${option('post', data.eenheid)}</select></div>
-          <div><label>Herkomst</label><input name="work_${workIndex}_bron" value="${escapeHtml(data.bron)}" placeholder="Klantvraag, MJOP, rapport"></div>
-          <div><label>Scopebesluit</label><select name="work_${workIndex}_besluit"><option value="">Kies...</option>${option('In scope', data.besluit)}${option('Eerst opnemen / meten', data.besluit)}${option('Uitvragen onderaannemer', data.besluit)}${option('Meenemen als optie', data.besluit)}${option('Buiten scope', data.besluit)}</select></div>
-          <div><label>Onderaannemer?</label><select name="work_${workIndex}_oa"><option value="">Kies...</option>${option('Nee', data.oa)}${option('Ja, uitvragen', data.oa)}${option('Nog bepalen', data.oa)}</select></div>
-          <div class="full"><label>Notitie / uitgangspunt</label><input name="work_${workIndex}_notitie" value="${escapeHtml(data.notitie)}" placeholder="korte toelichting, norm of onzekerheid"></div>
+          <div><label>Eenheid</label><select name="work_${workIndex}_eenheid"><option value="">Kies...</option>${option('m2', data.eenheid)}${option('m1', data.eenheid)}${option('st', data.eenheid)}${option('post', data.eenheid)}${option('uur', data.eenheid)}${option('m3', data.eenheid)}</select></div>
+          <div><label>Bron gegevens</label><select name="work_${workIndex}_bron"><option value="">Kies...</option>${option('Klantvraag', data.bron)}${option('MJOP', data.bron)}${option('Tekening', data.bron)}${option('Foto', data.bron)}${option('Adviesrapport', data.bron)}${option('Opname', data.bron)}${option('Inschatting', data.bron)}</select></div>
+          <div><label>Betrouwbaarheid</label><select name="work_${workIndex}_betrouwbaarheid"><option value="">Kies...</option>${option('Gemeten', data.betrouwbaarheid)}${option('Uit stukken', data.betrouwbaarheid)}${option('Geschat', data.betrouwbaarheid)}${option('Aanname', data.betrouwbaarheid)}</select></div><div><label>Controle nodig bij opname</label><select name="work_${workIndex}_controle"><option value="">Kies...</option>${option('Ja', data.controle)}${option('Nee', data.controle)}</select></div><div><label>Scopebesluit</label><select name="work_${workIndex}_besluit"><option value="">Kies...</option>${option('In scope', data.besluit)}${option('Eerst opnemen / meten', data.besluit)}${option('Uitvragen onderaannemer', data.besluit)}${option('Meenemen als optie', data.besluit)}${option('Buiten scope', data.besluit)}</select></div>
+          <div><label>Onderaannemer?</label><select name="work_${workIndex}_oa"><option value="">Kies...</option>${option('Nee', data.oa)}${option('Ja, uitvragen', data.oa)}${option('Nog bepalen', data.oa)}</select></div><div><label>Type post</label><select name="work_${workIndex}_posttype"><option value="">Kies...</option>${option('Vast', data.posttype)}${option('Stelpost', data.posttype)}${option('Verrekenbaar', data.posttype)}${option('Optie', data.posttype)}${option('Uitgesloten', data.posttype)}</select></div>
+          <div class="full"><label>Risico / aanname</label><input name="work_${workIndex}_notitie" value="${escapeHtml(data.notitie)}" placeholder="korte aanname of risico; niet gebruiken als calculatieregel"></div>
         </div>
       `;
       workRows.appendChild(row);
@@ -856,7 +857,7 @@
     function updateOverview() {
       const rows = Array.from(document.querySelectorAll('.work-row')).map((row) => {
         const get = (part) => row.querySelector(`[name*="_${part}"]`)?.value.trim() || '';
-        return { naam: get('naam'), locatie: get('locatie'), hoeveelheid: get('hoeveelheid'), eenheid: get('eenheid'), besluit: get('besluit'), oa: get('oa') };
+        return { naam: get('naam'), locatie: get('locatie'), hoeveelheid: get('hoeveelheid'), eenheid: get('eenheid'), bron: get('bron'), betrouwbaarheid: get('betrouwbaarheid'), controle: get('controle'), besluit: get('besluit'), oa: get('oa') };
       }).filter((row) => row.naam || row.locatie || row.hoeveelheid || row.besluit || row.oa);
 
       if (!rows.length) {
@@ -866,9 +867,9 @@
 
       overview.innerHTML = `
         <table class="summary-table">
-          <thead><tr><th>Werkzaamheid</th><th>Gevel / locatie</th><th>Hoeveelheid</th><th>Scopebesluit</th><th>Onderaannemer</th></tr></thead>
+          <thead><tr><th>Werkzaamheid</th><th>Gevel / locatie</th><th>Hoeveelheid</th><th>Bron</th><th>Betrouwbaarheid</th><th>Controle</th><th>Scopebesluit</th></tr></thead>
           <tbody>
-            ${rows.map((row) => `<tr><td><strong>${escapeHtml(row.naam || '-')}</strong></td><td>${escapeHtml(row.locatie || '-')}</td><td>${escapeHtml(row.hoeveelheid || '-')}${row.eenheid ? ' ' + escapeHtml(row.eenheid) : ''}</td><td>${badge(row.besluit)}</td><td>${badge(row.oa)}</td></tr>`).join('')}
+            ${rows.map((row) => `<tr><td><strong>${escapeHtml(row.naam || '-')}</strong></td><td>${escapeHtml(row.locatie || '-')}</td><td>${escapeHtml(row.hoeveelheid || '-')}${row.eenheid ? ' ' + escapeHtml(row.eenheid) : ''}</td><td>${escapeHtml(row.bron || '-')}</td><td>${escapeHtml(row.betrouwbaarheid || '-')}</td><td>${escapeHtml(row.controle || '-')}</td><td>${badge(row.besluit)}</td></tr>`).join('')}
           </tbody>
         </table>
       `;
@@ -903,7 +904,10 @@
       work_1_locatie: 'A en B',
       work_1_hoeveelheid: '420',
       work_1_eenheid: 'm2',
-      work_1_bron: 'Klant vraagt dit',
+      work_1_bron: 'Klantvraag',
+      work_1_betrouwbaarheid: 'Uit stukken',
+      work_1_controle: 'Ja',
+      work_1_posttype: 'Vast',
       work_1_besluit: 'In scope',
       work_1_oa: 'Ja, uitvragen',
       work_1_notitie: 'Vervuiling en algvorming opnemen.',
@@ -926,4 +930,8 @@
   </script>
 </body>
 </html>
+
+
+
+
 
