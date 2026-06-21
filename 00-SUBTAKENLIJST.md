@@ -39,15 +39,15 @@ Regel: één taak is klaar als er een zichtbaar resultaat is: bestand bijgewerkt
 |---:|---|---|---|---|
 | 3.1 | Blok A Basisgegevens beoordelen | Projectleider / controller | Houden / schrappen / aanpassen | Gereed |
 | 3.2 | Blok B Vraag van klant beoordelen | Projectleider / gebruiker | Houden / schrappen / aanpassen | Gereed |
-| 3.3 | Blok C Werkonderdelen beoordelen | Werkvoorbereider / calculator | Houden / schrappen / aanpassen | Open |
-| 3.4 | Blok D Aangeleverde stukken beoordelen | Werkvoorbereider / controller | Houden / schrappen / aanpassen | Open |
-| 3.5 | Blok E Eerste conclusie beoordelen | Projectleider / directie | Houden / schrappen / aanpassen | Open |
-| 3.6 | Blok F Aanvullend nodig beoordelen | Projectmanager / gebruiker | Houden / schrappen / aanpassen | Open |
-| 3.7 | Per veld bepalen: verplicht of optioneel | Controller | Veldentabel | Open |
-| 3.8 | Per veld bepalen: gaat mee naar pagina 2 ja/nee | Controller | Overdrachtskolom | Open |
-| 3.9 | Dubbele invoer in pagina 1 markeren | Controller | Dubbellijst | Open |
-| 3.10 | Schraplijst pagina 1 maken | Directie / CEO | Schraplijst | Open |
-| 3.11 | Go/no-go pagina 1 papierplan | Gebruiker / controller | Besluit | Open |
+| 3.3 | Blok C Werkonderdelen beoordelen | Werkvoorbereider / calculator | Houden / schrappen / aanpassen | Gereed |
+| 3.4 | Blok D Aangeleverde stukken beoordelen | Werkvoorbereider / controller | Houden / schrappen / aanpassen | Gereed |
+| 3.5 | Blok E Eerste conclusie beoordelen | Projectleider / directie | Houden / schrappen / aanpassen | Gereed |
+| 3.6 | Blok F Aanvullend nodig beoordelen | Projectmanager / gebruiker | Houden / schrappen / aanpassen | Gereed |
+| 3.7 | Per veld bepalen: verplicht of optioneel | Controller | Veldentabel | Gereed |
+| 3.8 | Per veld bepalen: gaat mee naar pagina 2 ja/nee | Controller | Overdrachtskolom | Gereed |
+| 3.9 | Dubbele invoer in pagina 1 markeren | Controller | Dubbellijst | Gereed via overdracht |
+| 3.10 | Schraplijst pagina 1 maken | Directie / CEO | Schraplijst | Gereed |
+| 3.11 | Go/no-go pagina 1 papierplan | Gebruiker / controller | Besluit | Go/no-go pakket gereed, akkoord nog invullen |
 
 ## Fase 4 - Pagina 2 scope voorbereiden
 
@@ -106,13 +106,92 @@ Regel: één taak is klaar als er een zichtbaar resultaat is: bestand bijgewerkt
 
 ## Eerstvolgende microtaken
 
-1. Temp-regel definitief toevoegen aan verzamelregister.
-2. Adviezen omzetten naar compacte adviestabel.
-3. Dubbele bestandenlijst maken.
-4. Pagina 1 blok C beoordelen.
-5. Pagina 1 blok D beoordelen.
+1. Praktijkakkoord pagina 1 invullen.
+2. Eventuele kleine aanpassingen verwerken.
+3. Besluit: pagina 1 naar bouwvoorbereiding ja/nee.
+4. Daarna pagina 2 scopevelden toetsen.
+5. Daarna pagina 3 opnamevelden toetsen.
 
 ## Stopregel
 
 Niet naar bouwen. Eerst microtaken afvinken.
+## Update 21-06-2026 - pagina 2 papierwerk
 
+### Afgerond
+
+- [x] Pagina 2 scopevelden getoetst op papier.
+- [x] Vastgelegd dat pagina 2 een scope-register is en geen begroting.
+- [x] Keuzewaarden voor betrouwbaarheid, controle nodig, OA-uitvraag, type post en scope-status vastgelegd.
+- [x] Dubbele invoer vanuit pagina 1 geblokkeerd in de regels.
+- [x] Overdracht pagina 2 naar pagina 3 uitgewerkt.
+
+### Open
+
+- [ ] Panelcontrole pagina 2 door werkvoorbereider, calculator, projectleider en directie.
+- [ ] Praktijkakkoord pagina 1 nog definitief invullen.
+- [ ] Pagina 3 opnamevelden toetsen tegen de overdracht uit pagina 2.
+- [ ] Beslissen welke akkoordstukken daarna naar GitHub mogen.
+
+### Eerstvolgende actie
+
+Pagina 3 opnamevelden toetsen: wat moet buiten worden gecontroleerd, wat komt terug naar pagina 2 en wat mag niet in het opnameformulier komen.
+## Update 21-06-2026 - pagina 3 papierwerk
+
+### Afgerond
+
+- [x] Pagina 3 opnamebronnen gelezen.
+- [x] Overdracht pagina 2 naar pagina 3 gecontroleerd.
+- [x] Pagina 3 teruggebracht naar opnamecontrole per scope-regel.
+- [x] Besluitwaarden per scope-regel vastgelegd: akkoord, akkoord met voorbehoud, terug naar scope, onderzoek nodig, niet offertegereed.
+- [x] Vastgelegd wat pagina 3 terugstuurt naar pagina 2.
+- [x] Schraplijst pagina 3 gemaakt.
+
+### Open
+
+- [ ] Panelcontrole pagina 3 door werkvoorbereider, calculator, projectleider en directie.
+- [ ] Praktijkakkoord pagina 1 nog definitief invullen.
+- [ ] Panelronde pagina 1 t/m 3 samen uitvoeren.
+- [ ] Beslissen welke papierstukken akkoord zijn voor GitHub.
+- [ ] Daarna pas eventueel bouwvoorbereiding pagina 1 starten.
+
+### Eerstvolgende actie
+
+Go/no-go pakket pagina 1 t/m 3 samenstellen: welke documenten zijn klaar, welke zijn concept, welke vragen moeten nog naar panel/gebruiker.
+## Update 21-06-2026 - go/no-go pakket pagina 1 t/m 3
+
+### Afgerond
+
+- [x] Centrale documentstatus pagina 1 t/m 3 gecontroleerd.
+- [x] Go/no-go pakket pagina 1 t/m 3 gemaakt.
+- [x] Panelopdracht pagina 1 t/m 3 gemaakt.
+- [x] Open besluiten voor akkoord gebundeld.
+
+### Open
+
+- [ ] Panelreacties verzamelen in tabel.
+- [ ] Praktijkakkoord pagina 1 invullen.
+- [ ] Besluit: papierpakket 1 t/m 3 akkoord voor GitHub ja/nee.
+- [ ] Besluit: pagina 1 daarna naar bouwvoorbereiding ja/nee.
+
+### Eerstvolgende actie
+
+Panelronde uitvoeren of, als gebruiker dat wil, het papierpakket pagina 1 t/m 3 eerst naar GitHub zetten als beoordelingsbasis.
+## Update 21-06-2026 - panelreacties en besluitlog
+
+### Afgerond
+
+- [x] Panelreactietabel pagina 1 t/m 3 gemaakt.
+- [x] Besluitlog papierpakket pagina 1 t/m 3 gemaakt.
+- [x] Onderscheid vastgelegd tussen advies, besluit en bouwopdracht.
+
+### Open
+
+- [ ] Panelreacties daadwerkelijk invullen.
+- [ ] Besluitlog bijwerken na panelreacties.
+- [ ] Praktijkakkoord pagina 1 invullen.
+- [ ] Besluit over GitHub-publicatie van akkoordstukken.
+- [ ] Besluit over bouwvoorbereiding pagina 1.
+
+### Eerstvolgende actie
+
+Controleer welke documenten nieuw of gewijzigd zijn en bepaal daarna of ze naar GitHub mogen als beoordelingspakket.
