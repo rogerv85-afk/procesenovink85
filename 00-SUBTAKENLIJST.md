@@ -195,3 +195,47 @@ Panelronde uitvoeren of, als gebruiker dat wil, het papierpakket pagina 1 t/m 3 
 ### Eerstvolgende actie
 
 Controleer welke documenten nieuw of gewijzigd zijn en bepaal daarna of ze naar GitHub mogen als beoordelingspakket.
+## Update 21-06-2026 - panelronde ontvangen
+
+### Afgerond
+
+- [x] Werkvoorbereiderreactie ontvangen en verwerkt.
+- [x] Calculatorreactie ontvangen en verwerkt.
+- [x] Projectleider/directie-reactie ontvangen en verwerkt.
+- [x] Panelreactietabel bijgewerkt.
+- [x] Besluitlog bijgewerkt met vijf nieuwe besluitpunten.
+
+### Open
+
+- [ ] Besluit 6: hoeveelheid + eenheid verplicht paar ja/nee.
+- [ ] Besluit 7: onbekende hoeveelheid krijgt actiehouder + vervolgactie ja/nee.
+- [ ] Besluit 8: afwijkende meting terug naar pagina 2 met bron/betrouwbaarheid ja/nee.
+- [ ] Besluit 9: harde besliskeuze per pagina verplicht ja/nee.
+- [ ] Besluit 10: managementoverzicht alleen uitzonderingen ja/nee.
+- [ ] Gebruiker/praktijkreactie invullen.
+- [ ] Na besluiten papierpakket bijwerken.
+
+### Eerstvolgende actie
+
+Gebruiker/projectteam besluit laten nemen op de vijf panelbesluiten. Daarna pas documenten aanpassen.
+## Update 21-06-2026 - panelbesluiten akkoord
+
+### Afgerond
+
+- [x] Besluit 6 akkoord: hoeveelheid + eenheid verplicht paar.
+- [x] Besluit 7 akkoord: onbekende hoeveelheid krijgt actiehouder + vervolgactie.
+- [x] Besluit 8 akkoord: afwijkende meting terug naar pagina 2 met bron/betrouwbaarheid.
+- [x] Besluit 9 akkoord: harde besliskeuze per pagina verplicht.
+- [x] Besluit 10 akkoord: managementoverzicht alleen uitzonderingen.
+
+### Nieuwe bouwscope
+
+- [x] Bouwvoorbereiding pagina 1 toegestaan voor testversie.
+- [ ] Bestaande pagina 1 controleren.
+- [ ] Testversie pagina 1 compact maken volgens papierbesluiten.
+- [ ] Testen in browser.
+- [ ] Link teruggeven aan gebruiker.
+
+### Stopregel
+
+Alleen pagina 1 bouwen/testen. Pagina 2 en 3 blijven papier totdat pagina 1 getest is.

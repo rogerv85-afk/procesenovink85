@@ -63,3 +63,40 @@ Alle formele besluiten over pagina 1 t/m 3 vastleggen. Adviezen, wensen en opmer
 ## Controlleradvies
 
 Gebruik dit besluitlog als enige plek voor formele besluiten. Als iets niet in dit log staat, is het nog geen opdracht om te bouwen of te wijzigen.
+## Panelronde 21-06-2026
+
+### Uitkomst
+
+| Rol | Eindoordeel | Bouw blokkeren? |
+|---|---|---|
+| Werkvoorbereider | Akkoord met noodzakelijke aanpassingen | Nee, mits compactheid wordt verwerkt |
+| Calculator | Aanpassen | Ja voor bouwen |
+| Projectleider | Aanpassen | Ja voor bouwen |
+| Directie / CEO | Aanpassen | Ja voor bouwen |
+
+Controllerconclusie: panelbasis is bruikbaar, maar bouwen blijft geblokkeerd totdat onderstaande besluitpunten zijn gesloten.
+
+### Nieuwe open besluitpunten uit panel
+
+| Nr. | Besluitvraag | Herkomst | Advies controller | Status |
+|---:|---|---|---|---|
+| 6 | Wordt hoeveelheid + eenheid op pagina 2 een verplicht paar? | Calculator | Ja, verplicht maken. | Akkoord |
+| 7 | Krijgt onbekende hoeveelheid verplicht actiehouder + vervolgactie? | Calculator | Ja, anders niet offertegereed. | Akkoord |
+| 8 | Moet afwijkende meting altijd terug naar pagina 2 met bron en betrouwbaarheid? | Calculator | Ja, verplicht maken. | Akkoord |
+| 9 | Wordt per pagina een harde besliskeuze verplicht: door, aanvullen, terug of stop? | Projectleider | Ja, verplicht maken. | Akkoord |
+| 10 | Wordt het managementoverzicht beperkt tot uitzonderingen? | Directie / CEO | Ja, alleen status/risico/blokkade/eigenaar/volgende actie. | Akkoord |
+
+### Stopregel na panel
+
+Er is geen inhoudelijke stop op het papierplan. Er is wel een stop op bouwen totdat besluitpunten 6 t/m 10 en het praktijkakkoord gebruiker zijn gesloten.
+## Besluit gebruiker 21-06-2026
+
+Gebruiker heeft akkoord gegeven op de vijf panelbesluiten met opdracht: bouwen voorbereiden zodat pagina 1 getest kan worden.
+
+Bouwscope nu toegestaan:
+
+- Alleen pagina 1 aanvraaganalyse opdrachtgever.
+- Compacte testversie op basis van het papierpakket.
+- Geen pagina 2/3 bouwen in deze stap.
+- Geen prijzen, begroting of doelstellingbegroting.
+- Besluiten uit panel moeten worden verwerkt in ontwerpregels.
