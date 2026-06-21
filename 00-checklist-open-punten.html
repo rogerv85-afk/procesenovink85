@@ -1,0 +1,108 @@
+﻿<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checklist openstaande punten</title>
+<style>
+  :root{--green:#146b49;--orange:#c65a1e;--ink:#1d1d1b;--muted:#6d665f;--line:#d9cfc4;--paper:#fbfaf6;--bg:#eee9e2;--soft:#f5f1ea;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.45;font-size:16px}
+  header{background:#191a18;color:#fff;border-bottom:4px solid var(--orange);padding:28px 32px}
+  .brand{letter-spacing:.12em;text-transform:uppercase;color:#f0b99f;font-weight:800;font-size:13px;margin-bottom:6px}
+  h1{margin:0;font-size:32px;line-height:1.1}
+  .sub{margin-top:8px;color:#d9d3cc;font-size:17px}
+  main{max-width:1120px;margin:0 auto;padding:28px 22px 60px}
+  .panel{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:22px;margin-bottom:18px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+  h2{margin:0 0 12px;color:var(--green);font-size:24px}
+  h3{margin:26px 0 10px;font-size:20px;border-bottom:1px solid var(--line);padding-bottom:8px}
+  p{margin:0 0 10px;color:var(--muted)}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:8px 0 20px}
+  th,td{padding:10px 12px;text-align:left;vertical-align:top;border-bottom:1px solid #ebe4dc}
+  th{font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:#5b554e;background:#f4efe7}
+  tr:last-child td{border-bottom:0}
+  .status{font-weight:800;white-space:nowrap}
+  .done{color:var(--green)}
+  .busy{color:#8a6500}
+  .open{color:#9a2f16}
+  .next{border-left:5px solid var(--green);background:#fff;padding:16px 18px;border-radius:8px;margin-top:8px}
+  ol{margin:8px 0 0 22px;padding:0}
+  li{margin:5px 0}
+  .stop{border-left-color:var(--orange);background:#fff7ef}
+  @media(max-width:760px){header{padding:22px 18px}h1{font-size:26px}main{padding:18px 12px}.panel{padding:16px}table,tbody,tr,td,th{display:block}thead{display:none}tr{border-bottom:1px solid var(--line);padding:8px 0}td{border:0;padding:5px 10px}td::before{content:attr(data-label);display:block;font-size:12px;text-transform:uppercase;color:#777;font-weight:800}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">Caspar de Haan - renovatie & onderhoud</div>
+  <h1>Checklist openstaande punten</h1>
+  <div class="sub">Procesmanagementsysteem - verzamelen en ordenen vóór bouwen</div>
+</header>
+<main>
+  <section class="panel">
+    <h2>Doel</h2>
+    <p>Een centrale afvinklijst voor alles wat nog openstaat voordat er gebouwd of gepubliceerd mag worden.</p>
+    <p>Status: <strong class="done">gereed</strong>, <strong class="busy">bezig/deels gereed</strong>, <strong class="open">open</strong>.</p>
+  </section>
+
+  <section class="panel">
+    <h3>A. Bronnen en bestanden</h3>
+    <table><thead><tr><th>Status</th><th>Actiepunt</th><th>Eigenaar</th><th>Volgende actie</th></tr></thead><tbody>
+      <tr><td class="status done" data-label="Status">Gereed</td><td data-label="Actiepunt">Hoofdmap als leidend vastleggen</td><td data-label="Eigenaar">Controller</td><td data-label="Volgende actie">Blijven bewaken: C:\Projecten\procesenovink85-git.</td></tr>
+      <tr><td class="status done" data-label="Status">Gereed</td><td data-label="Actiepunt">Hoofdopdracht vastleggen</td><td data-label="Eigenaar">Controller</td><td data-label="Volgende actie">Bestand gebruiken als startpunt voor alle rollen.</td></tr>
+      <tr><td class="status busy" data-label="Status">Bezig</td><td data-label="Actiepunt">Drive-bronnen inventariseren</td><td data-label="Eigenaar">Controller</td><td data-label="Volgende actie">Rest van Drive nalopen op ontbrekende processtukken.</td></tr>
+      <tr><td class="status done" data-label="Status">Gereed</td><td data-label="Actiepunt">Expertpanelrapport uit Drive naar hoofdmap brengen</td><td data-label="Eigenaar">Controller</td><td data-label="Volgende actie">Verwerken in adviestabel.</td></tr>
+      <tr><td class="status open" data-label="Status">Open</td><td data-label="Actiepunt">Temp-bestanden definitief uitsluiten</td><td data-label="Eigenaar">Controller</td><td data-label="Volgende actie">In register markeren: alleen klad, nooit bron.</td></tr>
+      <tr><td class="status open" data-label="Status">Open</td><td data-label="Actiepunt">Dubbele HTML-bestanden beoordelen</td><td data-label="Eigenaar">Controller</td><td data-label="Volgende actie">Hoofdmapversie leidend maken of verschil noteren.</td></tr>
+      <tr><td class="status open" data-label="Status">Open</td><td data-label="Actiepunt">Exacte bron voor pagina 3 HTML bepalen</td><td data-label="Eigenaar">Controller / werkvoorbereider</td><td data-label="Volgende actie">Vaststellen of er een actueel scherm is of alleen papierplan.</td></tr>
+    </tbody></table>
+
+    <h3>B. Papierplannen</h3>
+    <table><thead><tr><th>Status</th><th>Actiepunt</th><th>Eigenaar</th><th>Volgende actie</th></tr></thead><tbody>
+      <tr><td class="status done" data-label="Status">Gereed</td><td data-label="Actiepunt">Pagina 1 papierplan aanwezig</td><td data-label="Eigenaar">Controller</td><td data-label="Volgende actie">Inhoudelijk beoordelen op compactheid en overdracht.</td></tr>
+      <tr><td class="status done" data-label="Status">Gereed</td><td data-label="Actiepunt">Pagina 2 papierplan aanwezig</td><td data-label="Eigenaar">Calculator / controller</td><td data-label="Volgende actie">Controleren: scope, geen begroting.</td></tr>
+      <tr><td class="status done" data-label="Status">Gereed</td><td data-label="Actiepunt">Pagina 3 papierplan aanwezig</td><td data-label="Eigenaar">Werkvoorbereider / controller</td><td data-label="Volgende actie">Controleren: opname/controle, geen nieuwe scope.</td></tr>
+      <tr><td class="status open" data-label="Status">Open</td><td data-label="Actiepunt">Pagina 1 veld voor veld toetsen</td><td data-label="Eigenaar">Projectleider / directie</td><td data-label="Volgende actie">Nodig ja/nee, verplicht/optioneel, gaat door naar pagina 2.</td></tr>
+      <tr><td class="status open" data-label="Status">Open</td><td data-label="Actiepunt">Schraplijst maken</td><td data-label="Eigenaar">Directie / CEO</td><td data-label="Volgende actie">Alles schrappen zonder besluitwaarde.</td></tr>
+    </tbody></table>
+
+    <h3>C. Proces en rollen</h3>
+    <table><thead><tr><th>Status</th><th>Actiepunt</th><th>Eigenaar</th><th>Volgende actie</th></tr></thead><tbody>
+      <tr><td class="status done" data-label="Status">Gereed</td><td data-label="Actiepunt">Procesvolgorde vastgesteld</td><td data-label="Eigenaar">Projectmanager</td><td data-label="Volgende actie">Bewaken dat doelstellingbegroting pas na opdracht komt.</td></tr>
+      <tr><td class="status open" data-label="Status">Open</td><td data-label="Actiepunt">Rollenmatrix maken</td><td data-label="Eigenaar">Projectmanager</td><td data-label="Volgende actie">Per stap eigenaar, beslisser en gebruiker benoemen.</td></tr>
+      <tr><td class="status open" data-label="Status">Open</td><td data-label="Actiepunt">Beslismomenten per pagina vastleggen</td><td data-label="Eigenaar">Projectleider</td><td data-label="Volgende actie">Per pagina: wanneer klaar, wie akkoord geeft.</td></tr>
+      <tr><td class="status open" data-label="Status">Open</td><td data-label="Actiepunt">Go/no-go criteria pagina 1 vastleggen</td><td data-label="Eigenaar">Controller</td><td data-label="Volgende actie">Besluitklaar maken voor gebruiker.</td></tr>
+    </tbody></table>
+
+    <h3>D. Expertadvies en panel</h3>
+    <table><thead><tr><th>Status</th><th>Actiepunt</th><th>Eigenaar</th><th>Volgende actie</th></tr></thead><tbody>
+      <tr><td class="status done" data-label="Status">Gereed</td><td data-label="Actiepunt">Werkvoorbereideradvies ontvangen</td><td data-label="Eigenaar">Controller</td><td data-label="Volgende actie">Verwerkt in pagina 3 papierplan.</td></tr>
+      <tr><td class="status done" data-label="Status">Gereed</td><td data-label="Actiepunt">Calculatoradvies ontvangen</td><td data-label="Eigenaar">Controller</td><td data-label="Volgende actie">Verwerkt in pagina 2 papierplan.</td></tr>
+      <tr><td class="status open" data-label="Status">Open</td><td data-label="Actiepunt">Alle adviezen in één tabel zetten</td><td data-label="Eigenaar">Controller</td><td data-label="Volgende actie">Tabel maken: expert, advies, effect, actie.</td></tr>
+      <tr><td class="status open" data-label="Status">Open</td><td data-label="Actiepunt">Top 10 verbeterpunten maken</td><td data-label="Eigenaar">Projectmanager / controller</td><td data-label="Volgende actie">Eerst op papier, niet bouwen.</td></tr>
+    </tbody></table>
+
+    <h3>E. GitHub en publicatie</h3>
+    <table><thead><tr><th>Status</th><th>Actiepunt</th><th>Eigenaar</th><th>Volgende actie</th></tr></thead><tbody>
+      <tr><td class="status open" data-label="Status">Open</td><td data-label="Actiepunt">Lokale wijzigingen controleren</td><td data-label="Eigenaar">Controller</td><td data-label="Volgende actie">Git-status beoordelen.</td></tr>
+      <tr><td class="status open" data-label="Status">Open</td><td data-label="Actiepunt">Bepalen wat gecommit mag worden</td><td data-label="Eigenaar">Controller / gebruiker</td><td data-label="Volgende actie">Alleen papierdocumenten of ook HTML?</td></tr>
+      <tr><td class="status open" data-label="Status">Open</td><td data-label="Actiepunt">Commit maken naar GitHub</td><td data-label="Eigenaar">Controller</td><td data-label="Volgende actie">Pas na akkoord.</td></tr>
+    </tbody></table>
+
+    <div class="next">
+      <h2>Eerstvolgende actie</h2>
+      <ol>
+        <li>Expertadviezen omzetten naar één compacte adviestabel.</li>
+        <li>Daarna pagina 1 papierplan veld voor veld toetsen.</li>
+        <li>Daarna schraplijst maken: wat kan eruit of later.</li>
+        <li>Daarna go/no-go voor pagina 1.</li>
+      </ol>
+    </div>
+    <div class="next stop">
+      <h2>Harde stop</h2>
+      <p>Er mag niet gebouwd of gepubliceerd worden zolang Drive-bronnen, pagina 1, expertadviezen en go/no-go nog openstaan.</p>
+    </div>
+  </section>
+</main>
+</body>
+</html>
