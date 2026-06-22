@@ -457,7 +457,35 @@
       .actions { align-items: stretch; }
       .actions button, .actions .button-link { flex: 1 1 auto; }
     }
-  .process-nav{position:sticky;top:0;z-index:20;background:#fffdf8;border-bottom:1px solid #d8cfc3;display:flex;gap:6px;overflow-x:auto;padding:8px 18px;box-shadow:0 1px 3px rgba(29,29,27,.06)}.process-nav a{white-space:nowrap;text-decoration:none;color:#1d1d1b;border:1px solid #d8cfc3;border-radius:999px;padding:6px 10px;font-size:13px;font-weight:800;background:#fff}.process-nav a:hover,.process-nav a:focus{background:#176b49;color:#fff;border-color:#176b49}@media(max-width:760px){.process-nav{padding:7px 10px}.process-nav a{font-size:12px;padding:6px 9px}}</style>
+  .process-nav{position:sticky;top:0;z-index:20;background:#fffdf8;border-bottom:1px solid #d8cfc3;display:flex;gap:6px;overflow-x:auto;padding:8px 18px;box-shadow:0 1px 3px rgba(29,29,27,.06)}.process-nav a{white-space:nowrap;text-decoration:none;color:#1d1d1b;border:1px solid #d8cfc3;border-radius:999px;padding:6px 10px;font-size:13px;font-weight:800;background:#fff}.process-nav a:hover,.process-nav a:focus{background:#176b49;color:#fff;border-color:#176b49}@media(max-width:760px){.process-nav{padding:7px 10px}.process-nav a{font-size:12px;padding:6px 9px}}
+    .compact-actions {
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .compact-actions .saved {
+      flex: 1 1 220px;
+      min-width: 0;
+    }
+
+    .compact-actions button {
+      min-width: 132px;
+    }
+
+    @media (max-width: 760px) {
+      .compact-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .compact-actions .saved {
+        grid-column: 1 / -1;
+      }
+      .compact-actions button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+</style>
 </head>
 <body>
   <header>
@@ -589,15 +617,11 @@
         <div id="overview"><p class="hint">Nog geen werkzaamheden in de projectopzet.</p></div>
       </section>
 
-      <div class="actions">
-        <span class="saved" id="saveState">Nog niet opgeslagen</span>
-        <a class="button-link" href="01-aanvraaganalyse-opdrachtgever.html">Terug naar aanvraag</a>
-        <button type="button" onclick="importAanvraag(true)">Aanvraag inlezen</button>
-        <button type="button" onclick="document.getElementById('aanvraagFile').click()">Projectbestand inlezen</button>
-        <input id="aanvraagFile" type="file" accept="application/json,.json" hidden onchange="importAanvraagBestand(event)">
-        <button type="button" onclick="exportProject()">Exporteren</button>
-        <a class="button-link primary" href="03-opname-locatie.html">Naar opname</a>
-        <button class="primary" type="button" onclick="window.print()">Printen</button>
+      <div class="actions compact-actions">
+        <span class="saved" id="saveState">Automatisch opgeslagen in deze browser</span>
+        <button class="primary" type="button" onclick="saveProjectFile()">Opslaan</button>
+        <button type="button" onclick="document.getElementById('projectFile').click()">Inladen</button>
+        <input id="projectFile" type="file" accept="application/json,.json,.cdhproject" hidden onchange="importProjectBestand(event)">
       </div>
     </form>
   </main>
@@ -723,6 +747,9 @@
       document.querySelectorAll('input, select, textarea').forEach((field) => {
         if (field.name) data[field.name] = field.value;
       });
+      data.__type = 'cdh-projectopzet';
+      data.__version = 1;
+      data.__savedAt = new Date().toISOString();
       return data;
     }
 
@@ -899,12 +926,67 @@
       `;
     }
 
-    function exportProject() {
+    function projectFileName() {
+      const clean = (value, fallback) => String(value || fallback)
+        .trim()
+        .replace(/[^a-z0-9\-]+/gi, '-')
+        .replace(/^-+|-+$/g, '')
+        .slice(0, 48) || fallback;
+      const wo = clean(getValue('werkordernummer'), 'zonder-wo');
+      const project = clean(getValue('project'), 'projectopzet');
+      const date = new Date().toISOString().slice(0, 10);
+      return `${date}-${wo}-${project}.cdhproject.json`;
+    }
+
+    async function saveProjectFile() {
+      save();
+      const filename = projectFileName();
       const blob = new Blob([JSON.stringify(collect(), null, 2)], { type: 'application/json' });
+      if (window.showSaveFilePicker) {
+        try {
+          const handle = await window.showSaveFilePicker({
+            suggestedName: filename,
+            types: [{ description: 'CdH projectbestand', accept: { 'application/json': ['.json', '.cdhproject'] } }]
+          });
+          const writable = await handle.createWritable();
+          await writable.write(blob);
+          await writable.close();
+          saveState.textContent = `Projectbestand opgeslagen: ${filename}`;
+          return;
+        } catch (error) {
+          if (error && error.name === 'AbortError') return;
+        }
+      }
       const link = document.createElement('a');
       link.href = URL.createObjectURL(blob);
-      link.download = 'projectopzet.cdhproject.json';
+      link.download = filename;
       link.click();
+      URL.revokeObjectURL(link.href);
+      saveState.textContent = `Projectbestand gemaakt: ${filename}`;
+    }
+
+    function importProjectBestand(event) {
+      const file = event.target.files && event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          const data = JSON.parse(reader.result);
+          if (data.__type === 'cdh-projectopzet' || data.projectopzet || data.vervolgstap || Object.keys(data).some((key) => key.startsWith('work_'))) {
+            apply(data);
+            save();
+            saveState.textContent = `Projectbestand geladen: ${file.name}`;
+          } else {
+            const ok = importAanvraagData(data, file.name);
+            if (!ok) alert('Dit bestand kon niet worden gelezen.');
+            else saveState.textContent = `Aanvraagbestand ingelezen: ${file.name}`;
+          }
+        } catch {
+          alert('Dit is geen geldig projectbestand.');
+        }
+        event.target.value = '';
+      };
+      reader.readAsText(file);
     }
 
     addFacade({ code: 'A', naam: 'Voorgevel' });
@@ -918,6 +1000,7 @@
   </script>
 </body>
 </html>
+
 
 
 
