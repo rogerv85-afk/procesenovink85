@@ -7,7 +7,7 @@
   <style>
     :root{--bg:#f3f1eb;--paper:#fffefa;--ink:#20211e;--muted:#625d55;--line:#d8d0c4;--green:#15734d;--green-dark:#0c5037;--orange:#c75b22;--head:#181916;--soft:#faf8f3;--warn:#f4e6bf;--bad:#f6d7d0;--ok:#dcefe5}
     *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:"Aptos","Segoe UI",Arial,sans-serif;font-size:14px;line-height:1.38} header{background:linear-gradient(100deg,#171915 0%,#17261c 100%);color:#fff;border-bottom:3px solid var(--orange);padding:14px 24px 12px}.head-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:36px minmax(0,1fr);gap:11px;align-items:center}.logo{width:36px;height:36px;border-radius:7px;background:var(--orange);display:grid;place-items:center;font-weight:900}.eyebrow{color:#e9b49c;font-size:10px;font-weight:850;letter-spacing:.12em;text-transform:uppercase}h1,h2,h3,p{margin-top:0}h1{margin:1px 0;font-size:clamp(22px,2.5vw,30px);line-height:1.06}header p{margin:0;color:#d7d1c8;font-size:12px}.meta{grid-column:1/-1;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.14)}.chip{min-height:28px;padding:5px 8px;border:1px solid rgba(255,255,255,.14);border-radius:6px;background:rgba(255,255,255,.04);display:flex;align-items:center;gap:5px;min-width:0}.chip b{color:#efb79b;font-size:10px;text-transform:uppercase;white-space:nowrap}.chip span{color:#fff;font-size:12px;font-weight:750;overflow-wrap:anywhere}.chip.status{background:rgba(23,107,73,.34)}main{max-width:1080px;margin:0 auto;padding:18px 18px 56px}.hero,.panel,details{background:var(--paper);border:1px solid var(--line);border-radius:8px;box-shadow:0 1px 4px rgba(35,31,26,.06);overflow:hidden}.hero{display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;padding:16px 18px;margin-bottom:12px;border-top:4px solid var(--green)}.step,.letter{background:var(--green);color:#fff;display:grid;place-items:center;font-weight:850}.step{width:40px;height:40px;border-radius:8px;font-size:18px}.hero h2{margin-bottom:2px;font-size:clamp(24px,2.8vw,32px);line-height:1.12}.hero p,.hint{color:var(--muted);font-size:14px}.panel{padding:14px 16px;margin-bottom:10px}details{margin-bottom:10px}summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:38px minmax(0,1fr) auto;gap:12px;align-items:center;padding:14px 16px}summary::-webkit-details-marker{display:none}.letter{width:36px;height:36px;border-radius:8px}.summary-title strong{display:block;font-size:21px;line-height:1.1}.summary-title span{display:block;color:var(--muted);font-size:13px;margin-top:3px}.chev{color:var(--orange);font-weight:900}.content{border-top:1px solid var(--line);padding:14px 16px;background:#fffdf8}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 12px}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.full{grid-column:1/-1}label{display:block;margin:0 0 4px;color:var(--muted);font-size:11px;font-weight:850;text-transform:uppercase;letter-spacing:.03em}input,select,textarea{width:100%;min-height:38px;border:1px solid var(--line);border-radius:6px;background:#fffefa;color:var(--ink);padding:8px 10px;font:inherit}textarea{min-height:72px;resize:vertical}.item{border:1px solid var(--line);border-left:5px solid var(--green);border-radius:8px;background:#fffefa;margin-bottom:8px;overflow:hidden}.item-head{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:10px;align-items:center;padding:11px 12px;cursor:pointer}.item-head strong{font-size:17px}.item-meta{color:var(--muted);font-size:12px;margin-top:2px}.item-body{display:none;border-top:1px solid var(--line);padding:12px}.item.open .item-body{display:grid}.badge{display:inline-block;border-radius:999px;padding:3px 8px;font-size:12px;font-weight:850;background:#e8edf5;color:#1b4d7a}.badge.ok{background:var(--ok);color:var(--green-dark)}.badge.warn{background:var(--warn);color:#705000}.badge.bad{background:var(--bad);color:#8a2d1f}.actions{position:sticky;bottom:0;background:rgba(24,25,22,.96);border-top:2px solid var(--orange);padding:9px 12px;display:flex;gap:8px;align-items:center;justify-content:flex-end;flex-wrap:wrap}.saved{margin-right:auto;color:#cce8d8;font-weight:750}.button-link,button{min-height:36px;border:1px solid #bfa997;border-radius:6px;background:var(--paper);color:var(--ink);padding:8px 12px;font-weight:850;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center}button.primary,.button-link.primary{background:var(--green);border-color:var(--green);color:#fff}.summary-table{width:100%;border-collapse:collapse}.summary-table th,.summary-table td{border-bottom:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}.summary-table th{font-size:11px;color:var(--muted);text-transform:uppercase}@media(max-width:760px){.meta,.grid,.grid.three{grid-template-columns:1fr}main{padding-left:12px;padding-right:12px}.summary-title strong{font-size:18px}}
-  </style>
+  .process-nav{position:sticky;top:0;z-index:20;background:#fffdf8;border-bottom:1px solid #d8cfc3;display:flex;gap:6px;overflow-x:auto;padding:8px 18px;box-shadow:0 1px 3px rgba(29,29,27,.06)}.process-nav a{white-space:nowrap;text-decoration:none;color:#1d1d1b;border:1px solid #d8cfc3;border-radius:999px;padding:6px 10px;font-size:13px;font-weight:800;background:#fff}.process-nav a:hover,.process-nav a:focus{background:#176b49;color:#fff;border-color:#176b49}@media(max-width:760px){.process-nav{padding:7px 10px}.process-nav a{font-size:12px;padding:6px 9px}}</style>
 </head>
 <body>
   <header>
@@ -19,6 +19,19 @@
       </div>
     </div>
   </header>
+<nav class="process-nav" aria-label="Processtappen">
+  <a href="index.html">Overzicht</a>
+  <a href="01-aanvraaganalyse-opdrachtgever.html">01 Aanvraag</a>
+  <a href="02-projectopzet-werkzaamheden.html">02 Scope</a>
+  <a href="03-opname-locatie.html">03 Opname</a>
+  <a href="04-offerteaanvraag-onderaannemer.html">04 Uitvraag OA</a>
+  <a href="05-begroting-offerte.html">05 Begroting/offerte</a>
+  <a href="06-opdrachtbevestiging.html">06 Opdracht</a>
+  <a href="07-doelstellingbegroting.html">07 Doelstelling</a>
+  <a href="08-weekrapport-uitvoering.html">08 Uitvoering</a>
+  <a href="09-oplevering.html">09 Oplevering</a>
+  <a href="10-dossier-overzicht.html">10 Dossier</a>
+</nav>
   <main>
     <section class="hero"><span class="step">03</span><div><h2>Klopt de scope buiten?</h2><p>Controleer alleen de scope-regels uit pagina 2. Afwijkingen gaan terug naar de projectopzet; hier komen geen prijzen of nieuwe scopebesluiten.</p></div></section>
     <form id="opnameForm">
@@ -54,5 +67,6 @@
   </script>
 </body>
 </html>
+
 
 
