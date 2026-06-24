@@ -2997,6 +2997,9 @@ details.section-filled > summary .section-ok {
   .actions button.primary { grid-column: 2; }
 }
 /* CDH-POLISH-END */
+    .goal-strip{border-left:4px solid var(--green);padding:12px 14px;display:grid;gap:5px}
+    .goal-strip strong{color:var(--green-dark);font-size:15px}
+    .goal-strip p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
 </style>
 </head>
 <body>
@@ -3052,6 +3055,11 @@ details.section-filled > summary .section-ok {
       </div>
     </div>
 
+      <section class="panel goal-strip">
+        <strong>Doel van stap 1</strong>
+        <p>Leg vast wat de klant vraagt, welke stukken er zijn, welke werkkaarten relevant lijken en welke informatie nog ontbreekt.</p>
+        <p>Niet hier doen: hoeveelheden uitwerken, technische staat beoordelen of onderaannemers kiezen. Dat komt in stap 2 en 3.</p>
+      </section>
     <form id="aanvraagForm">
       <details open>
         <summary>
