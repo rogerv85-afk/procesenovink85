@@ -457,7 +457,7 @@
       .actions { align-items: stretch; }
       .actions button, .actions .button-link { flex: 1 1 auto; }
     }
-  .process-nav{position:sticky;top:0;z-index:20;background:#fffdf8;border-bottom:1px solid #d8cfc3;display:flex;gap:6px;overflow-x:auto;padding:8px 18px;box-shadow:0 1px 3px rgba(29,29,27,.06)}.process-nav a{white-space:nowrap;text-decoration:none;color:#1d1d1b;border:1px solid #d8cfc3;border-radius:999px;padding:6px 10px;font-size:13px;font-weight:800;background:#fff}.process-nav a:hover,.process-nav a:focus{background:#176b49;color:#fff;border-color:#176b49}@media(max-width:760px){.process-nav{padding:7px 10px}.process-nav a{font-size:12px;padding:6px 9px}}
+  .process-nav{position:sticky;top:0;z-index:20;background:#fffdf8;border-bottom:1px solid #d8cfc3;display:flex;gap:6px;overflow-x:auto;padding:8px 18px;box-shadow:0 1px 3px rgba(29,29,27,.06)}.process-nav a{white-space:nowrap;text-decoration:none;color:#1d1d1b;border:1px solid #d8cfc3;border-radius:999px;padding:6px 10px;font-size:13px;font-weight:800;background:#fff}.process-nav a.active,.process-nav a:hover,.process-nav a:focus{background:#176b49;color:#fff;border-color:#176b49}@media(max-width:760px){.process-nav{padding:7px 10px}.process-nav a{font-size:12px;padding:6px 9px}}
     .compact-actions {
       justify-content: flex-end;
       gap: 10px;
@@ -485,7 +485,23 @@
         justify-content: center;
       }
     }
-</style>
+    .load-panel {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+    }
+    .load-panel p { margin: 0; color: var(--muted); }
+    .step-footer .footer-step {
+      margin-right: auto;
+      color: #fff;
+      display: grid;
+      gap: 2px;
+      line-height: 1.15;
+    }
+    .step-footer .footer-step small { color: #cce8d8; font-weight: 700; }
+    @media(max-width:760px){.load-panel{align-items:stretch;flex-direction:column}.step-footer .footer-step{grid-column:1/-1;width:100%}}</style>
 </head>
 <body>
   <header>
@@ -508,7 +524,7 @@
 <nav class="process-nav" aria-label="Processtappen">
   <a href="index.html">Overzicht</a>
   <a href="01-aanvraaganalyse-opdrachtgever.html">01 Aanvraag</a>
-  <a href="02-projectopzet-werkzaamheden.html">02 Scope</a>
+  <a class="active" href="02-projectopzet-werkzaamheden.html">02 Scope</a>
   <a href="03-opname-locatie.html">03 Opname</a>
   <a href="04-offerteaanvraag-onderaannemer.html">04 Uitvraag OA</a>
   <a href="05-begroting-offerte.html">05 Begroting/offerte</a>
@@ -526,6 +542,15 @@
         <h2>Wat gaan we opnemen en begroten?</h2>
         <p>Maak van de aanvraaganalyse een concrete scope: werkzaamheden, gevels, hoeveelheden, eenheden en vervolgacties.</p>
       </div>
+    </section>
+
+    <section class="panel load-panel">
+      <div>
+        <strong>Projectbestand</strong>
+        <p>Laad hier het opgeslagen projectbestand in. De gegevens verschijnen daarna automatisch in deze stap.</p>
+      </div>
+      <button type="button" onclick="document.getElementById('projectFile').click()">Projectbestand inladen</button>
+      <input id="projectFile" type="file" accept="application/json,.json,.cdhproject" hidden onchange="importProjectBestand(event)">
     </section>
 
     <section class="panel">
@@ -612,22 +637,24 @@
         </div>
       </details>
 
-      <section class="panel">
+      
+
+    <section class="panel">
         <h3>Controleblad projectopzet</h3>
         <div id="overview"><p class="hint">Nog geen werkzaamheden in de projectopzet.</p></div>
       </section>
 
-      <div class="actions compact-actions">
-        <span class="saved" id="saveState">Automatisch opgeslagen in deze browser</span>
-        <button class="primary" type="button" onclick="saveProjectFile()">Opslaan</button>
-        <button type="button" onclick="document.getElementById('projectFile').click()">Inladen</button>
-        <input id="projectFile" type="file" accept="application/json,.json,.cdhproject" hidden onchange="importProjectBestand(event)">
+      <div class="actions compact-actions step-footer">
+        <span class="footer-step"><strong>Stap 02 - Scope</strong><small id="saveState">Automatisch opgeslagen in deze browser</small></span>
+        <button type="button" onclick="saveProjectFile()">Opslaan</button>
+        <button class="primary" type="button" onclick="goNext()">Naar opname</button>
       </div>
     </form>
   </main>
 
   <script>
-    const aanvraagKeys = ['cdh-aanvraaganalyse-v2', 'cdh-aanvraaganalyse-v1'];
+    const commonProjectKey = 'cdh-projectbestand-v1';
+    const aanvraagKeys = [commonProjectKey, 'cdh-aanvraaganalyse-v2', 'cdh-aanvraaganalyse-v1'];
     const projectKey = 'cdh-projectopzet-v1';
     let workIndex = 0;
     let facadeIndex = 0;
@@ -760,23 +787,30 @@
     }
 
     function save() {
-      localStorage.setItem(projectKey, JSON.stringify(collect()));
+      const data = collect();
+      localStorage.setItem(projectKey, JSON.stringify(data));
+      localStorage.setItem(commonProjectKey, JSON.stringify(data));
       saveState.textContent = 'Opgeslagen in deze browser';
       refresh();
     }
 
     function load() {
-      const raw = localStorage.getItem(projectKey);
-      if (!raw) return false;
-      try {
-        apply(JSON.parse(raw));
-        saveState.textContent = 'Bestaande projectopzet geladen';
-        refresh();
-        return true;
-      } catch {
-        saveState.textContent = 'Kon projectopzet niet laden';
-        return false;
+      for (const key of [commonProjectKey, projectKey]) {
+        const raw = localStorage.getItem(key);
+        if (!raw) continue;
+        try {
+          const data = JSON.parse(raw);
+          if (data.__type === 'cdh-aanvraaganalyse' && !data.projectopzet && !Object.keys(data).some((itemKey) => /^work_\d+_naam$/.test(itemKey))) continue;
+          apply(data);
+          saveState.textContent = key === commonProjectKey ? 'Projectbestand geladen' : 'Bestaande projectopzet geladen';
+          refresh();
+          return true;
+        } catch {
+          saveState.textContent = 'Kon projectopzet niet laden';
+          return false;
+        }
       }
+      return false;
     }
 
     function getAanvraagRaw() {
@@ -835,8 +869,15 @@
       const reader = new FileReader();
       reader.onload = () => {
         try {
-          const ok = importAanvraagData(JSON.parse(reader.result), file.name);
-          if (!ok) alert('Dit bestand kon niet als aanvraaganalyse worden gelezen.');
+          const data = JSON.parse(reader.result);
+          if (data.projectopzet || data.vervolgstap || Object.keys(data).some((key) => /^work_\d+_naam$/.test(key))) {
+            apply(data);
+            save();
+            saveState.textContent = `Projectbestand geladen: ${file.name}`;
+          } else {
+            const ok = importAanvraagData(data, file.name);
+            if (!ok) alert('Dit bestand kon niet worden gelezen.');
+          }
         } catch {
           alert('Dit is geen geldig projectbestand.');
         }
@@ -995,11 +1036,19 @@
     if (!hasProject) importAanvraag(false);
     if (!document.querySelector('.work-row')) addWork();
     refresh();
+    function goNext() {
+      save();
+      window.location.href = '03-opname-locatie.html';
+    }
     projectForm.addEventListener('input', save);
     projectForm.addEventListener('change', save);
   </script>
 </body>
 </html>
+
+
+
+
 
 
 

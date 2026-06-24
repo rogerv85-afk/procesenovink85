@@ -1,0 +1,97 @@
+﻿{
+  "__type": "cdh-projectbestand",
+  "__version": 1,
+  "__stage": "voorbeeld",
+  "__savedAt": "2026-06-23T08:00:00.000Z",
+  "project": "VvE Penatenhof 54-60",
+  "werkordernummer": "WO 2601661",
+  "opdrachtgever": "VvE Penatenhof",
+  "projectleider": "C. de Haan",
+  "adres": "Penatenhof 54-60, Maastricht",
+  "status": "Concept",
+  "aanvraagdatum": "2026-06-22",
+  "aanvraagnummer": "AANVR-001",
+  "beheerder": "Janssen Vastgoedbeheer",
+  "letterlijkeVraag": "Offerte voor gevelherstel, voegwerk en schilderwerk kozijnen.",
+  "aanleiding": "Onderhoudsbehoefte",
+  "gewenstResultaat": "Offerte",
+  "achterliggendeVraag": "Bepalen welke werkzaamheden noodzakelijk zijn en welke hoeveelheden buiten gecontroleerd moeten worden.",
+  "work_1_naam": "Gevelreiniging",
+  "work_1_locatie": "Voorgevel en achtergevel",
+  "work_1_hoeveelheid": "120",
+  "work_1_eenheid": "m2",
+  "work_1_bron": "Klantvraag",
+  "work_1_betrouwbaarheid": "Indicatief",
+  "work_1_controle": "Buiten meten",
+  "work_1_besluit": "Eerst opnemen / meten",
+  "work_1_oa": "Ja, uitvragen",
+  "work_1_notitie": "Hoeveelheid controleren tijdens opname.",
+  "work_2_naam": "Voegwerk vervangen",
+  "work_2_locatie": "Gevel A en B",
+  "work_2_hoeveelheid": "85",
+  "work_2_eenheid": "m2",
+  "work_2_bron": "MJOP",
+  "work_2_betrouwbaarheid": "Indicatief",
+  "work_2_controle": "Buiten controleren",
+  "work_2_besluit": "In scope",
+  "work_2_oa": "Ja, uitvragen",
+  "work_2_notitie": "Rollaag en raamdorpels apart beoordelen.",
+  "work_3_naam": "Buitenschilderwerk houtwerk",
+  "work_3_locatie": "Kozijnen voorgevel",
+  "work_3_hoeveelheid": "32",
+  "work_3_eenheid": "st",
+  "work_3_bron": "Geveladvies",
+  "work_3_betrouwbaarheid": "Redelijk betrouwbaar",
+  "work_3_controle": "Opname nodig",
+  "work_3_besluit": "In scope",
+  "work_3_oa": "Ja, uitvragen",
+  "facade_1_code": "A",
+  "facade_1_naam": "Voorgevel",
+  "facade_1_hoeveelheid": "70 m2",
+  "facade_1_notitie": "Bereikbaar vanaf straatzijde.",
+  "facade_2_code": "B",
+  "facade_2_naam": "Achtergevel",
+  "facade_2_hoeveelheid": "50 m2",
+  "facade_2_notitie": "Bereikbaarheid controleren.",
+  "opnamepunten": "Voegwerk per gevel meten, scheuren controleren, staat schilderwerk beoordelen.",
+  "opnemer": "J. Smit",
+  "opnamedatum": "2026-07-03",
+  "projectopzet": "Scope bestaat uit gevelreiniging, voegwerkherstel en buitenschilderwerk. Hoeveelheden na opname definitief maken.",
+  "vervolgstap": "Naar opname",
+  "cdh-opname-locatie-v1": {
+    "weersomstandigheden": "Droog, 18 graden",
+    "algemene_indruk": "Gevels matig, voegwerk plaatselijk slecht.",
+    "veiligheid_bereikbaarheid": "Hoogwerker nodig voor kopgevel.",
+    "opname_besluit": "Scope handhaven, hoeveelheden corrigeren na meetstaat."
+  },
+  "cdh-offerteaanvraag-oa-v1": {
+    "discipline": "Gevel en schilderwerk",
+    "onderaannemer": "CSN Gevelrenovatie",
+    "reactie_voor": "2026-07-10",
+    "uitvraagtekst": "Graag prijs voor gevelreiniging, voegwerkherstel en schilderwerk conform scope.",
+    "oa_status": "Nog uitzetten"
+  },
+  "cdh-begroting-offerte-v1": {
+    "calculatiebasis": "Hoeveelheden uit opname en offerte onderaannemer.",
+    "risico": "Bereikbaarheid achtergevel nog controleren.",
+    "offerte_status": "Concept"
+  },
+  "cdh-opdrachtbevestiging-v1": {
+    "opdrachtstatus": "Nog niet akkoord",
+    "voorwaarden": "Start na schriftelijke opdracht en akkoord planning."
+  },
+  "cdh-doelstellingbegroting-v1": {
+    "doelstelling_status": "Nog niet vrijgeven",
+    "opmerking": "Pas invullen na opdrachtbevestiging."
+  },
+  "cdh-weekrapport-uitvoering-v1": {
+    "week": "Week 31",
+    "voortgang": "Nog niet gestart"
+  },
+  "cdh-oplevering-v1": {
+    "opleverstatus": "Nog niet van toepassing"
+  },
+  "cdh-dossier-overzicht-v1": {
+    "dossierstatus": "In opbouw"
+  }
+}

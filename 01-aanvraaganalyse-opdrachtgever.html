@@ -2788,7 +2788,7 @@
       .toolbar { width: 100%; }
       .toolbar button { flex: 1 1 auto; }
     }
-  .process-nav{position:sticky;top:0;z-index:20;background:#fffdf8;border-bottom:1px solid #d8cfc3;display:flex;gap:6px;overflow-x:auto;padding:8px 18px;box-shadow:0 1px 3px rgba(29,29,27,.06)}.process-nav a{white-space:nowrap;text-decoration:none;color:#1d1d1b;border:1px solid #d8cfc3;border-radius:999px;padding:6px 10px;font-size:13px;font-weight:800;background:#fff}.process-nav a:hover,.process-nav a:focus{background:#176b49;color:#fff;border-color:#176b49}@media(max-width:760px){.process-nav{padding:7px 10px}.process-nav a{font-size:12px;padding:6px 9px}}
+  .process-nav{position:sticky;top:0;z-index:20;background:#fffdf8;border-bottom:1px solid #d8cfc3;display:flex;gap:6px;overflow-x:auto;padding:8px 18px;box-shadow:0 1px 3px rgba(29,29,27,.06)}.process-nav a{white-space:nowrap;text-decoration:none;color:#1d1d1b;border:1px solid #d8cfc3;border-radius:999px;padding:6px 10px;font-size:13px;font-weight:800;background:#fff}.process-nav a.active,.process-nav a:hover,.process-nav a:focus{background:#176b49;color:#fff;border-color:#176b49}@media(max-width:760px){.process-nav{padding:7px 10px}.process-nav a{font-size:12px;padding:6px 9px}}
     .inner-details.is-filled > summary .filled-ok,
     details.section-filled > summary .section-ok {
       display: inline-flex !important;
@@ -2853,7 +2853,8 @@
     #workRows .work-item:not(.is-filled) > summary .filled-ok {
       display: none !important;
     }
-</style>
+
+  .actions{position:sticky;bottom:0;z-index:30;background:rgba(24,25,22,.97);border-top:2px solid #c75b22;padding:9px 12px;display:flex;gap:8px;align-items:center;justify-content:flex-end;flex-wrap:wrap;margin-top:14px;border-radius:8px 8px 0 0}.footer-step{margin-right:auto;color:#fff;display:grid;gap:2px;line-height:1.15}.footer-step small{color:#cce8d8;font-weight:700}.actions button{min-height:36px}@media(max-width:760px){.footer-step{grid-column:1/-1;width:100%}.actions button{flex:1 1 auto}}</style>
 </head>
 <body>
   <header>
@@ -2875,7 +2876,7 @@
   </header>
 <nav class="process-nav" aria-label="Processtappen">
   <a href="index.html">Overzicht</a>
-  <a href="01-aanvraaganalyse-opdrachtgever.html">01 Aanvraag</a>
+  <a class="active" href="01-aanvraaganalyse-opdrachtgever.html">01 Aanvraag</a>
   <a href="02-projectopzet-werkzaamheden.html">02 Scope</a>
   <a href="03-opname-locatie.html">03 Opname</a>
   <a href="04-offerteaanvraag-onderaannemer.html">04 Uitvraag OA</a>
@@ -2916,8 +2917,8 @@
             <strong>Basisgegevens</strong>
             <span>Project, opdrachtgever en datum</span>
           </span>
-          <span class="filled-ok section-ok" aria-label="ingevuld">✓</span>
-          <span class="chevron">›</span>
+          <span class="filled-ok section-ok" aria-label="ingevuld">OK</span>
+          <span class="chevron">></span>
         </summary>
         <div class="content">
           <div class="grid three">
@@ -2977,8 +2978,8 @@
             <strong>Vraag van de klant</strong>
             <span>Letterlijke vraag en achterliggende behoefte</span>
           </span>
-          <span class="filled-ok section-ok" aria-label="ingevuld">✓</span>
-          <span class="chevron">›</span>
+          <span class="filled-ok section-ok" aria-label="ingevuld">OK</span>
+          <span class="chevron">></span>
         </summary>
         <div class="content">
           <div class="grid">
@@ -3024,8 +3025,8 @@
             <strong>Werkonderdelen</strong>
             <span>Eerste scope per werkonderdeel</span>
           </span>
-          <span class="filled-ok section-ok" aria-label="ingevuld">✓</span>
-          <span class="chevron">›</span>
+          <span class="filled-ok section-ok" aria-label="ingevuld">OK</span>
+          <span class="chevron">></span>
         </summary>
         <div class="content">
           <p class="hint">Leg per werkonderdeel alleen vast wat nu bekend is: bron, locatie, hoeveelheid en vervolgactie.</p>
@@ -3040,8 +3041,8 @@
             <strong>Aangeleverde stukken</strong>
             <span>Status, vindplaats en korte conclusie</span>
           </span>
-          <span class="filled-ok section-ok" aria-label="ingevuld">✓</span>
-          <span class="chevron">›</span>
+          <span class="filled-ok section-ok" aria-label="ingevuld">OK</span>
+          <span class="chevron">></span>
         </summary>
         <div class="content">
           <p class="hint">Kies per stuk de status. Voeg een link of lokaal bestand toe als vindplaats; het formulier bewaart alleen de verwijzing.</p>
@@ -3056,8 +3057,8 @@
             <strong>Eerste conclusie</strong>
             <span>Duidelijk, onzeker, noodzakelijk en extra</span>
           </span>
-          <span class="filled-ok section-ok" aria-label="ingevuld">✓</span>
-          <span class="chevron">›</span>
+          <span class="filled-ok section-ok" aria-label="ingevuld">OK</span>
+          <span class="chevron">></span>
         </summary>
         <div class="content">
           <div class="grid">
@@ -3092,8 +3093,8 @@
             <strong>Aanvullend nodig</strong>
             <span>Korte actielijst om verder te kunnen</span>
           </span>
-          <span class="filled-ok section-ok" aria-label="ingevuld">✓</span>
-          <span class="chevron">›</span>
+          <span class="filled-ok section-ok" aria-label="ingevuld">OK</span>
+          <span class="chevron">></span>
         </summary>
         <div class="content">
           <div id="needRows"></div>
@@ -3109,19 +3110,16 @@
         </div>
       </section>
 
-      <div class="topline">
-        <span class="saved" id="savedStatus">Automatisch opgeslagen</span>
-        <div class="toolbar">
-          <button type="button" onclick="saveForm()">Opslaan</button>
-          <button type="button" onclick="exportAanvraagBestand()">Projectbestand downloaden</button>
-          <button type="button" class="primary" onclick="window.print()">Printen</button>
-        </div>
-      </div>
-    </form>
+      <div class="actions">
+        <span class="footer-step"><strong>Stap 01 - Aanvraaganalyse</strong><small id="savedStatus">Automatisch opgeslagen</small></span>
+        <button type="button" onclick="saveForm()">Opslaan</button>
+        <button type="button" class="primary" onclick="goNext()">Naar projectopzet</button>
+      </div>`r`n    </form>
   </main>
 
   <script>
     const storageKey = 'cdh-aanvraaganalyse-v2';
+    const projectFileKey = 'cdh-projectbestand-v1';
 
     const workGroups = [
       {
@@ -3208,7 +3206,7 @@
       'Asbestinventarisatie',
       'Flora & fauna / ecologie',
       'Tekeningen',
-      'Foto’s / klachten',
+      'Foto's / klachten',
       'VvE-besluit / notulen',
       'Budget / mandaat'
     ];
@@ -3225,8 +3223,8 @@
           <details class="inner-details work-group">
             <summary>
               <strong>${group.title}</strong>
-              <span class="filled-ok" aria-label="ingevuld">✓</span>
-              <span class="chevron">›</span>
+              <span class="filled-ok" aria-label="ingevuld">OK</span>
+              <span class="chevron">></span>
             </summary>
             <div class="content compact-list">
               ${group.items.map((item) => {
@@ -3235,8 +3233,8 @@
                   <details class="inner-details work-item">
                     <summary>
                       <strong>${item}</strong>
-                      <span class="filled-ok" aria-label="ingevuld">✓</span>
-                      <span class="chevron">›</span>
+                      <span class="filled-ok" aria-label="ingevuld">OK</span>
+                      <span class="chevron">></span>
                     </summary>
                     <div class="content">
                       <div class="work-detail-grid">
@@ -3291,8 +3289,8 @@
           <details class="inner-details doc-item">
             <summary>
               <strong>${item}</strong>
-              <span class="filled-ok" aria-label="ingevuld">✓</span>
-              <span class="chevron">›</span>
+              <span class="filled-ok" aria-label="ingevuld">OK</span>
+              <span class="chevron">></span>
             </summary>
             <div class="content doc-grid">
               <select name="doc_${key}_status">
@@ -3330,7 +3328,7 @@
       row.innerHTML = `
         <div class="need-head">
           <strong>Actiepunt ${index}</strong>
-          <span class="need-ok" aria-label="ingevuld">✓</span>
+          <span class="need-ok" aria-label="ingevuld">OK</span>
         </div>
         <div class="need-fields">
           <input name="need_${index}_wat" value="${values.wat || ''}" placeholder="Wat ontbreekt?">
@@ -3366,7 +3364,12 @@
     }
 
     function saveForm() {
-      localStorage.setItem(storageKey, JSON.stringify(collectData()));
+      const data = collectData();
+      data.__type = 'cdh-aanvraaganalyse';
+      data.__version = 2;
+      data.__savedAt = new Date().toISOString();
+      localStorage.setItem(storageKey, JSON.stringify(data));
+      localStorage.setItem(projectFileKey, JSON.stringify(data));
       document.getElementById('savedStatus').textContent = 'Opgeslagen in deze browser';
       refreshNeedChecks();
       updateFilledSummary();
@@ -3378,6 +3381,7 @@
       data.__version = 2;
       data.__exportedAt = new Date().toISOString();
       localStorage.setItem(storageKey, JSON.stringify(data));
+      localStorage.setItem(projectFileKey, JSON.stringify(data));
       const safeName = (data.project || data.opdrachtgever || data.aanvraagnummer || 'aanvraaganalyse').toString().replace(/[^a-z0-9-_]+/gi, '-').replace(/^-|-$/g, '').toLowerCase() || 'aanvraaganalyse';
       const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
       const link = document.createElement('a');
@@ -3665,12 +3669,21 @@
     closeAll();
     updateFilledSummary();
     updateHeaderMeta();
+    function goNext() {
+      saveForm();
+      window.location.href = '02-projectopzet-werkzaamheden.html';
+    }
     loadForm();
     document.getElementById('aanvraagForm').addEventListener('input', saveForm);
     document.getElementById('aanvraagForm').addEventListener('change', saveForm);
-  </script>
-<div style="position:sticky;bottom:0;background:#1b1b19;border-top:2px solid #c75b23;padding:10px 18px;text-align:right"><a href="02-projectopzet-werkzaamheden.html" style="display:inline-block;background:#176b49;color:#fff;text-decoration:none;font-weight:800;border-radius:6px;padding:10px 14px">Naar projectopzet</a></div></body>
+  </script></body>
 </html>
+
+
+
+
+
+
 
 
 
