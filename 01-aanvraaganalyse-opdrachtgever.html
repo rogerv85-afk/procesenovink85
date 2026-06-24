@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="nl">
 <head>
   <meta charset="utf-8">
@@ -3166,13 +3166,13 @@ details.section-filled > summary .section-ok {
           <span class="letter">C</span>
           <span class="summary-title">
             <strong>Werkonderdelen</strong>
-            <span>Eerste scope per werkonderdeel</span>
+            <span>Eerste werkkaarten voor vervolg</span>
           </span>
           <span class="filled-ok section-ok" aria-label="ingevuld">OK</span>
           <span class="chevron">></span>
         </summary>
         <div class="content">
-          <p class="hint">Leg per werkonderdeel alleen vast wat nu bekend is: bron, locatie, hoeveelheid en vervolgactie.</p>
+          <p class="hint">Start hier alleen de werkkaart: herkomst, meenemen naar scope en eerste opnamevraag. Hoeveelheden en technische beoordeling komen later.</p>
           <div id="workRows" class="compact-list"></div>
         </div>
       </details>
@@ -3382,37 +3382,38 @@ details.section-filled > summary .section-ok {
                     <div class="content">
                       <div class="work-detail-grid">
                         <div class="field-block">
-                          <label>Vraag / bron</label>
+                          <label>Herkomst</label>
                           <select name="work_${key}_bron">
-                            <option value="">Bron kiezen</option>
-                            <option>Klant vraagt dit</option>
-                            <option>Komt uit aangeleverd stuk</option>
-                            <option>Extra kans / advies</option>
-                            <option>Alleen controleren</option>
+                            <option value="">Kies herkomst</option>
+                            <option>Klantvraag</option>
+                            <option>Aangeleverd stuk</option>
+                            <option>Extra signaal</option>
+                            <option>Twijfel / bespreken</option>
                           </select>
                         </div>
                         <div class="field-block">
-                          <label>Gevel / locatie</label>
-                          <input name="work_${key}_locatie" placeholder="bijv. voorgevel, blok A, alle gevels">
-                        </div>
-                        <div class="field-block">
-                          <label>Hoeveelheid</label>
-                          <input name="work_${key}_hoeveelheid" placeholder="bijv. 120 m2, 14 stuks of onbekend">
-                        </div>
-                        <div class="field-block">
-                          <label>Vervolgactie</label>
+                          <label>Meenemen naar scope?</label>
                           <select name="work_${key}_vervolg">
-                            <option value="">Actie kiezen</option>
-                            <option>Meenemen naar projectopzet</option>
-                            <option>Opnemen op locatie</option>
-                            <option>Hoeveelheid bepalen</option>
-                            <option>Stuk / advies opvragen</option>
-                            <option>Buiten scope houden</option>
+                            <option value="">Kies...</option>
+                            <option>Ja</option>
+                            <option>Twijfel / bespreken</option>
+                            <option>Nee</option>
+                          </select>
+                        </div>
+                        <div class="field-block">
+                          <label>Eerste opnamevraag</label>
+                          <select name="work_${key}_opnamevraag">
+                            <option value="">Wat moet buiten duidelijk worden?</option>
+                            <option>Staat beoordelen</option>
+                            <option>Locatie/gevel bepalen</option>
+                            <option>Hoeveelheid/aantal controleren</option>
+                            <option>Schadebeeld/oorzaak bekijken</option>
+                            <option>Bereikbaarheid/uitvoerbaarheid bekijken</option>
                           </select>
                         </div>
                         <div class="field-block mini-note">
                           <label>Korte notitie</label>
-                          <input name="work_${key}_notitie" placeholder="alleen als toelichting nodig is">
+                          <input name="work_${key}_notitie" placeholder="wat zegt klant of stuk hierover?">
                         </div>
                       </div>
                     </div>
@@ -3687,12 +3688,11 @@ details.section-filled > summary .section-ok {
           type: 'Werkzaamheid',
           title,
           bron: get('bron'),
-          locatie: get('locatie'),
-          hoeveelheid: get('hoeveelheid'),
           besluit: get('vervolg'),
+          opnamevraag: get('opnamevraag'),
           notitie: get('notitie')
         };
-      }).filter((row) => row.bron || row.locatie || row.hoeveelheid || row.besluit || row.notitie);
+      }).filter((row) => row.bron || row.besluit || row.opnamevraag || row.notitie);
 
       const docRows = Array.from(document.querySelectorAll('.doc-item')).map((item) => {
         const title = item.querySelector('summary strong')?.textContent.trim() || '';
@@ -3730,20 +3730,20 @@ details.section-filled > summary .section-ok {
             <thead>
               <tr>
                 <th>Onderdeel</th>
-                <th>Gevel / locatie</th>
-                <th>Hoeveelheid</th>
-                <th>Bron</th>
-                <th>Besluit / actie</th>
+                <th>Herkomst</th>
+                <th>Meenemen</th>
+                <th>Eerste opnamevraag</th>
+                <th>Notitie</th>
               </tr>
             </thead>
             <tbody>
               ${workRows.map((row) => `
                 <tr>
-                  <td>${row.title}${row.notitie ? `<br><small>${row.notitie}</small>` : ''}</td>
-                  <td>${row.locatie || '-'}</td>
-                  <td>${row.hoeveelheid || '-'}</td>
+                  <td><strong>${row.title}</strong></td>
                   <td>${row.bron || '-'}</td>
-                  <td><span class="status-chip ${statusClass(row.besluit)}">${row.besluit || 'Nog geen besluit'}</span></td>
+                  <td><span class="status-chip ${statusClass(row.besluit)}">${row.besluit || 'Nog niet gekozen'}</span></td>
+                  <td>${row.opnamevraag || '-'}</td>
+                  <td>${row.notitie || '-'}</td>
                 </tr>
               `).join('')}
             </tbody>

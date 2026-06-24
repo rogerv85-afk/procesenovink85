@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="nl">
 <head>
   <meta charset="utf-8">
@@ -600,12 +600,12 @@ body{font-family:"Inter","Segoe UI",Arial,Helvetica,sans-serif;background-color:
       <details open>
         <summary>
           <span class="letter">C</span>
-          <span class="summary-title"><strong>Werkzaamheden scope</strong><span>Van aanvraag naar echte werkzaamheden, hoeveelheden en vervolgactie</span></span>
+          <span class="summary-title"><strong>Werkzaamheden scope</strong><span>Maak de werkkaarten concreet voor opname</span></span>
           <span class="ok">OK</span>
           <span class="chev">&gt;</span>
         </summary>
         <div class="content">
-          <p class="hint">Kies eerst een werkzaamheid uit de bibliotheek. Daarna vul je gevel, hoeveelheid, bron en vervolgactie aan.</p>
+          <p class="hint">Werkonderdelen uit de aanvraag komen hier terug. Vul alleen locatie, hoeveelheid en uitgangspunt aan voor zover bekend.</p>
           <div id="workLibrary" class="work-library"></div>
           <div id="workRows" class="item-list"></div>
           <button type="button" onclick="addWork()">+ Werkzaamheid toevoegen</button>
@@ -615,12 +615,12 @@ body{font-family:"Inter","Segoe UI",Arial,Helvetica,sans-serif;background-color:
       <details>
         <summary>
           <span class="letter">D</span>
-          <span class="summary-title"><strong>Opname voorbereiden</strong><span>Wat moet buiten worden gecontroleerd of gemeten?</span></span>
+          <span class="summary-title"><strong>Opname voorbereiden</strong><span>Eerste opname met opdrachtgever</span></span>
           <span class="ok">OK</span>
           <span class="chev">&gt;</span>
         </summary>
         <div class="content grid">
-          <div class="full"><label>Meetpunten / aandachtspunten opname</label><textarea name="opnamepunten" placeholder="Bijv. voegwerk per gevel meten, scheuren controleren, lekkageplek bekijken."></textarea></div>
+          <div class="full"><label>Aandachtspunten eerste opname</label><textarea name="opnamepunten" placeholder="Wat moet je buiten echt controleren voordat je kunt uitvragen of begroten?"></textarea></div>
           <div><label>Opnemer</label><input name="opnemer" placeholder="naam"></div>
           <div><label>Geplande opnamedatum</label><input name="opnamedatum" type="date"></div>
         </div>
@@ -629,12 +629,12 @@ body{font-family:"Inter","Segoe UI",Arial,Helvetica,sans-serif;background-color:
       <details>
         <summary>
           <span class="letter">E</span>
-          <span class="summary-title"><strong>Besluit vervolg</strong><span>Klaar voor opname of eerst extra informatie nodig?</span></span>
+          <span class="summary-title"><strong>Besluit vervolg</strong><span>Altijd naar opname, tenzij eerst informatie ontbreekt</span></span>
           <span class="ok">OK</span>
           <span class="chev">&gt;</span>
         </summary>
         <div class="content grid">
-          <div><label>Vervolgstap</label><select name="vervolgstap"><option value="">Kies...</option><option>Naar opname</option><option>Eerst stukken opvragen</option><option>Eerst uitvraag onderaannemer</option><option>Klaar voor opdrachtvoorbereiding</option></select></div>
+          <div><label>Vervolgstap</label><select name="vervolgstap"><option value="">Kies...</option><option>Naar opname</option><option>Eerst stukken opvragen</option><option>Eerst intern bespreken</option></select></div>
           <div><label>Besluitdatum</label><input name="besluitdatum" type="date"></div>
           <div class="full"><label>Korte projectopzet</label><textarea name="projectopzet" placeholder="Samenvatting van scope, onzekerheden en vervolgstap."></textarea></div>
         </div>
@@ -767,12 +767,13 @@ body{font-family:"Inter","Segoe UI",Arial,Helvetica,sans-serif;background-color:
         <div class="item-body grid">
           <div class="full"><label>Werkzaamheid</label><input name="work_${workIndex}_naam" value="${escapeHtml(data.naam)}" placeholder="bijv. Gevelreiniging"></div>
           <div><label>Gevel / locatie</label><input name="work_${workIndex}_locatie" value="${escapeHtml(data.locatie)}" placeholder="A, B of alle gevels"></div>
-          <div><label>Hoeveelheid</label><input name="work_${workIndex}_hoeveelheid" value="${escapeHtml(data.hoeveelheid)}" placeholder="m2, stuks of onbekend"></div>
+          <div><label>Hoeveelheid indien bekend</label><input name="work_${workIndex}_hoeveelheid" value="${escapeHtml(data.hoeveelheid)}" placeholder="bijv. 120, onbekend of n.t.b."></div>
           <div><label>Eenheid</label><select name="work_${workIndex}_eenheid"><option value="">Kies...</option>${option('m2', data.eenheid)}${option('m1', data.eenheid)}${option('st', data.eenheid)}${option('post', data.eenheid)}${option('uur', data.eenheid)}${option('m3', data.eenheid)}</select></div>
-          <div><label>Bron gegevens</label><select name="work_${workIndex}_bron"><option value="">Kies...</option>${option('Klantvraag', data.bron)}${option('MJOP', data.bron)}${option('Tekening', data.bron)}${option('Foto', data.bron)}${option('Adviesrapport', data.bron)}${option('Opname', data.bron)}${option('Inschatting', data.bron)}</select></div>
-          <div><label>Betrouwbaarheid</label><select name="work_${workIndex}_betrouwbaarheid"><option value="">Kies...</option>${option('Gemeten', data.betrouwbaarheid)}${option('Uit stukken', data.betrouwbaarheid)}${option('Geschat', data.betrouwbaarheid)}${option('Aanname', data.betrouwbaarheid)}</select></div><div><label>Controle nodig bij opname</label><select name="work_${workIndex}_controle"><option value="">Kies...</option>${option('Ja', data.controle)}${option('Nee', data.controle)}</select></div><div><label>Scopebesluit</label><select name="work_${workIndex}_besluit"><option value="">Kies...</option>${option('In scope', data.besluit)}${option('Eerst opnemen / meten', data.besluit)}${option('Uitvragen onderaannemer', data.besluit)}${option('Meenemen als optie', data.besluit)}${option('Buiten scope', data.besluit)}</select></div>
-          <div><label>Onderaannemer?</label><select name="work_${workIndex}_oa"><option value="">Kies...</option>${option('Nee', data.oa)}${option('Ja, uitvragen', data.oa)}${option('Nog bepalen', data.oa)}</select></div><div><label>Type post</label><select name="work_${workIndex}_posttype"><option value="">Kies...</option>${option('Vast', data.posttype)}${option('Stelpost', data.posttype)}${option('Verrekenbaar', data.posttype)}${option('Optie', data.posttype)}${option('Uitgesloten', data.posttype)}</select></div>
-          <div class="full"><label>Risico / aanname</label><input name="work_${workIndex}_notitie" value="${escapeHtml(data.notitie)}" placeholder="korte aanname of risico; niet gebruiken als calculatieregel"></div>
+          <div><label>Bron scope / hoeveelheid</label><select name="work_${workIndex}_bron"><option value="">Kies...</option>${option('Klantvraag', data.bron)}${option('Aangeleverd stuk', data.bron)}${option('MJOP', data.bron)}${option('Tekening', data.bron)}${option('Foto', data.bron)}${option('Adviesrapport', data.bron)}${option('Inschatting', data.bron)}</select></div>
+          <div><label>Scopebesluit</label><select name="work_${workIndex}_besluit"><option value="">Kies...</option>${option('In scope', data.besluit)}${option('Twijfel / bespreken bij opname', data.besluit)}${option('Meenemen als optie', data.besluit)}${option('Buiten scope', data.besluit)}</select></div>
+          <div><label>Eerste opname controleren</label><select name="work_${workIndex}_opnamevraag"><option value="">Kies...</option>${option('Staat beoordelen', data.opnamevraag)}${option('Locatie/gevel bepalen', data.opnamevraag)}${option('Hoeveelheid/aantal controleren', data.opnamevraag)}${option('Schadebeeld/oorzaak bekijken', data.opnamevraag)}${option('Bereikbaarheid/uitvoerbaarheid bekijken', data.opnamevraag)}</select></div>
+          <div><label>Type post</label><select name="work_${workIndex}_posttype"><option value="">Kies...</option>${option('Vast', data.posttype)}${option('Stelpost', data.posttype)}${option('Verrekenbaar', data.posttype)}${option('Optie', data.posttype)}${option('Uitgesloten', data.posttype)}</select></div>
+          <div class="full"><label>Uitgangspunt / aanname</label><input name="work_${workIndex}_notitie" value="${escapeHtml(data.notitie)}" placeholder="kort uitgangspunt voor opname of scope"></div>
         </div>
       `;
       workRows.appendChild(row);
@@ -880,8 +881,9 @@ body{font-family:"Inter","Segoe UI",Arial,Helvetica,sans-serif;background-color:
         const locatie = data[`${base}_locatie`] || '';
         const hoeveelheid = data[`${base}_hoeveelheid`] || '';
         const besluitAanvraag = data[`${base}_vervolg`] || '';
+        const opnamevraag = data[`${base}_opnamevraag`] || '';
         const notitie = data[`${base}_notitie`] || '';
-        if (!bron && !locatie && !hoeveelheid && !besluitAanvraag && !notitie) return;
+        if (!bron && !locatie && !hoeveelheid && !besluitAanvraag && !opnamevraag && !notitie) return;
 
         const naam = nameFromBase(base);
         if (existing.includes(naam)) return;
@@ -892,7 +894,7 @@ body{font-family:"Inter","Segoe UI",Arial,Helvetica,sans-serif;background-color:
           hoeveelheid,
           eenheid: guessUnit(hoeveelheid),
           besluit: mapAanvraagBesluit(besluitAanvraag),
-          oa: besluitAanvraag.includes('onderaannemer') ? 'Ja, uitvragen' : '',
+          opnamevraag,
           notitie
         });
       });
@@ -954,13 +956,11 @@ body{font-family:"Inter","Segoe UI",Arial,Helvetica,sans-serif;background-color:
     function mapAanvraagBesluit(text) {
       const value = String(text || '').toLowerCase();
       if (!value) return '';
-      if (value.includes('buiten')) return 'Buiten scope';
-      if (value.includes('opnemen') || value.includes('hoeveelheid') || value.includes('controleren')) return 'Eerst opnemen / meten';
-      if (value.includes('advies') || value.includes('stuk')) return 'Eerst opnemen / meten';
+      if (value.includes('buiten') || value.includes('nee')) return 'Buiten scope';
+      if (value.includes('twijfel') || value.includes('bespreken')) return 'Twijfel / bespreken bij opname';
       if (value.includes('optie') || value.includes('extra')) return 'Meenemen als optie';
       return 'In scope';
     }
-
     function refresh() {
       document.querySelectorAll('#projectForm > details').forEach((section) => {
         const filled = Array.from(section.querySelectorAll('input, select, textarea')).some((field) => field.value.trim() !== '');
@@ -989,7 +989,7 @@ body{font-family:"Inter","Segoe UI",Arial,Helvetica,sans-serif;background-color:
     function badge(text) {
       let cls = 'warn';
       const value = String(text || 'Nog bepalen');
-      if (value.includes('In scope') || value === 'Nee') cls = 'okb';
+      if (value.includes('In scope')) cls = 'okb';
       if (value.includes('Buiten')) cls = 'out';
       return `<span class="badge ${cls}">${escapeHtml(value)}</span>`;
     }
@@ -997,8 +997,8 @@ body{font-family:"Inter","Segoe UI",Arial,Helvetica,sans-serif;background-color:
     function updateOverview() {
       const rows = Array.from(document.querySelectorAll('.work-row')).map((row) => {
         const get = (part) => row.querySelector(`[name*="_${part}"]`)?.value.trim() || '';
-        return { naam: get('naam'), locatie: get('locatie'), hoeveelheid: get('hoeveelheid'), eenheid: get('eenheid'), bron: get('bron'), betrouwbaarheid: get('betrouwbaarheid'), controle: get('controle'), besluit: get('besluit'), oa: get('oa') };
-      }).filter((row) => row.naam || row.locatie || row.hoeveelheid || row.besluit || row.oa);
+        return { naam: get('naam'), locatie: get('locatie'), hoeveelheid: get('hoeveelheid'), eenheid: get('eenheid'), bron: get('bron'), opnamevraag: get('opnamevraag'), besluit: get('besluit') };
+      }).filter((row) => row.naam || row.locatie || row.hoeveelheid || row.besluit || row.opnamevraag);
 
       if (!rows.length) {
         overview.innerHTML = '<p class="hint">Nog geen werkzaamheden in de projectopzet.</p>';
@@ -1007,9 +1007,9 @@ body{font-family:"Inter","Segoe UI",Arial,Helvetica,sans-serif;background-color:
 
       overview.innerHTML = `
         <table class="summary-table">
-          <thead><tr><th>Werkzaamheid</th><th>Gevel / locatie</th><th>Hoeveelheid</th><th>Bron</th><th>Betrouwbaarheid</th><th>Controle</th><th>Scopebesluit</th></tr></thead>
+          <thead><tr><th>Werkzaamheid</th><th>Gevel / locatie</th><th>Hoeveelheid</th><th>Bron</th><th>Eerste opnamevraag</th><th>Scopebesluit</th></tr></thead>
           <tbody>
-            ${rows.map((row) => `<tr><td><strong>${escapeHtml(row.naam || '-')}</strong></td><td>${escapeHtml(row.locatie || '-')}</td><td>${escapeHtml(row.hoeveelheid || '-')}${row.eenheid ? ' ' + escapeHtml(row.eenheid) : ''}</td><td>${escapeHtml(row.bron || '-')}</td><td>${escapeHtml(row.betrouwbaarheid || '-')}</td><td>${escapeHtml(row.controle || '-')}</td><td>${badge(row.besluit)}</td></tr>`).join('')}
+            ${rows.map((row) => `<tr><td><strong>${escapeHtml(row.naam || '-')}</strong></td><td>${escapeHtml(row.locatie || '-')}</td><td>${escapeHtml(row.hoeveelheid || '-')}${row.eenheid ? ' ' + escapeHtml(row.eenheid) : ''}</td><td>${escapeHtml(row.bron || '-')}</td><td>${escapeHtml(row.opnamevraag || '-')}</td><td>${badge(row.besluit)}</td></tr>`).join('')}
           </tbody>
         </table>
       `;
