@@ -501,7 +501,7 @@
       line-height: 1.15;
     }
     .step-footer .footer-step small { color: #cce8d8; font-weight: 700; }
-    @media(max-width:760px){.load-panel{align-items:stretch;flex-direction:column}.step-footer .footer-step{grid-column:1/-1;width:100%}}</style>
+    @media(max-width:760px){.load-panel{align-items:stretch;flex-direction:column}.step-footer .footer-step{grid-column:1/-1;width:100%}}.work-library{display:grid;gap:10px;margin:8px 0 12px}.work-lib-group{border:1px solid #d8cfc3;border-radius:8px;background:#fffefa;padding:10px}.work-lib-title{font-weight:850;margin-bottom:7px}.work-lib-buttons{display:flex;gap:7px;flex-wrap:wrap}.work-lib-buttons button{min-height:32px;padding:6px 10px;border-radius:999px;font-size:13px;background:#fff;border-color:#d8cfc3}.work-lib-buttons button:hover{background:#176b49;color:#fff;border-color:#176b49}</style>
 </head>
 <body>
   <header>
@@ -603,7 +603,8 @@
           <span class="chev">&gt;</span>
         </summary>
         <div class="content">
-          <p class="hint">Controleer per regel: hoort dit in scope, moet het worden opgenomen, of moet het naar een onderaannemer?</p>
+          <p class="hint">Kies eerst een werkzaamheid uit de bibliotheek. Daarna vul je gevel, hoeveelheid, bron en vervolgactie aan.</p>
+          <div id="workLibrary" class="work-library"></div>
           <div id="workRows" class="item-list"></div>
           <button type="button" onclick="addWork()">+ Werkzaamheid toevoegen</button>
         </div>
@@ -737,6 +738,17 @@
       refresh();
     }
 
+
+    const workLibraryGroups = [
+      { title: 'Onderzoek & diagnose', items: ['Lekkage- / vochtonderzoek', 'Constructief onderzoek', 'Asbestinventarisatie', 'Thermografisch / energie-onderzoek'] },
+      { title: 'Gevel & metselwerk', items: ['Gevelreiniging', 'Voegwerk vervangen', 'Voegwerk rollaag / raamdorpels', 'Slecht metselwerk uithakken & vervangen', 'Scheurherstel metselwerk', 'Renovatiespouwankers bijboren', 'Hydrofoberen / impregneren'] },
+      { title: 'Kozijnen & glas', items: ['Kozijnen vervangen', 'Enkel naar dubbel / HR++ glas', 'Beglazingsafdichting herstellen', 'Hang- en sluitwerk'] },
+      { title: 'Schilderwerk', items: ['Buitenschilderwerk houtwerk', 'Schilderwerk kozijnen', 'Schilderwerk deuren / ramen', 'Herstel houtrot'] },
+      { title: 'Beton', items: ['Betonherstel balkonranden', 'Scheurherstel beton', 'Coating balkonvloer'] },
+      { title: 'Dak, balkon & toegang', items: ['Dakrand herstel', 'Balkon / galerij herstel', 'Steiger / rolsteiger', 'Bouwplaatsinrichting'] },
+      { title: 'Verduurzaming', items: ['Isolatie', 'Ventilatie', 'Zonnepanelen voorbereiding', 'Energieadvies verwerken'] },
+      { title: 'Overige werkzaamheden', items: ['Schoonmaak', 'Bewonerscommunicatie', 'Flora & fauna maatregel', 'Veiligheid / wetgeving'] }
+    ];
     function addWork(data = {}) {
       workIndex += 1;
       const row = document.createElement('div');
@@ -765,6 +777,40 @@
       refresh();
     }
 
+
+    function renderWorkLibrary() {
+      const holder = document.getElementById('workLibrary');
+      if (!holder) return;
+      holder.innerHTML = '';
+      workLibraryGroups.forEach((group) => {
+        const box = document.createElement('div');
+        box.className = 'work-lib-group';
+        const title = document.createElement('div');
+        title.className = 'work-lib-title';
+        title.textContent = group.title;
+        const buttons = document.createElement('div');
+        buttons.className = 'work-lib-buttons';
+        group.items.forEach((name) => {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.textContent = '+ ' + name;
+          button.addEventListener('click', () => addLibraryWork(name));
+          buttons.appendChild(button);
+        });
+        box.appendChild(title);
+        box.appendChild(buttons);
+        holder.appendChild(box);
+      });
+    }
+
+    function addLibraryWork(name) {
+      const existing = Array.from(document.querySelectorAll('.work-row input[name$="_naam"]')).map((field) => field.value.trim().toLowerCase());
+      if (existing.includes(String(name).toLowerCase())) return;
+      addWork({ naam: name });
+      const row = workRows.lastElementChild;
+      if (row) row.classList.add('open');
+      save();
+    }
     function toggleItem(item) {
       item.classList.toggle('open');
     }
@@ -1030,11 +1076,11 @@
       reader.readAsText(file);
     }
 
+    renderWorkLibrary();
     addFacade({ code: 'A', naam: 'Voorgevel' });
     addFacade({ code: 'B', naam: 'Achtergevel' });
     const hasProject = load();
     if (!hasProject) importAanvraag(false);
-    if (!document.querySelector('.work-row')) addWork();
     refresh();
     function goNext() {
       save();
@@ -1045,6 +1091,10 @@
   </script>
 </body>
 </html>
+
+
+
+
 
 
 
