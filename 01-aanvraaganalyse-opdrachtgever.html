@@ -3255,9 +3255,10 @@ details.section-filled > summary .section-ok {
 
       <div class="actions">
         <span class="footer-step"><strong>Stap 01 - Aanvraaganalyse</strong><small id="savedStatus">Automatisch opgeslagen</small></span>
-        <button type="button" onclick="saveForm()">Opslaan</button>
+        <button type="button" onclick="saveProjectFile()">Opslaan</button>
         <button type="button" class="primary" onclick="goNext()">Naar projectopzet</button>
-      </div>`r`n    </form>
+      </div>
+    </form>
   </main>
 
   <script>
@@ -3534,6 +3535,52 @@ details.section-filled > summary .section-ok {
       link.click();
       URL.revokeObjectURL(link.href);
       document.getElementById('savedStatus').textContent = 'Projectbestand gedownload';
+    }
+
+
+    function projectFileName() {
+      const clean = (value, fallback) => String(value || fallback)
+        .trim()
+        .replace(/[^a-z0-9\-]+/gi, '-')
+        .replace(/^-+|-+$/g, '')
+        .slice(0, 48) || fallback;
+      const wo = clean(document.querySelector('[name="werkordernummer"]')?.value, 'zonder-wo');
+      const project = clean(document.querySelector('[name="project"]')?.value || document.querySelector('[name="opdrachtgever"]')?.value, 'aanvraaganalyse');
+      const date = new Date().toISOString().slice(0, 10);
+      return `${date}-${wo}-${project}.cdhproject.json`;
+    }
+
+    async function saveProjectFile() {
+      saveForm();
+      const data = collectData();
+      data.__type = 'cdh-aanvraaganalyse';
+      data.__version = 2;
+      data.__savedAt = new Date().toISOString();
+      localStorage.setItem(storageKey, JSON.stringify(data));
+      localStorage.setItem(projectFileKey, JSON.stringify(data));
+      const filename = projectFileName();
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      if (window.showSaveFilePicker) {
+        try {
+          const handle = await window.showSaveFilePicker({
+            suggestedName: filename,
+            types: [{ description: 'CdH projectbestand', accept: { 'application/json': ['.json', '.cdhproject'] } }]
+          });
+          const writable = await handle.createWritable();
+          await writable.write(blob);
+          await writable.close();
+          document.getElementById('savedStatus').textContent = `Projectbestand opgeslagen: ${filename}`;
+          return;
+        } catch (error) {
+          if (error && error.name === 'AbortError') return;
+        }
+      }
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = filename;
+      link.click();
+      URL.revokeObjectURL(link.href);
+      document.getElementById('savedStatus').textContent = `Projectbestand gemaakt: ${filename}`;
     }
 
     function loadForm() {
