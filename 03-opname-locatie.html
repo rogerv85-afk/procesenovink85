@@ -4,102 +4,80 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Opname locatie | Caspar de Haan</title>
-  <style>
-    :root{--bg:#f3f1eb;--paper:#fffefa;--ink:#20211e;--muted:#625d55;--line:#d8d0c4;--green:#15734d;--green-dark:#0c5037;--orange:#c75b22;--head:#181916;--ok:#dcefe5;--warn:#f4e6bf;--bad:#f6d7d0}
-    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:"Aptos","Segoe UI",Arial,sans-serif;font-size:14px;line-height:1.42}h1,h2,h3,p{margin-top:0}header{background:linear-gradient(105deg,#171915 0%,#16291e 100%);color:#fff;border-bottom:3px solid var(--orange);padding:14px 24px}.head-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:38px minmax(0,1fr);gap:12px;align-items:center}.logo{width:38px;height:38px;border-radius:8px;background:var(--orange);display:grid;place-items:center;font-weight:900}.eyebrow{color:#e9b49c;font-size:10px;font-weight:850;letter-spacing:.12em;text-transform:uppercase}.title h1{margin:1px 0;font-size:clamp(22px,2.5vw,30px);line-height:1.08}.title p{margin:0;color:#d7d1c8;font-size:12px}.meta{grid-column:1/-1;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.14)}.chip{min-height:30px;padding:6px 8px;border:1px solid rgba(255,255,255,.16);border-radius:7px;background:rgba(255,255,255,.04);display:flex;gap:6px;align-items:center;min-width:0}.chip b{color:#efb79b;font-size:10px;text-transform:uppercase;white-space:nowrap}.chip span{font-size:12px;font-weight:750;overflow-wrap:anywhere}.chip.status{background:rgba(23,107,73,.35)}.process-nav{position:sticky;top:0;z-index:20;background:#fffdf8;border-bottom:1px solid var(--line);display:flex;gap:6px;overflow-x:auto;padding:8px 18px;box-shadow:0 1px 3px rgba(29,29,27,.06)}.process-nav a{white-space:nowrap;text-decoration:none;color:#1d1d1b;border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-size:13px;font-weight:800;background:#fff}.process-nav a.active,.process-nav a:hover{background:var(--green);color:#fff;border-color:var(--green)}main{max-width:1080px;margin:0 auto;padding:18px 18px 72px}.hero,.panel,details{background:var(--paper);border:1px solid var(--line);border-radius:8px;box-shadow:0 1px 4px rgba(35,31,26,.06);overflow:hidden}.hero{display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;padding:16px 18px;margin-bottom:12px;border-top:4px solid var(--green)}.step,.letter{background:var(--green);color:#fff;display:grid;place-items:center;font-weight:850}.step{width:40px;height:40px;border-radius:8px;font-size:18px}.hero h2{margin-bottom:2px;font-size:clamp(24px,2.8vw,32px);line-height:1.12}.hero p,.hint{color:var(--muted)}.panel{padding:14px 16px;margin-bottom:10px}.load-panel{display:flex;align-items:center;justify-content:space-between;gap:12px}.load-panel p{margin:0;color:var(--muted)}details{margin-bottom:10px}summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:38px minmax(0,1fr) auto;gap:12px;align-items:center;padding:13px 16px}summary::-webkit-details-marker{display:none}.letter{width:36px;height:36px;border-radius:8px}.summary-title strong{display:block;font-size:20px;line-height:1.1}.summary-title span{display:block;color:var(--muted);font-size:13px;margin-top:3px}.chev{color:var(--orange);font-weight:900}.content{border-top:1px solid var(--line);padding:14px 16px;background:#fffdf8}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 12px}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.full{grid-column:1/-1}label{display:block;margin:0 0 4px;color:var(--muted);font-size:11px;font-weight:850;text-transform:uppercase;letter-spacing:.03em}input,select,textarea{width:100%;min-height:38px;border:1px solid var(--line);border-radius:6px;background:#fffefa;color:var(--ink);padding:8px 10px;font:inherit}textarea{min-height:72px;resize:vertical}.item{border:1px solid var(--line);border-left:5px solid var(--green);border-radius:8px;background:#fffefa;margin-bottom:8px;overflow:hidden}.item-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;padding:11px 12px;cursor:pointer}.item-head strong{font-size:17px}.item-meta{color:var(--muted);font-size:12px;margin-top:2px}.item-body{display:none;border-top:1px solid var(--line);padding:12px}.item.open .item-body{display:grid}.badge{display:inline-block;border-radius:999px;padding:3px 8px;font-size:12px;font-weight:850;background:#e8edf5;color:#1b4d7a}.badge.ok{background:var(--ok);color:var(--green-dark)}.badge.warn{background:var(--warn);color:#705000}.summary-table{width:100%;border-collapse:collapse}.summary-table th,.summary-table td{border-bottom:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}.summary-table th{font-size:11px;color:var(--muted);text-transform:uppercase}.actions{position:sticky;bottom:0;background:rgba(24,25,22,.97);border-top:2px solid var(--orange);padding:9px 12px;display:flex;gap:8px;align-items:center;justify-content:flex-end;flex-wrap:wrap}.footer-step{margin-right:auto;color:#fff;display:grid;gap:2px;line-height:1.15}.footer-step small{color:#cce8d8;font-weight:700}.button-link,button{min-height:36px;border:1px solid #bfa997;border-radius:6px;background:var(--paper);color:var(--ink);padding:8px 12px;font-weight:850;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}button.primary,.button-link.primary{background:var(--green);border-color:var(--green);color:#fff}@media(max-width:760px){.meta,.grid,.grid.three{grid-template-columns:1fr}main{padding-left:12px;padding-right:12px}.summary-title strong{font-size:18px}.process-nav{padding:7px 10px}.process-nav a{font-size:12px;padding:6px 9px}.load-panel{align-items:stretch;flex-direction:column}.footer-step{grid-column:1/-1;width:100%}.actions button,.actions a{flex:1 1 auto}}
-  /* CDH-SHARED-POLISH-START */
-body{font-family:"Inter","Segoe UI",Arial,Helvetica,sans-serif;background-color:var(--bg);background-image:linear-gradient(rgba(23,107,73,.032) 1px,transparent 1px),linear-gradient(90deg,rgba(23,107,73,.032) 1px,transparent 1px);background-size:44px 44px}header{background:linear-gradient(105deg,#181916 0%,#17251c 100%);padding:14px 24px 12px}.logo{border-radius:9px;background:var(--orange);box-shadow:inset 0 0 0 2px rgba(255,255,255,.18)}.eyebrow{color:#efb79b}.meta{gap:7px}.chip{min-height:28px;border-radius:6px;background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.13)}.chip b{color:#efb79b}.chip.status{background:rgba(23,107,73,.36)}.process-nav{padding:7px 18px}.process-nav a{min-height:28px;padding:5px 10px;font-size:12px}.hero,.panel,details{border-radius:8px;box-shadow:0 1px 3px rgba(29,29,27,.06)}.hero{background:linear-gradient(105deg,#fffefa 0%,#fbf8f1 72%,#f5fbf7 100%)}summary{min-height:68px}.summary-title strong{font-size:20px}.summary-title span{font-size:13px}.actions{position:sticky;bottom:0;z-index:30;border-top:3px solid var(--orange);background:rgba(24,25,22,.98);border-radius:0;margin-top:14px}.actions button,.actions a{min-height:36px;font-size:13px}.footer-step small{font-size:11px}@media(max-width:760px){header{padding:12px 16px 10px}.process-nav{padding:7px 10px}.meta{grid-template-columns:1fr 1fr}.chip.status{grid-column:1/-1}main{padding-left:12px;padding-right:12px;padding-bottom:82px}.summary-title strong{font-size:18px}}
-/* CDH-SHARED-POLISH-END */
-    .goal-strip{border-left:4px solid var(--green);padding:12px 14px;display:grid;gap:5px}
-    .goal-strip strong{color:var(--green-dark);font-size:15px}
-    .goal-strip p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
-</style>
+  <link rel="stylesheet" href="begrotingsconcept.css">
 </head>
-<body>
+<body data-page="opname">
   <header>
     <div class="head-inner">
-      <div class="logo">CdH</div>
-      <div class="title"><div class="eyebrow">Caspar de Haan - renovatie & onderhoud</div><h1>Opname locatie</h1><p>Stap 3 - scope buiten controleren</p></div>
+      <div class="logo">CDH</div>
+      <div>
+        <div class="eyebrow">Caspar de Haan - renovatiebegroting</div>
+        <h1>3. Opname locatie</h1>
+        <p>Controleer buiten alleen wat nodig is om de begrotingspost compleet te maken.</p>
+      </div>
       <div class="meta">
-        <div class="chip"><b>WO</b><span id="metaWo">-</span></div>
-        <div class="chip"><b>Project</b><span id="metaProject">-</span></div>
-        <div class="chip"><b>Projectleider</b><span id="metaLeader">-</span></div>
-        <div class="chip"><b>Opdrachtgever</b><span id="metaClient">-</span></div>
-        <div class="chip status"><b>Status</b><span id="metaStatus">Concept</span></div>
+        <div class="chip"><b>Project</b><span data-meta="project">Nog geen project</span></div>
+        <div class="chip"><b>Werkorder</b><span data-meta="werkordernummer">-</span></div>
+        <div class="chip"><b>Opdrachtgever</b><span data-meta="opdrachtgever">-</span></div>
+        <div class="chip status"><b>Posten</b><span data-meta="postCount">0</span></div>
       </div>
     </div>
   </header>
   <nav class="process-nav" aria-label="Processtappen">
-    <a href="index.html">Overzicht</a><a href="01-aanvraaganalyse-opdrachtgever.html">01 Aanvraag</a><a href="02-projectopzet-werkzaamheden.html">02 Scope</a><a class="active" href="03-opname-locatie.html">03 Opname</a><a href="04-offerteaanvraag-onderaannemer.html">04 Uitvraag OA</a><a href="05-begroting-offerte.html">05 Begroting/offerte</a><a href="06-opdrachtbevestiging.html">06 Opdracht</a><a href="07-doelstellingbegroting.html">07 Doelstelling</a><a href="08-weekrapport-uitvoering.html">08 Uitvoering</a><a href="09-oplevering.html">09 Oplevering</a><a href="10-dossier-overzicht.html">10 Dossier</a>
+    <a href="01-aanvraaganalyse-opdrachtgever.html" data-step-link="1">1 Aanvraag</a>
+    <a href="02-projectopzet-werkzaamheden.html" data-step-link="2">2 Scope</a>
+    <a href="03-opname-locatie.html" data-step-link="3" class="active">3 Opname</a>
+    <a href="04-offerteaanvraag-onderaannemer.html" data-step-link="4">4 OA-uitvraag</a>
+    <a href="05-begroting-offerte.html" data-step-link="5">5 Begroting</a>
+    <a href="06-opdrachtbevestiging.html" data-step-link="6">6 Opdracht</a>
+    <a href="07-doelstellingbegroting.html" data-step-link="7">7 Doelstelling</a>
+    <a href="08-weekrapport-uitvoering.html" data-step-link="8">8 Uitvoering</a>
+    <a href="09-oplevering.html" data-step-link="9">9 Oplevering</a>
+    <a href="10-dossier-overzicht.html" data-step-link="10">10 Dossier</a>
   </nav>
   <main>
-    <section class="hero"><span class="step">03</span><div><h2>Klopt de scope buiten?</h2><p>Controleer de scope-regels uit pagina 2. Hier leg je metingen, afwijkingen en open punten vast.</p></div></section>
-
-    <section class="panel goal-strip">
+    <section class="hero">
+      <div class="step">3</div>
+      <div>
+        <h2>Buitenopname per begrotingspost</h2>
+        <p>Geen prijzen en geen offertevoorwaarden. Alleen feiten: hoeveelheid, staat, bereikbaarheid, risico en foto's.</p>
+      </div>
+    </section>
+    <section class="goal-strip">
       <strong>Doel van stap 3</strong>
-      <p>Beoordeel buiten per scopekaart de staat, oorzaak, bereikbaarheid, fotos en open actie die nodig zijn voor uitvraag of begroting.</p>
-      <p>Niet hier doen: prijzen maken of offertevoorwaarden bepalen. Eerst feiten uit de opname vastleggen.</p>
+      <p>Toon alleen posten waarbij opname nodig is. Beantwoord de opnamevraag zodat de begrotingsregel daarna compleet gemaakt kan worden.</p>
     </section>
-    <section class="panel load-panel">
-      <div><strong>Projectbestand</strong><p>Als de scope niet zichtbaar is: laad hier het projectbestand in.</p></div>
-      <button type="button" onclick="document.getElementById('projectFile').click()">Projectbestand inladen</button>
-      <input id="projectFile" type="file" accept="application/json,.json,.cdhproject" hidden onchange="importProjectBestand(event)">
+    <section class="panel">
+      <div class="grid three">
+        <div><label>Project</label><div class="readbox" data-meta="project">Nog geen project</div></div>
+        <div><label>Werkorder</label><div class="readbox" data-meta="werkordernummer">-</div></div>
+        <div><label>Posten in project</label><div class="readbox" data-meta="postCount">0</div></div>
+      </div>
     </section>
-
-    <form id="opnameForm">
-      <details open><summary><span class="letter">A</span><span class="summary-title"><strong>Opnamegegevens</strong><span>Datum, opnemer en locatie</span></span><span class="chev">&gt;</span></summary><div class="content grid three">
-        <div><label>Datum opname</label><input type="date" name="opname_datum"></div><div><label>Opgenomen door</label><input name="opname_door" placeholder="naam"></div><div><label>Contactpersoon locatie</label><input name="opname_contact" placeholder="beheerder / bewoner"></div><div class="full"><label>Locatie/adres gecontroleerd</label><input name="opname_locatie" placeholder="adres of complex"></div>
-      </div></details>
-
-      <details open><summary><span class="letter">B</span><span class="summary-title"><strong>Scopecontrole</strong><span>Werkzaamheden uit pagina 2 controleren</span></span><span class="chev">&gt;</span></summary><div class="content"><p class="hint">Elke regel komt uit pagina 2. Vul alleen in wat buiten nodig is voor uitvraag of begroting.</p><div id="scopeRows"></div></div></details>
-
-      <details><summary><span class="letter">C</span><span class="summary-title"><strong>Open punten</strong><span>Acties voordat offerte of uitvraag door kan</span></span><span class="chev">&gt;</span></summary><div class="content"><div id="actionRows"></div><button type="button" onclick="addAction()">+ Open punt toevoegen</button></div></details>
-
-      <details><summary><span class="letter">D</span><span class="summary-title"><strong>Opnameconclusie</strong><span>Besluit richting vervolg</span></span><span class="chev">&gt;</span></summary><div class="content grid"><div><label>Opnamebesluit</label><select name="opname_besluit"><option value="">Kies...</option><option>Scope akkoord</option><option>Scope akkoord met voorbehoud</option><option>Scope aanpassen</option><option>Extra onderzoek nodig</option><option>Niet offertegereed</option></select></div><div><label>Risicoklasse</label><select name="opname_risico"><option value="">Kies...</option><option>Laag</option><option>Middel</option><option>Hoog</option></select></div><div class="full"><label>Belangrijkste constateringen max. 5 punten</label><textarea name="opname_conclusie" placeholder="Korte conclusie; geen offerte of begrotingstekst."></textarea></div></div></details>
-
-      <section class="panel"><h3>Controleblad opname</h3><div id="overview"><p class="hint">Nog geen scope-regels gevonden. Open pagina 2 en vul eerst scope in.</p></div></section>
-
-      <div class="actions"><span class="footer-step"><strong>Stap 03 - Opname</strong><small id="saveState">Nog niet opgeslagen</small></span><button type="button" onclick="saveProjectFile()">Opslaan</button><button class="primary" type="button" onclick="goNext()">Naar offerteaanvraag</button></div>
-    </form>
+    <details open>
+      <summary>
+        <div class="letter">A</div>
+        <div class="summary-title"><strong>Opnamevragen</strong><span>Alleen posten met ontbrekende of te controleren hoeveelheid/status.</span></div>
+        <div class="chev">›</div>
+      </summary>
+      <div class="content">
+        <p class="hint">Zie je niets, dan staat er in stap 2 geen post op opnemen buiten en is er geen opnamevraag ingevuld.</p>
+        <button type="button" data-action="show-all-opname">Toch alle posten tonen</button>
+        <div id="posts" style="margin-top:12px"></div>
+      </div>
+    </details>
   </main>
-  <script>
-    const commonProjectKey = 'cdh-projectbestand-v1';
-    const projectKey = 'cdh-projectopzet-v1';
-    const opnameKey = 'cdh-opname-locatie-v1';
-    let projectData = {};
-    let actionIndex = 0;
-
-    function escapeHtml(value){return String(value ?? '').replace(/[&<>"']/g,(c)=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-    function option(value,current){return `<option${value===current?' selected':''}>${escapeHtml(value)}</option>`;}
-    function readJson(key){try{return JSON.parse(localStorage.getItem(key)||'{}')}catch{return {}}}
-    function hasScope(data){return Object.keys(data || {}).some((key)=>/^work_\d+_naam$/.test(key));}
-    function readProject(){const common=readJson(commonProjectKey);if(hasScope(common))return common;const scoped=readJson(projectKey);if(Object.keys(scoped).length)return scoped;return common;}
-    function value(data,key){return data[key] || '';}
-
-    function collectFields(){const data={};document.querySelectorAll('#opnameForm input,#opnameForm select,#opnameForm textarea').forEach((field)=>{if(field.name)data[field.name]=field.value;});return data;}
-    function applyFields(data){document.querySelectorAll('#opnameForm input,#opnameForm select,#opnameForm textarea').forEach((field)=>{if(field.name && data[field.name] != null)field.value=data[field.name];});}
-    function mergedProject(){return {...projectData,...collectFields(),__type:'cdh-projectbestand',__stage:'opname',__version:1,__savedAt:new Date().toISOString()};}
-    function saveBrowser(){const data=mergedProject();localStorage.setItem(opnameKey,JSON.stringify(collectFields()));localStorage.setItem(commonProjectKey,JSON.stringify(data));saveState.textContent='Opgeslagen in deze browser';refreshOverview();return data;}
-
-    function getWorkRows(data){const ids=new Set(Object.keys(data||{}).filter((key)=>/^work_\d+_naam$/.test(key)).map((key)=>key.match(/^work_(\d+)_/)[1]));return Array.from(ids).sort((a,b)=>Number(a)-Number(b)).map((id)=>({id,naam:value(data,`work_${id}_naam`),locatie:value(data,`work_${id}_locatie`),hoeveelheid:value(data,`work_${id}_hoeveelheid`),eenheid:value(data,`work_${id}_eenheid`),bron:value(data,`work_${id}_bron`),opnamevraag:value(data,`work_${id}_opnamevraag`),besluit:value(data,`work_${id}_besluit`),notitie:value(data,`work_${id}_notitie`)})).filter((row)=>row.naam||row.locatie||row.hoeveelheid||row.opnamevraag);}
-    function updateHeader(){metaWo.textContent=projectData.werkordernummer||'-';metaProject.textContent=projectData.project||'-';metaLeader.textContent=projectData.projectleider||'-';metaClient.textContent=projectData.opdrachtgever||'-';metaStatus.textContent=projectData.status||'Concept';}
-    function renderScope(){updateHeader();scopeRows.innerHTML='';const rows=getWorkRows(projectData);if(!rows.length){scopeRows.innerHTML='<p class="hint">Geen scope-regels gevonden. Vul pagina 2 eerst in of laad een projectbestand.</p>';refreshOverview();return;}rows.forEach(addScopeRow);applyFields(readJson(opnameKey));refreshOverview();}
-
-    function addScopeRow(row){const el=document.createElement('div');el.className='item scope-row';el.innerHTML=`<div class="item-head" onclick="this.parentElement.classList.toggle('open')"><div><strong>${escapeHtml(row.naam||'Scope-regel')}</strong><div class="item-meta">${escapeHtml(row.locatie||'-')} - ${escapeHtml(row.hoeveelheid||'-')} ${escapeHtml(row.eenheid||'')} - opnamevraag: ${escapeHtml(row.opnamevraag||'-')}</div></div><span class="badge warn">Opname</span></div><div class="item-body grid"><input type="hidden" name="opn_${row.id}_scope_id" value="${escapeHtml(row.id)}"><div class="full"><label>Scope uit pagina 2</label><input readonly value="${escapeHtml(row.naam)} | ${escapeHtml(row.locatie||'-')} | ${escapeHtml(row.hoeveelheid||'-')} ${escapeHtml(row.eenheid||'')}"></div><div class="full"><label>Eerste opnamevraag</label><input name="opn_${row.id}_opnamevraag" value="${escapeHtml(row.opnamevraag)}" placeholder="wat moet buiten duidelijk worden?"></div><div><label>Definitieve locatie / gevel</label><input name="opn_${row.id}_locatie_def" value="${escapeHtml(row.locatie)}" placeholder="bijv. voorgevel, blok A"></div><div><label>Hoeveelheid / aantal aangepast?</label><select name="opn_${row.id}_hoeveelheid_status"><option value="">Kies...</option><option>Nee</option><option>Ja</option><option>Nog bepalen</option></select></div><div><label>Correctie hoeveelheid / aantal</label><input name="opn_${row.id}_hoeveelheid_def" value="${escapeHtml(row.hoeveelheid)}" placeholder="alleen als anders of n.t.b."></div><div><label>Eenheid</label><select name="opn_${row.id}_eenheid"><option value="">Kies...</option>${option('m2',row.eenheid)}${option('m1',row.eenheid)}${option('st',row.eenheid)}${option('post',row.eenheid)}${option('uur',row.eenheid)}${option('m3',row.eenheid)}</select></div><div><label>Staat / beoordeling</label><select name="opn_${row.id}_staat"><option value="">Kies...</option><option>Goed</option><option>Matig</option><option>Slecht</option><option>Acuut</option><option>Niet beoordeeld</option></select></div><div><label>Schadebeeld</label><select name="opn_${row.id}_schadebeeld"><option value="">Kies...</option><option>Geen bijzonderheden</option><option>Vervuiling / slijtage</option><option>Los / gescheurd</option><option>Vocht / lekkage</option><option>Houtrot</option><option>Corrosie / roest</option><option>Ontbrekend / beschadigd</option><option>Anders</option></select></div><div><label>Oorzaak / vermoeden</label><select name="opn_${row.id}_oorzaak"><option value="">Kies...</option><option>Onbekend</option><option>Veroudering</option><option>Vocht</option><option>Constructief</option><option>Gebruik / schade</option><option>Uitvoering / detail</option><option>Anders</option></select></div><div><label>Bereikbaarheid / uitvoerbaarheid</label><select name="opn_${row.id}_bereikbaarheid"><option value="">Kies...</option><option>Geen bijzonderheden</option><option>Aandachtspunt</option><option>Blokkerend</option></select></div><div><label>Foto overzicht/link</label><input name="opn_${row.id}_foto_overzicht" placeholder="link of bestandsnaam"></div><div><label>Foto detail/link</label><input name="opn_${row.id}_foto_detail" placeholder="link of bestandsnaam"></div><div><label>Extra foto/link</label><input name="opn_${row.id}_foto_extra" placeholder="optioneel"></div><div><label>Open actie bij dit onderdeel</label><select name="opn_${row.id}_actie"><option value="">Geen</option><option>Toevoegen aan scope</option><option>Bespreken met opdrachtgever</option><option>Onderaannemer laten beoordelen</option><option>Nader onderzoeken</option><option>Als optie opnemen</option></select></div><div><label>Onderaannemer later nodig?</label><select name="opn_${row.id}_oa_later"><option value="">Kies...</option><option>Nee</option><option>Nog bepalen</option><option>Ja, later beoordelen</option><option>Ja, uitvragen</option></select></div><div><label>Conclusie</label><select name="opn_${row.id}_conclusie"><option value="">Kies...</option><option>Uitvraag klaar</option><option>Scope aanpassen</option><option>Extra onderzoek nodig</option><option>Eerst bespreken</option><option>Optie opnemen</option></select></div><div class="full"><label>Actie / opname-notitie</label><input name="opn_${row.id}_notitie" placeholder="feitelijke bevinding of actie; geen prijs"></div></div>`;scopeRows.appendChild(el);}
-    function addAction(data={}){actionIndex+=1;const row=document.createElement('div');row.className='item open';row.innerHTML=`<div class="item-head"><div><strong>Open punt ${actionIndex}</strong><div class="item-meta">actie voor vervolg</div></div><span class="chev">&gt;</span></div><div class="item-body grid"><div class="full"><label>Open punt</label><input name="actie_${actionIndex}_punt" value="${escapeHtml(data.punt)}" placeholder="wat ontbreekt nog?"></div><div><label>Eigenaar</label><input name="actie_${actionIndex}_eigenaar" value="${escapeHtml(data.eigenaar)}"></div><div><label>Deadline</label><input type="date" name="actie_${actionIndex}_deadline" value="${escapeHtml(data.deadline)}"></div><div><label>Status</label><select name="actie_${actionIndex}_status"><option>Open</option><option>Opgevraagd</option><option>Ontvangen</option><option>Vervallen</option></select></div></div>`;actionRows.appendChild(row);}
-
-    function refreshOverview(){const rows=Array.from(document.querySelectorAll('.scope-row')).map((row)=>{const title=row.querySelector('strong')?.textContent||'-';const get=(suffix)=>row.querySelector(`[name$="_${suffix}"]`)?.value||'';return{title,locatie:get('locatie_def'),hoeveelheid:get('hoeveelheid_def'),staat:get('staat'),actie:get('actie'),oa:get('oa_later'),conclusie:get('conclusie')}});if(!rows.length){overview.innerHTML='<p class="hint">Nog geen scope-regels gevonden.</p>';return;}const filled=rows.filter((row)=>row.locatie||row.hoeveelheid||row.staat||row.actie||row.oa||row.conclusie);overview.innerHTML=`<table class="summary-table"><thead><tr><th>Werkzaamheid</th><th>Locatie</th><th>Hoeveelheid</th><th>Staat</th><th>Actie</th><th>OA later</th><th>Conclusie</th></tr></thead><tbody>${rows.map((row)=>`<tr><td><strong>${escapeHtml(row.title)}</strong></td><td>${escapeHtml(row.locatie||'-')}</td><td>${escapeHtml(row.hoeveelheid||'-')}</td><td>${escapeHtml(row.staat||'-')}</td><td>${escapeHtml(row.actie||'-')}</td><td>${escapeHtml(row.oa||'-')}</td><td>${escapeHtml(row.conclusie||'-')}</td></tr>`).join('')}</tbody></table><p class="hint">${filled.length} van ${rows.length} scope-regels beoordeeld.</p>`;}
-    function projectFileName(){const clean=(value,fallback)=>String(value||fallback).trim().replace(/[^a-z0-9\-]+/gi,'-').replace(/^-+|-+$/g,'').slice(0,48)||fallback;const wo=clean(projectData.werkordernummer,'zonder-wo');const project=clean(projectData.project,'opname');const date=new Date().toISOString().slice(0,10);return `${date}-${wo}-${project}.cdhproject.json`;}
-    async function saveProjectFile(){const data=saveBrowser();const filename=projectFileName();const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});if(window.showSaveFilePicker){try{const handle=await window.showSaveFilePicker({suggestedName:filename,types:[{description:'CdH projectbestand',accept:{'application/json':['.json','.cdhproject']}}]});const writable=await handle.createWritable();await writable.write(blob);await writable.close();saveState.textContent=`Projectbestand opgeslagen: ${filename}`;return;}catch(error){if(error && error.name==='AbortError')return;}}const link=document.createElement('a');link.href=URL.createObjectURL(blob);link.download=filename;link.click();URL.revokeObjectURL(link.href);saveState.textContent=`Projectbestand gemaakt: ${filename}`;}
-    function importProjectBestand(event){const file=event.target.files&&event.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=()=>{try{const data=JSON.parse(reader.result);projectData=data;localStorage.setItem(commonProjectKey,JSON.stringify(data));if(hasScope(data))localStorage.setItem(projectKey,JSON.stringify(data));renderScope();applyFields(data);saveState.textContent=`Projectbestand geladen: ${file.name}`;}catch{alert('Dit is geen geldig projectbestand.');}event.target.value='';};reader.readAsText(file);}
-    function goNext(){saveBrowser();window.location.href='04-offerteaanvraag-onderaannemer.html';}
-
-    projectData = readProject();
-    renderScope();
-    if(!actionRows.children.length)addAction();
-    opnameForm.addEventListener('input',saveBrowser);
-    opnameForm.addEventListener('change',saveBrowser);
-  </script>
+  <div class="actions">
+    <div class="footer-step"><strong>Stap 3 - Opname locatie</strong><small id="savedMessage">Nog niet opgeslagen</small></div>
+    <label class="button-link" for="projectImport">Projectbestand inladen</label>
+    <input id="projectImport" data-import-file type="file" accept=".json,.cdhproject" hidden>
+    <button type="button" data-action="save-only">Alleen opslaan</button>
+    <button type="button" data-action="export">Download JSON</button>
+    <button type="button" class="primary" data-action="save">Opslaan + download</button>
+    <a class="button-link" href="02-projectopzet-werkzaamheden.html">Vorige</a>
+    <a class="button-link primary" href="04-offerteaanvraag-onderaannemer.html">Volgende</a>
+  </div>
+  <script src="begrotingsconcept.js"></script>
   <script src="cdh-flow.js"></script>
 </body>
 </html>
